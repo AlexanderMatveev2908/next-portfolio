@@ -72,9 +72,14 @@
   box-shadow: 0 0 5px var(--whitesmoke), 0 0 10px var(--whitesmoke);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --whitesmoke: #f5f5f5;
   --gray__300: #d1d5dc;
   --neutral__950: #0a0a0a;
+  --neutral__600: #525252;
   --neutral__700: #404040;
 }

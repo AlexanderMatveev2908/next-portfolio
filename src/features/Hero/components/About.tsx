@@ -12,7 +12,8 @@ const About: FC = () => {
       className="w-full max-w-[600px]  mx-auto"
       style={{ willChange: "transform, opacity" }}
       initial={{
-        scale: 0,
+        scaleX: 0,
+        scaleY: 1.5,
       }}
       transition={{
         duration: 1,
@@ -20,7 +21,8 @@ const About: FC = () => {
         ease: easeInOut,
       }}
       animate={{
-        scale: [0, 1.3, 0.7, 1.2, 0.8, 1.1, 0.9, 1],
+        scaleX: [0, 1.3, 0.8, 1.2, 0.9, 1],
+        scaleY: [1.5, 0.7, 1.2, 0.8, 1.1, 1],
       }}
     >
       <div
@@ -30,7 +32,7 @@ const About: FC = () => {
           transition: 0.3s;
 
           span {
-            color: var(--whitesmoke);
+            color: var(--gray__300);
           }
 
           &:hover {
