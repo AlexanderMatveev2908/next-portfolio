@@ -17,7 +17,6 @@ const TechStack: FC = () => {
     if (stackRef.current) setWidth(stackRef.current.scrollWidth / 2);
   }, []);
 
-  console.log(stack);
   return (
     <TechStackStyled className="w-full flex flex-col justify-center gap-10">
       <Txt {...{ txt: "Teck-Stack" }} />
@@ -35,7 +34,7 @@ const TechStack: FC = () => {
           className="w-full flex gap-10"
           animate={{ x: ["0%", -width] }}
           transition={{
-            duration: 15,
+            duration: 20,
             ease: "linear",
             repeat: Infinity,
           }}
@@ -46,7 +45,7 @@ const TechStack: FC = () => {
                 key={el.id}
                 className="min-w-[50px] min-h-[50px] flex justify-center items-center "
                 css={css`
-                  color: ${el.clr??''};
+                  color: ${el.clr ?? ""};
                 `}
               >
                 <el.svg />
