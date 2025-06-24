@@ -25,15 +25,20 @@ export const SpinnerStyled = styled.div`
     box-shadow: 0 0 10px #f5f5f5, 0 0 20px #f5f5f5, 0 0 30px #f5f5f5,
       0 0 40px #f5f5f5, 0 0 50px #f5f5f5;
     border-radius: 100%;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     top: 50%;
     left: 50%;
 
     animation: spin 1.2s linear infinite;
     animation-delay: var(--dot_delay);
 
-    ${resp("sm")} {
+    ${resp(400)} {
+      width: 40px;
+      height: 40px;
+    }
+
+    ${resp("md")} {
       width: 50px;
       height: 50px;
     }
