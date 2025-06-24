@@ -1,3 +1,7 @@
 .tb {
   @apply border-2 border-white;
 }
+
+.pad_app {
+  @apply px-[20px] sm:px-[50px];
+}

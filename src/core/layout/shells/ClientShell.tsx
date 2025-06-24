@@ -15,16 +15,18 @@ type PropsType = {
 const ClientShell: FC<PropsType> = ({ children }) => {
   return (
     <WrapClient>
+      <Header />
+
       <div
-        className="w-full h-full min-h-screen flex flex-col px-[20px] sm:px-[100px] pt-[20px] pb-[75px] sm:pt-[35px] sm:pb-[150px]"
+        className="w-full h-full min-h-screen flex flex-col pad_app pb-[75px] sm:pb-[150px]"
         css={css`
           background: var(--black__0);
         `}
       >
-        <Header />
         {children}
-        <Footer />
       </div>
+
+      <Footer />
     </WrapClient>
   );
 };

@@ -3,6 +3,10 @@
   @apply border-2 border-white;
 }
 
+.pad_app {
+  @apply px-[20px] sm:px-[50px];
+}
+
 .txt__xs {
   @apply text-xs sm:text-sm md:text-base lg:text-lg;
 }
@@ -52,11 +56,12 @@
   background-color: var(--white__0);
 }
 .link:hover {
-  opacity: 0.6;
+  text-shadow: 0 0 2.5px var(--white__0), 0 0 5px var(--white__0);
 }
 .link:hover::after {
   width: 100%;
   left: 0;
+  box-shadow: 0 0 5px var(--white__0), 0 0 10px var(--white__0);
 }
 
 :root {

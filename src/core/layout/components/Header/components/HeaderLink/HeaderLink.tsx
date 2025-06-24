@@ -13,7 +13,7 @@ type PropsType = {
 const HeaderLink: FC<PropsType> = ({ $clr, txt, to }) => {
   return (
     <Link href={`#${to}`} className="link ">
-      <HeaderLinkStyled {...{ $clr }} className="txt__xl font-semibold">
+      <HeaderLinkStyled {...{ $clr }} className="txt__lg font-semibold">
         {txt}
       </HeaderLinkStyled>
     </Link>
