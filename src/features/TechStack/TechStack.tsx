@@ -3,11 +3,11 @@
 "use client";
 
 import { useEffect, useRef, useState, type FC } from "react";
-import { TechStackStyled } from "./Styled";
-import Txt from "@/shared/components/elements/Txt/Txt";
 import { motion } from "framer-motion";
 import { css } from "@emotion/react";
 import { stack } from "./uiFactory";
+import WrapSection from "@/shared/components/HOC/WrapSection/WrapSection";
+import { Tools } from "@/shared/components/SVGs";
 
 const TechStack: FC = () => {
   const [width, setWidth] = useState(0);
@@ -18,9 +18,14 @@ const TechStack: FC = () => {
   }, []);
 
   return (
-    <TechStackStyled className="w-full flex flex-col justify-center gap-10">
-      <Txt {...{ txt: "Teck-Stack" }} />
-
+    <WrapSection
+      {...{
+        el: {
+          txt: "Tech Stack",
+          svg: Tools,
+        },
+      }}
+    >
       <div
         className="flex overflow-hidden rounded-2xl p-5"
         css={css`
@@ -54,7 +59,7 @@ const TechStack: FC = () => {
           )}
         </motion.div>
       </div>
-    </TechStackStyled>
+    </WrapSection>
   );
 };
 

@@ -13,7 +13,7 @@ const Txt: FC<PropsType> = ({ txt, $clr, size }) => {
   return (
     <TxtStyled
       {...{ $clr }}
-      className={`w-fit flex font-bold ${size ?? "txt__xl"}`}
+      className={`w-fit flex font-bold ${size ?? "txt__2xl"}`}
     >
       <span>{txt}</span>
     </TxtStyled>

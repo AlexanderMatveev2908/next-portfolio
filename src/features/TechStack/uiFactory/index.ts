@@ -19,7 +19,7 @@ import {
   Node,
   Npm,
   Playwright,
-  Postgresql,
+  Postgres,
   Postman,
   React,
   ReactRouter,
@@ -105,7 +105,7 @@ export const stack = [
     svg: Mongodb,
   },
   {
-    svg: Postgresql,
+    svg: Postgres,
   },
   {
     svg: Sequelize,
