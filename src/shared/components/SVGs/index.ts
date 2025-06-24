@@ -20,7 +20,7 @@ export { default as Ngrok } from "./Ngrok";
 export { default as Node } from "./Node";
 export { default as Npm } from "./Npm";
 export { default as Playwright } from "./Playwright";
-export { default as Postgresql } from "./Postgresql";
+export { default as Postgres } from "./Postgres";
 export { default as Postman } from "./Postman";
 export { default as React } from "./React";
 export { default as ReactRouter } from "./ReactRouter";
