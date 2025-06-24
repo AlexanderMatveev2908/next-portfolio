@@ -5,6 +5,10 @@
 @use "./tokens/animations.scss";
 @use "./tokens/hover.scss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --whitesmoke: #f5f5f5;
 
