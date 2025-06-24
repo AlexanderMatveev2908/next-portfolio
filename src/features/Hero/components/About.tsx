@@ -12,17 +12,15 @@ const About: FC = () => {
       className="w-full max-w-[600px]  mx-auto"
       style={{ willChange: "transform, opacity" }}
       initial={{
-        y: 150,
-        opacity: 0,
+        scale: 0,
       }}
       transition={{
-        duration: 0.3,
+        duration: 1,
         delay: 0.6,
         ease: easeInOut,
       }}
       animate={{
-        opacity: 1,
-        y: 0,
+        scale: [0, 1.3, 0.7, 1.2, 0.8, 1.1, 0.9, 1],
       }}
     >
       <div
