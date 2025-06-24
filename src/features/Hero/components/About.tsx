@@ -12,11 +12,11 @@ const About: FC = () => {
       className="w-full max-w-[600px]  mx-auto"
       style={{ willChange: "transform, opacity" }}
       initial={{
-        y: 200,
+        y: 150,
         opacity: 0,
       }}
       transition={{
-        duration: 0.5,
+        duration: 0.3,
         delay: 0.6,
         ease: easeInOut,
       }}
