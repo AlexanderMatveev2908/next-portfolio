@@ -29,6 +29,7 @@ export { default as Sass } from "./Sass";
 export { default as Sequelize } from "./Sequelize";
 export { default as Stripe } from "./Stripe";
 export { default as Tailwind } from "./Tailwind";
+export { default as Tools } from "./Tools";
 export { default as Typescript } from "./Typescript";
 export { default as UseQuery } from "./UseQuery";
 export { default as Vite } from "./Vite";

@@ -6,7 +6,7 @@ import Presentation from "./components/Presentation";
 
 const Hero = () => {
   return (
-    <HeroStyled id="#hero" className="w-full flex flex-col gap-10 sm:gap-16">
+    <HeroStyled id="#hero" className="w-full flex flex-col gap-6 sm:gap-12">
       <Presentation />
 
       <About />
