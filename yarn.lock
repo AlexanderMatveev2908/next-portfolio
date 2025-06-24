@@ -2996,6 +2996,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"framer-motion@npm:^12.19.1":
+  version: 12.19.1
+  resolution: "framer-motion@npm:12.19.1"
+  dependencies:
+    motion-dom: "npm:^12.19.0"
+    motion-utils: "npm:^12.19.0"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 10c0/e3abc8c04c4d69452b4dadf9eeffdc4a252330730c5ff530616d265925b9a34d636992b1ec26191d60ab76a704d437de4c73dcec217f1ae0326adc005edc659f
+  languageName: node
+  linkType: hard
+
 "fs-minipass@npm:^3.0.0":
   version: 3.0.3
   resolution: "fs-minipass@npm:3.0.3"
@@ -4092,6 +4114,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"motion-dom@npm:^12.19.0":
+  version: 12.19.0
+  resolution: "motion-dom@npm:12.19.0"
+  dependencies:
+    motion-utils: "npm:^12.19.0"
+  checksum: 10c0/16fef072441924800c488d2a7dd2443730a77c15957c2e02cefb9fb21d25cf1c4ad1f822e642e7d13e8f48812a0590ccb3b54a278478b9185e8f80ed18263ae2
+  languageName: node
+  linkType: hard
+
+"motion-utils@npm:^12.19.0":
+  version: 12.19.0
+  resolution: "motion-utils@npm:12.19.0"
+  checksum: 10c0/e9526e0135c5f596b2d9a242edbd5b5268922b6001d1b9fb63f2fb4b11f891ac63a186eef8dbd80a4011692d70897aa0c6d4d161fcaaaef3dd4ca7aea6263226
+  languageName: node
+  linkType: hard
+
 "ms@npm:^2.1.1, ms@npm:^2.1.3":
   version: 2.1.3
   resolution: "ms@npm:2.1.3"
@@ -4144,6 +4182,7 @@ __metadata:
     "@types/react-dom": "npm:^19"
     eslint: "npm:^9"
     eslint-config-next: "npm:15.3.4"
+    framer-motion: "npm:^12.19.1"
     next: "npm:15.3.4"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
@@ -4151,6 +4190,7 @@ __metadata:
     tailwindcss: "npm:^4"
     tsx: "npm:^4.20.3"
     typescript: "npm:^5"
+    uuid: "npm:^11.1.0"
   languageName: unknown
   linkType: soft
 
@@ -5516,6 +5556,15 @@ __metadata:
   dependencies:
     punycode: "npm:^2.1.0"
   checksum: 10c0/4ef57b45aa820d7ac6496e9208559986c665e49447cb072744c13b66925a362d96dd5a46c4530a6b8e203e5db5fe849369444440cb22ecfc26c679359e5dfa3c
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "uuid@npm:11.1.0"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 10c0/34aa51b9874ae398c2b799c88a127701408cd581ee89ec3baa53509dd8728cbb25826f2a038f9465f8b7be446f0fbf11558862965b18d21c993684297628d4d3
   languageName: node
   linkType: hard
 
