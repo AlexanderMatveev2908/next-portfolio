@@ -1,11 +1,11 @@
-import WrapClient from "@/shared/components/HOC/WrapClient";
+import Hero from "@/features/Hero/Hero";
 import type { FC } from "react";
 
 const Home: FC = () => {
   return (
-    <WrapClient>
-      <div className=""></div>
-    </WrapClient>
+    <div className="w-full pt-[30px] sm:pt-[50px]">
+      <Hero />
+    </div>
   );
 };
 

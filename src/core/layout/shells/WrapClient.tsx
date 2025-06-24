@@ -1,7 +1,7 @@
 "use client";
 
+import Spinner from "@/shared/components/Spinners/Spinner/Spinner";
 import { useEffect, useState, type FC } from "react";
-import Spinner from "../Spinners/Spinner/Spinner";
 
 type PropsType = {
   children: React.ReactNode;
@@ -10,9 +10,9 @@ type PropsType = {
 const WrapClient: FC<PropsType> = ({ children }) => {
   const [isHydrated, setIsHydrated] = useState(false);
 
-  //   useEffect(() => {
-  //     setIsHydrated(true);
-  //   }, []);
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   return isHydrated ? children : <Spinner />;
 };

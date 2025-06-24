@@ -1,0 +1,25 @@
+.link {
+  transition: 0.3s ease-in-out;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -3.5px;
+    width: 0%;
+    left: 50%;
+    height: 2px;
+    transition: 0.3s ease-in-out;
+    background-color: var(--whitesmoke);
+  }
+
+  &:hover {
+    text-shadow: 0 0 2.5px var(--whitesmoke), 0 0 5px var(--whitesmoke);
+
+    &::after {
+      width: 100%;
+      left: 0;
+      box-shadow: 0 0 5px var(--whitesmoke), 0 0 10px var(--whitesmoke);
+    }
+  }
+}

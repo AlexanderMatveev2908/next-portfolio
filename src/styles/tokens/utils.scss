@@ -1,0 +1,15 @@
+.tb {
+  @apply border-2 border-white;
+}
+
+.pad_app {
+  @apply px-[20px] sm:px-[50px];
+}
+
+.grad_txt {
+  background: linear-gradient(to right, var(--whitesmoke), var(--neutral__700));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
