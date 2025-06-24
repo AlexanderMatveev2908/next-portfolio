@@ -126,4 +126,9 @@ export const stack = [
 ].map((el) => ({
   ...el,
   id: v4(),
+  clr: ["svggithub", "svgngrok", "svgnpm", "svgnextjs"].includes(
+    el.svg.name.toLowerCase()
+  )
+    ? "whitesmoke"
+    : null,
 }));
