@@ -10,9 +10,9 @@ type PropsType = {
 const WrapClient: FC<PropsType> = ({ children }) => {
   const [isHydrated, setIsHydrated] = useState(false);
 
-  //   useEffect(() => {
-  //     setIsHydrated(true);
-  //   }, []);
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   return isHydrated ? children : <Spinner />;
 };

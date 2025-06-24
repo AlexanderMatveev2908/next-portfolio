@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "../styles/globals.css";
+import ClientShell from "@/core/layout/shells/ClientShell";
 
 const fir_code = Fira_Code({
   subsets: ["latin"],
@@ -23,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fir_code.className} antialiased`}>{children}</body>
+      <body className={`${fir_code.className} antialiased`}>
+        <ClientShell>{children}</ClientShell>
+      </body>
     </html>
   );
 }
