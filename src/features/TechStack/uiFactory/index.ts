@@ -1,4 +1,5 @@
 import {
+  Bootstrap,
   Cloudinary,
   Css,
   Docker,
@@ -10,6 +11,7 @@ import {
   Html,
   Javascript,
   Jest,
+  Jwt,
   Mongodb,
   Nextjs,
   Nginx,
@@ -18,6 +20,7 @@ import {
   Npm,
   Playwright,
   Postgresql,
+  Postman,
   React,
   ReactRouter,
   Redux,
@@ -26,7 +29,9 @@ import {
   Stripe,
   Tailwind,
   Typescript,
+  UseQuery,
   Vite,
+  Vsc,
   Yarn,
   Zod,
 } from "@/shared/components/SVGs";
@@ -67,6 +72,9 @@ export const stack = [
     svg: Figma,
   },
   {
+    svg: Bootstrap,
+  },
+  {
     svg: Tailwind,
   },
   {
@@ -80,6 +88,9 @@ export const stack = [
   },
   {
     svg: ReactRouter,
+  },
+  {
+    svg: UseQuery,
   },
   {
     svg: Redux,
@@ -104,6 +115,15 @@ export const stack = [
   },
   {
     svg: Stripe,
+  },
+  {
+    svg: Jwt,
+  },
+  {
+    svg: Vsc,
+  },
+  {
+    svg: Postman,
   },
   {
     svg: Jest,
