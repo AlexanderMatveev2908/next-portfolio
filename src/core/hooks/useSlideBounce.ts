@@ -22,15 +22,17 @@ export const useSlideBounce = ({ direction }: Params) => {
   );
 
   return {
-    initial: { x: startX },
+    initial: { x: startX, opacity: 0 },
     animate: {
       x: [startX, ...vals],
-      willChange: ["transform"],
+      opacity: [0, 0.4, 0.6, 0.8, 1, 1, 1],
+
+      willChange: ["transform", "opacity"],
     },
     transition: {
       duration: 1,
       ease: easeInOut,
-      delay: 0.5,
+      delay: 0.3,
     },
   };
 };

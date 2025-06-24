@@ -2,25 +2,25 @@
 
 import { motion } from "framer-motion";
 import { HeroStyled } from "./Styled";
-import { useSlideBounce } from "@/core/hooks/useSlideBounce";
+import { optAnimation, piecesIntro } from "./uiFactory";
 
 const Hero = () => {
-  const anmRight = useSlideBounce({ direction: "right" });
-  const anmLeft = useSlideBounce({ direction: "left" });
-
   return (
     <HeroStyled className="w-full flex flex-col gap-3 sm:gap-6">
-      <motion.div {...anmRight} className="w-full flex justify-center">
-        <span className="grad_txt txt__2xl font-semibold">
-          Alexander Matveev
-        </span>
-      </motion.div>
+      {piecesIntro.map((el, i) => (
+        <motion.div
+          key={el.id}
+          custom={i}
+          variants={optAnimation}
+          initial="hidden"
+          animate="visible"
+          // {...(i % 2 === 0 ? anmRight : anmLeft)}
 
-      <motion.div {...anmLeft} className="w-full flex justify-center">
-        <span className="grad_txt txt__2xl font-bold">
-          Full-Stack Developer
-        </span>
-      </motion.div>
+          className="w-full flex justify-center"
+        >
+          <span className={`grad_txt ${el.fnt}`}>{el.txt}</span>
+        </motion.div>
+      ))}
     </HeroStyled>
   );
 };
