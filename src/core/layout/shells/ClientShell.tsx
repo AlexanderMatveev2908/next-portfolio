@@ -20,7 +20,7 @@ const ClientShell: FC<PropsType> = ({ children }) => {
       <div
         className="w-full h-full min-h-screen flex flex-col pad_app pb-[75px] sm:pb-[150px]"
         css={css`
-          background: var(--black__0);
+          background: var(--neutral__950);
         `}
       >
         {children}

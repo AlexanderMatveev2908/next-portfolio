@@ -1,9 +1,9 @@
-import Hero from "@/features/Hero/page";
+import Hero from "@/features/Hero/Hero";
 import type { FC } from "react";
 
 const Home: FC = () => {
   return (
-    <div className="w-full pt-[20px] sm:pt-[35px]">
+    <div className="w-full pt-[30px] sm:pt-[50px]">
       <Hero />
     </div>
   );

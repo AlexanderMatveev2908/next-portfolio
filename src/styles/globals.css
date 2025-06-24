@@ -7,6 +7,14 @@
   @apply px-[20px] sm:px-[50px];
 }
 
+.grad_txt {
+  background: linear-gradient(to right, var(--whitesmoke), var(--neutral__700));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 .txt__xs {
   @apply text-xs sm:text-sm md:text-base lg:text-lg;
 }
@@ -53,19 +61,20 @@
   left: 50%;
   height: 2px;
   transition: 0.3s ease-in-out;
-  background-color: var(--white__0);
+  background-color: var(--whitesmoke);
 }
 .link:hover {
-  text-shadow: 0 0 2.5px var(--white__0), 0 0 5px var(--white__0);
+  text-shadow: 0 0 2.5px var(--whitesmoke), 0 0 5px var(--whitesmoke);
 }
 .link:hover::after {
   width: 100%;
   left: 0;
-  box-shadow: 0 0 5px var(--white__0), 0 0 10px var(--white__0);
+  box-shadow: 0 0 5px var(--whitesmoke), 0 0 10px var(--whitesmoke);
 }
 
 :root {
-  --white__0: #f5f5f5;
-  --gray__0: #d1d5dc;
-  --black__0: #0a0a0a;
+  --whitesmoke: #f5f5f5;
+  --gray__300: #d1d5dc;
+  --neutral__950: #0a0a0a;
+  --neutral__700: #404040;
 }
