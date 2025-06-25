@@ -48,7 +48,7 @@ const TechStack: FC = () => {
             stack.map((el) => (
               <div
                 key={el.id}
-                className="min-w-[50px] min-h-[50px] flex justify-center items-center "
+                className="min-w-[35px] sm:min-w-[50px] min-h-[35px] sm:min-h-[50px] flex justify-center items-center "
                 css={css`
                   color: ${el.clr ?? ""};
                 `}
