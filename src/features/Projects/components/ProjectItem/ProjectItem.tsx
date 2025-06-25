@@ -5,6 +5,7 @@ import { ProjectItemStyled } from "./Styled";
 import { ProjectType } from "../../uiFactory";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import ImgLoader from "@/shared/components/HOC/ImgLoader/ImgLoader";
 
 type PropsType = {
   el: ProjectType;
@@ -12,7 +13,7 @@ type PropsType = {
 
 const ProjectItem: FC<PropsType> = ({ el }) => {
   return (
-    <ProjectItemStyled className="w-full border-2 border-[var(--neutral__700)] p-5 rounded-2xl min-h-[200px] max-w-[320px]">
+    <ProjectItemStyled className="w-full border-2 border-[var(--neutral__700)] p-5 rounded-2xl min-h-[300px]">
       <motion.div
         className="flipper p-5 rounded-3xl"
         whileHover={{
@@ -27,8 +28,8 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
         }}
       >
         <div className="client">
-          <div className="w-full h-full">
-            <Image src={el.imgs[0]} alt={el.title} width={320} height={180} />
+          <div className="relative w-full h-[250px]">
+            <ImgLoader {...{ src: el.imgs[0] }} />
           </div>
         </div>
 

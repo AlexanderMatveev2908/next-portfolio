@@ -15,3 +15,6 @@ export const resp = (str: keyof typeof uiBreaks | number) =>
         uiBreaks[str as keyof typeof uiBreaks]
       }px)`
     : `@media screen and (min-width: ${str}px)`;
+
+export const calcRatioH = (w: number, pad: number = 0): number =>
+  (w * 9) / 16 + pad;
