@@ -21,9 +21,12 @@ const Projects: FC = () => {
       }}
     >
       <div
-        className="w-full grid grid-cols-1 gap-6"
+        className="w-full gap-6"
         css={css`
-          grid-template-columns: repeat(auto-fit, 300px);
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          /* grid-template-columns: repeat(auto-fit, 300px); */
+          place-content: center;
         `}
       >
         {projects.map((el) => (

@@ -7,8 +7,8 @@ export const ProjectItemStyled = styled.div`
     transform-style: preserve-3d;
     will-change: transform;
     position: relative;
-    width: 100%;
-    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
   }
 
   .client,
@@ -22,7 +22,8 @@ export const ProjectItemStyled = styled.div`
   }
   .server {
     z-index: 100;
-    background: var(--neutral__950);
+    background: var(--whitesmoke);
+    /* background: var(--neutral__950); */
     transform: rotateY(180deg);
     color: var(--gray__300);
   }

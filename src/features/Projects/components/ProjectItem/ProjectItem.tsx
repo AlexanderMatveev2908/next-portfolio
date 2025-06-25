@@ -8,7 +8,6 @@ import { ProjectType } from "../../uiFactory";
 import { motion } from "framer-motion";
 import ImgLoader from "@/shared/components/HOC/ImgLoader/ImgLoader";
 import { css } from "@emotion/react";
-import { calcRatioH } from "@/core/lib/style";
 
 type PropsType = {
   el: ProjectType;
@@ -16,7 +15,7 @@ type PropsType = {
 
 const ProjectItem: FC<PropsType> = ({ el }) => {
   return (
-    <ProjectItemStyled className="w-full border-2 border-[var(--neutral__700)] p-5 rounded-2xl min-h-[600px]">
+    <ProjectItemStyled className="min-w-full border-2 border-[var(--neutral__700)] rounded-2xl min-h-[300px] p-[15px]">
       <motion.div
         className="flipper p-5 rounded-3xl"
         whileHover={{
@@ -33,10 +32,11 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
         <div className="client">
           <div
             css={css`
+              aspect-ratio: 19/9;
               width: 100%;
-              max-width: 300px;
-              height: ${calcRatioH(275, "9/16")}px;
+              height: 100%;
             `}
+            className="w-full h-full"
           >
             <ImgLoader
               {...{
