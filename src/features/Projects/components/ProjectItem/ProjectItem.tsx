@@ -1,11 +1,14 @@
+/** @jsxImportSource @emotion/react */
+
 "use client";
 
 import type { FC } from "react";
 import { ProjectItemStyled } from "./Styled";
 import { ProjectType } from "../../uiFactory";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import ImgLoader from "@/shared/components/HOC/ImgLoader/ImgLoader";
+import { css } from "@emotion/react";
+import { calcRatioH } from "@/core/lib/style";
 
 type PropsType = {
   el: ProjectType;
@@ -13,7 +16,7 @@ type PropsType = {
 
 const ProjectItem: FC<PropsType> = ({ el }) => {
   return (
-    <ProjectItemStyled className="w-full border-2 border-[var(--neutral__700)] p-5 rounded-2xl min-h-[300px]">
+    <ProjectItemStyled className="w-full border-2 border-[var(--neutral__700)] p-5 rounded-2xl min-h-[600px]">
       <motion.div
         className="flipper p-5 rounded-3xl"
         whileHover={{
@@ -28,8 +31,19 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
         }}
       >
         <div className="client">
-          <div className="relative w-full h-[250px]">
-            <ImgLoader {...{ src: el.imgs[0] }} />
+          <div
+            css={css`
+              width: 100%;
+              max-width: 300px;
+              height: ${calcRatioH(275, "9/16")}px;
+            `}
+          >
+            <ImgLoader
+              {...{
+                src: el.imgs[0],
+                alt: `Image of ${el.title} from ${el.host}`,
+              }}
+            />
           </div>
         </div>
 

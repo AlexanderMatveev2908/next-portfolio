@@ -56,6 +56,9 @@ export const projects = [
   },
 ].map((el) => ({
   ...el,
-  imgs: el.imgs.map((img) => B_URL + img),
+  imgs: el.imgs.flatMap((img) => [
+    B_URL + img.split(".")[0] + "_sm." + img.split(".")[1],
+    B_URL + img,
+  ]),
   id: v4(),
 }));

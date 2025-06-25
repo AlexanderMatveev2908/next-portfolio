@@ -13,41 +13,42 @@ type PropsType = {
 };
 
 const ImgLoader: FC<PropsType> = ({ src, alt }) => {
-  const [loaded, isLoaded] = useState(false);
+  const [loaded, setIsLoaded] = useState(false);
 
-  return !loaded ? (
+  return (
     <div className="relative min-h-full min-w-full">
-      <motion.div
-        className="absolute inset-0"
-        css={css`
-          background: linear-gradient(
-            to right,
-            var(--neutral__800) 0%,
-            var(--neutral__700) 40%,
-            var(--neutral__800) 80%
-          );
-          background-size: 200% 100%;
-        `}
-        animate={{
-          backgroundPosition: ["200% 0%", "-200% 0%"],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      ></motion.div>
+      {!loaded && (
+        <motion.div
+          className="absolute inset-0"
+          css={css`
+            background: linear-gradient(
+              to right,
+              var(--neutral__800) 0%,
+              var(--neutral__700) 40%,
+              var(--neutral__800) 80%
+            );
+            background-size: 200% 100%;
+          `}
+          animate={{
+            backgroundPosition: ["200% 0%", "-200% 0%"],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        ></motion.div>
+      )}
       <Image
         src={src}
         alt={alt ?? ""}
-        className="opacity-0"
-        width={1}
-        height={1}
-        onLoad={() => isLoaded(true)}
+        className={`transition-all duration-500 object-cover ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+        fill
+        onLoad={() => setIsLoaded(true)}
       />
     </div>
-  ) : (
-    <Image src={src} alt={alt ?? ""} fill />
   );
 };
 
