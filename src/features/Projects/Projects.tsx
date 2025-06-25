@@ -28,7 +28,7 @@ const Projects: FC = () => {
           grid-template-columns: repeat(auto-fit, 300px);
           justify-content: center;
 
-          ${resp("sm")} {
+          ${resp("md")} {
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
           }
         `}
