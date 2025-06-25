@@ -17,7 +17,7 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
   return (
     <ProjectItemStyled className="min-w-full border-2 border-[var(--neutral__700)] rounded-2xl min-h-[300px] p-[15px]">
       <motion.div
-        className="flipper p-5 rounded-3xl"
+        className="flipper p-5 rounded-3xl "
         whileHover={{
           rotateY: 180,
         }}
@@ -29,14 +29,13 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
           transformStyle: "preserve-3d",
         }}
       >
-        <div className="client">
+        <div className="client rounded-full">
           <div
             css={css`
-              aspect-ratio: 19/9;
               width: 100%;
               height: 100%;
             `}
-            className="w-full h-full"
+            className=""
           >
             <ImgLoader
               {...{
@@ -47,7 +46,7 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
           </div>
         </div>
 
-        <div className="server flex justify-center items-start">
+        <div className="server flex justify-center items-start rounded-full">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Non iure
           voluptatem molestiae corrupti facere inventore esse, nostrum
           blanditiis laboriosam quas minus molestias! Asperiores illum quam

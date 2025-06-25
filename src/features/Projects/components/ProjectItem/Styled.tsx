@@ -9,22 +9,24 @@ export const ProjectItemStyled = styled.div`
     position: relative;
     min-width: 100%;
     min-height: 100%;
+    overflow: hidden;
   }
 
   .client,
   .server {
     position: absolute;
     inset: 0;
-    backface-visibility: hidden;
   }
   .client {
-    z-index: 50;
+    z-index: 100;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
   }
   .server {
-    z-index: 100;
-    background: var(--whitesmoke);
-    /* background: var(--neutral__950); */
+    z-index: 50;
     transform: rotateY(180deg);
+    /* background: var(--whitesmoke); */
+    background: var(--neutral__950);
     color: var(--gray__300);
   }
 `;
