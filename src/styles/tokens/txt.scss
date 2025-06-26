@@ -1,23 +1,23 @@
 .txt__xs {
-  @apply text-xs sm:text-sm md:text-base lg:text-lg;
+  @apply text-xs md:text-sm lg:text-base;
 }
 
 .txt__sm {
-  @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  @apply text-sm md:text-base lg:text-lg;
 }
 
 .txt__md {
-  @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+  @apply text-base md:text-lg lg:text-xl;
 }
 
 .txt__lg {
-  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  @apply text-lg md:text-xl lg:text-2xl;
 }
 
 .txt__xl {
-  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  @apply text-xl md:text-3xl lg:text-4xl;
 }
 
 .txt__2xl {
-  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  @apply text-2xl md:text-4xl lg:text-5xl;
 }

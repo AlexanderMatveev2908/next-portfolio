@@ -1,87 +1,31 @@
-# Heading 1
+A full-stack e-commerce application built with the **PERN** stack, designed to support multiple independent bookstores under a single unified system.
 
-## Heading 2
+## 🚀 Features
 
-### Heading 3
+- 🔐 **Role-Based Authentication**  
+  Store owners can assign roles such as **Manager** and **Employee**, allowing fine-grained control over store operations.
 
-#### Heading 4
+- 🏪 **Multi-Tenant Architecture**  
+  Each bookstore operates with its own isolated inventory. Customers can browse and purchase from multiple stores using a single, unified cart.
 
-##### Heading 5
+- 🧾 **Stripe Checkout + Webhooks**  
+  Real-time payment confirmation and order updates using full webhook integration.
 
-###### Heading 6
+- ⚙️ **Advanced Account Management**  
+  Includes:
 
----
+  - Password reset
+  - Email change
+  - Account recovery
+  - Secure account deletion
 
-This is a paragraph with **bold**, _italic_, and ~~strikethrough~~. You can also use `inline code` inside text.
+- 🛡️ **Layered Token Security**
 
----
+  - **Access Tokens**: Signed JWTs for fast, stateless authentication
+  - **Refresh Tokens**: Encrypted JWE (RSA-OAEP + AES-GCM) for confidentiality and integrity
+  - **One-Time Tokens**: Secured with HMAC (CBC-SHA) for verification tasks like password resets and email validation
 
-## Blockquote
+- 🐳 **Dockerized Deployment**  
+  A single container runs both the API and frontend via Express. Environment supports HTTPS during development using `mkcert`, `ngrok`, and an `NGINX` reverse proxy.
 
-> "The only way to do great work is to love what you do."  
-> — _Steve Jobs_
-
-> Nested quote:
->
-> > "Sub-quote inside."
-
----
-
-## Lists
-
-### Unordered List
-
-- Item 1
-- Item 2
-  - Nested Item A
-  - Nested Item B
-
-### Ordered List
-
-1. Step One
-2. Step Two
-   1. Substep
-   2. Substep
-
----
-
-## Task List
-
-- [x] Write Markdown
-- [x] Add Tailwind Typography
-- [ ] Hook into API
-- [ ] Deploy 🚀
-
----
-
-## Links and Images
-
-[Visit GitHub](https://github.com)
-
-![Placeholder](https://via.placeholder.com/150)
-
----
-
-## Code Blocks
-
-### No Language
-
-function sayHello(name) {
-return Hello, ${name};
-}
-
-### With Language (TypeScript)
-
-```ts
-const greet = (name: string): string => {
-  return `Hello, ${name}`;
-};
-
-Tables
-Feature	Supported	Notes
-Bold	✅	Use **text**
-Italic	✅	Use *text*
-Lists	✅	Supports nested and mixed types
-Code Blocks	✅	Supports syntax highlighting
-Math
-```
+This application was built entirely from scratch, including frontend architecture, backend logic, data modeling, and third-party integrations.

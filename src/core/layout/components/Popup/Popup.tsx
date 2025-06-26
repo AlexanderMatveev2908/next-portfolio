@@ -98,7 +98,7 @@ const Popup: FC = () => {
             <X className="text-red-600 h-[50px] w-[50px]" />
           </div>
 
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center mt-10">
             <Txt {...{ txt: popState.content?.title ?? "" }} />
           </div>
 

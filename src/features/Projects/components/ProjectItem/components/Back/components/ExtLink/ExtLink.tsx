@@ -22,7 +22,7 @@ const ExtLink: FC<PropsType> = ({ href, typeLink, host, typeApp }) => {
   const label = typeLink === "git" ? "GitHub Repository" : `Live on ${host}`;
 
   return (
-    <div className="w-full grid grid-cols-1 gap-1">
+    <div className="w-full grid grid-cols-1 justify-items-center gap-4">
       <a
         href={href}
         target="_blank"
@@ -45,7 +45,7 @@ const ExtLink: FC<PropsType> = ({ href, typeLink, host, typeApp }) => {
         host === "Render.com" &&
         typeLink === "live" && (
           <span className="txt__xs font-normal text-neutral-400">
-            ⚠️ There may be a delay to load the page due to free tier col start
+            ⚠️ There may be a delay to load the page due to free tier cold start
           </span>
         )}
     </div>

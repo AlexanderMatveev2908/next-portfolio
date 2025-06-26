@@ -19,14 +19,21 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
   const [h, setHeight] = useState(0);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    const el = contentRefImg.current;
+    if (!el) return;
 
-    const resize = () =>
-      setHeight((contentRefImg.current?.scrollHeight ?? 0) + 30);
+    const resize = () => setHeight((el.scrollHeight ?? 0) + 30);
 
-    resize();
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
+    const observer = new ResizeObserver(resize);
+    observer.observe(el);
+
+    const imgs = el.querySelectorAll("img");
+    imgs.forEach((img) => img.addEventListener("load", resize));
+
+    return () => {
+      observer.disconnect();
+      imgs.forEach((img) => img.removeEventListener("load", resize));
+    };
   }, []);
 
   return (

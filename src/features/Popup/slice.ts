@@ -4,7 +4,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type PopContent = null | {
   title: string;
-  txt: string;
   fileMD: string;
 };
 export type PopStateType = {
