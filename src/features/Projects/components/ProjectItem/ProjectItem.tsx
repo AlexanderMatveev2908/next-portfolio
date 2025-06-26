@@ -15,12 +15,17 @@ type PropsType = {
 };
 
 const ProjectItem: FC<PropsType> = ({ el }) => {
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const contentRefImg = useRef<HTMLDivElement | null>(null);
   const [h, setHeight] = useState(0);
+  const contentRefTxt = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const resize = () =>
-      setHeight((contentRef.current?.scrollHeight ?? 0) + 30);
+      setHeight(
+        (contentRefImg.current?.scrollHeight ?? 0) +
+          (contentRefTxt.current?.scrollHeight ?? 0) +
+          30
+      );
 
     resize();
     window.addEventListener("resize", resize);
@@ -29,7 +34,7 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
 
   return (
     <ProjectItemStyled
-      className="min-w-full border-2 border-[var(--neutral__700)] rounded-2xl  p-[15px]"
+      className="min-w-full border-2 border-[var(--neutral__700)] rounded-2xl p-[15px]"
       css={css`
         height: ${h}px;
         max-height: ${h}px;
@@ -48,9 +53,9 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
           transformStyle: "preserve-3d",
         }}
       >
-        <div className="client ">
+        <div className="client">
           <div className="w-full h-full flex flex-col gap-3">
-            <div className="w-full bg-black px-3 py-2">
+            <div ref={contentRefTxt} className="w-full bg-black px-3 py-2">
               <Txt {...{ txt: el.title, size: "txt__md" }} />
             </div>
             <div
@@ -58,7 +63,7 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
                 width: 100%;
                 aspect-ratio: 16/9;
               `}
-              ref={contentRef}
+              ref={contentRefImg}
             >
               <ImgLoader
                 {...{
