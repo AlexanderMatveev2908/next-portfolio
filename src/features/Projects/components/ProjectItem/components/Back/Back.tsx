@@ -7,6 +7,9 @@ import { css } from "@emotion/react";
 import { FC } from "react";
 import ExtLink from "./components/ExtLink/ExtLink";
 import { useGenIDs } from "@/core/hooks/useGenIDs";
+import { useDispatch } from "react-redux";
+import { popSlice } from "@/features/Popup/slice";
+import { saveStorage } from "@/core/lib/storage";
 
 type PropsType = {
   el: ProjectType;
@@ -16,6 +19,20 @@ const Back: FC<PropsType> = ({ el }) => {
   const { ids } = useGenIDs({
     lengths: [2],
   });
+
+  const dispatch = useDispatch();
+  const handlePop = () => {
+    const content = {
+      title: el.title,
+      txt: el.description,
+    };
+    saveStorage("popup", {
+      isPop: true,
+      content,
+    });
+
+    dispatch(popSlice.actions.openPop(content));
+  };
 
   return (
     <div className="server rounded-xl">
@@ -40,6 +57,7 @@ const Back: FC<PropsType> = ({ el }) => {
 
         <div className="w-full flex justify-center">
           <button
+            onClick={handlePop}
             className="btn_app border-[var(--whitesmoke)] border-2 rounded-xl py-2 px-10"
             css={css`
               &:hover {

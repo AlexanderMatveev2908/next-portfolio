@@ -19,3 +19,5 @@ export const getStorage = <T>(key: StorageKey): T | null => {
     return data as T;
   }
 };
+
+export const delStorage = (key: StorageKey) => sessionStorage.removeItem(key);
