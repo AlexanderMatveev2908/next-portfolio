@@ -25,10 +25,10 @@ const Projects: FC = () => {
         className="w-full gap-6"
         css={css`
           display: grid;
-          grid-template-columns: repeat(auto-fit, 300px);
+          grid-template-columns: 1fr;
           justify-content: center;
 
-          ${resp("md")} {
+          ${resp(400)} {
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
           }
         `}

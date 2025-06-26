@@ -2,7 +2,7 @@
 
 "use client";
 
-import type { FC } from "react";
+import { useEffect, useRef, useState, type FC } from "react";
 import { ProjectItemStyled } from "./Styled";
 import { ProjectType } from "../../uiFactory";
 import { motion } from "framer-motion";
@@ -15,8 +15,24 @@ type PropsType = {
 };
 
 const ProjectItem: FC<PropsType> = ({ el }) => {
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const [h, setHeight] = useState(0);
+
+  useEffect(() => {
+    const resize = () => setHeight((contentRef.current?.scrollWidth ?? 0) + 30);
+
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+
   return (
-    <ProjectItemStyled className="min-w-full border-2 border-[var(--neutral__700)] rounded-2xl min-h-[300px] p-[15px]">
+    <ProjectItemStyled
+      className="min-w-full border-2 border-[var(--neutral__700)] rounded-2xl  p-[15px]"
+      css={css`
+        height: ${h}px;
+      `}
+    >
       <motion.div
         className="flipper p-5 rounded-xl "
         whileHover={{
@@ -29,6 +45,7 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
         style={{
           transformStyle: "preserve-3d",
         }}
+        ref={contentRef}
       >
         <div className="client">
           <div className="w-full h-full flex flex-col gap-3">
@@ -38,9 +55,8 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
             <div
               css={css`
                 width: 100%;
-                height: 100%;
+                aspect-ratio: 16/9;
               `}
-              className=""
             >
               <ImgLoader
                 {...{
@@ -49,6 +65,13 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
                 }}
               />
             </div>
+
+            <p className="text-white tb">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea
+              incidunt odit itaque praesentium inventore quas saepe, possimus
+              quo provident, iste a! Obcaecati expedita, voluptatem sit vero hic
+              temporibus sint autem.
+            </p>
           </div>
         </div>
 
