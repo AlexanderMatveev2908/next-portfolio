@@ -18,7 +18,7 @@
   cursor: pointer;
   transition: 0.3s;
   &:hover {
-    transform: scale(1.3);
+    transform: scale(var(--scale_up));
   }
 }
 

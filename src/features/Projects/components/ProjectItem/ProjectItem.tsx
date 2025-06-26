@@ -93,8 +93,28 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
               ))}
             </div>
 
-            <div className="overflow-y-auto max-h-full scroll_app pr-2">
+            {/* <div className="overflow-y-auto max-h-full scroll_app pr-2">
               <span className="txt__sm">{el.description}</span>
+            </div> */}
+
+            <div className="w-full flex justify-center">
+              <button
+                className="btn_app border-[var(--whitesmoke)] border-2 rounded-xl py-2 px-10"
+                css={css`
+                  &:hover {
+                    background: var(--whitesmoke);
+                    border-color: var(--neutral__950);
+                    color: var(--neutral__950);
+                  }
+                `}
+                style={
+                  {
+                    "--scale_up": "1.2",
+                  } as React.CSSProperties
+                }
+              >
+                <span className="txt__sm font-semibold">About</span>
+              </button>
             </div>
           </div>
         </div>

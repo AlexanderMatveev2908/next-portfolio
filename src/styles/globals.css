@@ -20,7 +20,7 @@
   transition: 0.3s;
 }
 .btn_app:hover {
-  transform: scale(1.3);
+  transform: scale(var(--scale_up));
 }
 
 .btn_app:active {
