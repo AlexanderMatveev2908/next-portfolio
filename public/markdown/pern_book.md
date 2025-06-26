@@ -1,87 +1,51 @@
-# Heading 1
+A full-stack **e-commerce** application built with the **PERN** stack, designed to support multiple independent bookstores under a single unified system.
 
-## Heading 2
+## 🚀 Features
 
-### Heading 3
+- 🔐 **Robust Role-Based Authentication**  
+  Store owners can assign roles like **Manager** and **Employee**, enabling fine-grained control over store operations.
 
-#### Heading 4
+- 🏪 **Multi-Tenant Architecture**  
+  Each bookstore:
 
-##### Heading 5
+  - Operates with its own isolated inventory
+  - Maintains its own staff and access control
+  - Integrates seamlessly with a global cart system
 
-###### Heading 6
+- 🛒 **Unified Shopping Experience**  
+  Customers can:
 
----
+  - Browse books across all stores
+  - Add items from multiple vendors to one unified cart
+  - Checkout with a single Stripe payment
 
-This is a paragraph with **bold**, _italic_, and ~~strikethrough~~. You can also use `inline code` inside text.
+- 💳 **Stripe Checkout + Webhooks**  
+  Handles:
 
----
+  - Secure payments
+  - Real-time order confirmations
+  - Automated status updates via webhooks
 
-## Blockquote
+- 🧑‍💼 **Comprehensive Account Management**  
+  Includes:
 
-> "The only way to do great work is to love what you do."  
-> — _Steve Jobs_
+  - Password reset
+  - Email changes
+  - Account recovery
+  - Secure account deletion
 
-> Nested quote:
->
-> > "Sub-quote inside."
+- 🛡️ **Advanced Security Architecture**  
+  Multi-layer token strategy:
 
----
+  - **Access Tokens**: JWTs (signed) for quick verification
+  - **Refresh Tokens**: Encrypted JWE (RSA-OAEP + AES-GCM) for confidentiality
+  - **One-Time Tokens**: HMAC-secured (CBC-SHA) for actions like password resets and email verification
 
-## Lists
+- 🐳 **Dockerized Deployment**  
+  Single container serves both **API** and **frontend** using **Express**.
 
-### Unordered List
-
-- Item 1
-- Item 2
-  - Nested Item A
-  - Nested Item B
-
-### Ordered List
-
-1. Step One
-2. Step Two
-   1. Substep
-   2. Substep
-
----
-
-## Task List
-
-- [x] Write Markdown
-- [x] Add Tailwind Typography
-- [ ] Hook into API
-- [ ] Deploy 🚀
-
----
-
-## Links and Images
-
-[Visit GitHub](https://github.com)
-
-![Placeholder](https://via.placeholder.com/150)
-
----
-
-## Code Blocks
-
-### No Language
-
-function sayHello(name) {
-return Hello, ${name};
-}
-
-### With Language (TypeScript)
-
-```ts
-const greet = (name: string): string => {
-  return `Hello, ${name}`;
-};
-
-Tables
-Feature	Supported	Notes
-Bold	✅	Use **text**
-Italic	✅	Use *text*
-Lists	✅	Supports nested and mixed types
-Code Blocks	✅	Supports syntax highlighting
-Math
-```
+- 🌐 **Secure Local Development**  
+  Supports HTTPS in dev using:
+  - [`mkcert`](https://github.com/FiloSottile/mkcert)
+  - [`ngrok`](https://ngrok.com/)
+  - `NGINX` reverse proxy
