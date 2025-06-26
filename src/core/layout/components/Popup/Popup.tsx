@@ -5,6 +5,7 @@
 import type { FC } from "react";
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
+import { X } from "lucide-react";
 
 const Popup: FC = () => {
   return (
@@ -14,7 +15,13 @@ const Popup: FC = () => {
         z-index: 500;
       `}
     >
-      <motion.div className="fixed inset-0 m-auto w-full max-w-[600px] h-full max-h-1/2 bg-neutral-950 p-5 rounded-2xl"></motion.div>
+      <motion.div className="fixed inset-0 m-auto w-full max-w-[600px] h-full max-h-1/2 bg-neutral-950 p-5 rounded-2xl border-[whitesmoke] border-[2px]">
+        <div className="grid grid-cols-1 relative">
+          <div className="btn_app absolute -top-3 -right-1">
+            <X className="text-red-600 h-[50px] w-[50px]" />
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };
