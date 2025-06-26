@@ -10,9 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPopState, popSlice } from "@/features/Popup/slice";
 import { delStorage } from "@/core/lib/storage";
 import { varPop } from "./uiFactory";
+import Txt from "@/shared/components/elements/Txt/Txt";
+import { clearTimerID } from "@/core/lib/etc";
 
 const Popup: FC = () => {
   const popRef = useRef<HTMLDivElement>(null);
+  const timerID = useRef<NodeJS.Timeout | null>(null);
 
   const popState = useSelector(getPopState);
 
@@ -24,16 +27,32 @@ const Popup: FC = () => {
 
   useEffect(() => {
     const listen = (e: MouseEvent) => {
-      if (!popRef.current) return;
+      if (!popRef.current || popRef.current.contains(e.target as Node)) return;
 
-      if (!popRef.current.contains(e.target as Node))
-        dispatch(popSlice.actions.closePop());
+      const openers = document.querySelectorAll(".opener_pop");
+      for (const op of openers) if (op.contains(e.target as Node)) return;
+
+      dispatch(popSlice.actions.closePop());
     };
 
     document.addEventListener("mousedown", listen);
-
-    return () => document.removeEventListener("mousedown", listen);
+    return () => {
+      document.removeEventListener("mousedown", listen);
+    };
   }, [dispatch]);
+
+  useEffect(() => {
+    const handleReset = () => {
+      if (typeof popState.isPop !== "boolean" || popState.isPop) return;
+
+      timerID.current = setTimeout(() => {
+        dispatch(popSlice.actions.resetPop());
+        clearTimerID(timerID);
+      }, 1000);
+    };
+
+    handleReset();
+  }, [dispatch, popState.isPop]);
 
   return (
     <>
@@ -65,7 +84,7 @@ const Popup: FC = () => {
           z-index: 1000;
         `}
       >
-        <div className="grid grid-cols-1 relative">
+        <div className="flex flex-col relative gap-10 min-h-0 max-h-full pb-5">
           <div
             onClick={handleClose}
             className="btn_app absolute -top-3 -right-1"
@@ -76,6 +95,16 @@ const Popup: FC = () => {
             }
           >
             <X className="text-red-600 h-[50px] w-[50px]" />
+          </div>
+
+          <div className="w-full flex justify-center">
+            <Txt {...{ txt: popState.content?.title ?? "" }} />
+          </div>
+
+          <div className="w-full flex justify-center min-h-0 max-h-full overflow-y-auto scroll_app px-3 pr-5">
+            <span className="txt__md text-gray-300">
+              {popState.content?.txt}
+            </span>
           </div>
         </div>
       </motion.div>

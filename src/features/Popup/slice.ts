@@ -11,11 +11,12 @@ export type PopState = {
   content: PopContent;
 };
 
-const init: PopState = getStorage("popup") ?? {
+const defState = {
   isPop: null,
   content: null,
 };
 
+const init: PopState = getStorage("popup") ?? defState;
 export const popSlice = createSlice({
   name: "popup",
   initialState: init,
@@ -26,8 +27,9 @@ export const popSlice = createSlice({
     },
     closePop: (state) => {
       state.isPop = false;
-      state.content = null;
     },
+
+    resetPop: () => defState,
   },
 });
 

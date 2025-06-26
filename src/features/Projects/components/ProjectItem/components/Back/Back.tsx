@@ -58,7 +58,7 @@ const Back: FC<PropsType> = ({ el }) => {
         <div className="w-full flex justify-center">
           <button
             onClick={handlePop}
-            className="btn_app border-[var(--whitesmoke)] border-2 rounded-xl py-2 px-10"
+            className="opener_pop btn_app border-[var(--whitesmoke)] border-2 rounded-xl py-2 px-10"
             css={css`
               &:hover {
                 background: var(--whitesmoke);
