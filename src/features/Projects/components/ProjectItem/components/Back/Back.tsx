@@ -25,6 +25,7 @@ const Back: FC<PropsType> = ({ el }) => {
     const content = {
       title: el.title,
       txt: el.description,
+      fileMD: el.fileMD,
     };
     saveStorage("popup", {
       isPop: true,

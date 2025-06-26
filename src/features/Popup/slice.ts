@@ -5,8 +5,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type PopContent = null | {
   title: string;
   txt: string;
+  fileMD: string;
 };
-export type PopState = {
+export type PopStateType = {
   isPop: boolean | null;
   content: PopContent;
 };
@@ -16,7 +17,7 @@ const defState = {
   content: null,
 };
 
-const init: PopState = getStorage("popup") ?? defState;
+const init: PopStateType = getStorage("popup") ?? defState;
 export const popSlice = createSlice({
   name: "popup",
   initialState: init,
