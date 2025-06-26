@@ -24,7 +24,6 @@ const Back: FC<PropsType> = ({ el }) => {
   const handlePop = () => {
     const content = {
       title: el.title,
-      txt: el.description,
       fileMD: el.fileMD,
     };
     saveStorage("popup", {
@@ -37,7 +36,7 @@ const Back: FC<PropsType> = ({ el }) => {
 
   return (
     <div className="server rounded-xl">
-      <div className="w-full flex flex-col gap-4 sm:gap-6 max-h-full ">
+      <div className="w-full flex flex-col gap-4 sm:gap-6 max-h-full overflow-y-auto scroll_app">
         <div className="w-full grid grid-cols-1 gap-y-5 px-3 py-2">
           {[el.repo, el.live].map((subEl, i) => (
             <ExtLink
@@ -56,7 +55,7 @@ const Back: FC<PropsType> = ({ el }) => {
               <span className="txt__sm">{el.description}</span>
             </div> */}
 
-        <div className="w-full flex justify-center">
+        <div className="w-full flex flex-col items-center">
           <button
             onClick={handlePop}
             className="opener_pop btn_app border-[var(--whitesmoke)] border-2 rounded-xl py-2 px-10"

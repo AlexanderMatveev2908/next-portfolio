@@ -45,7 +45,7 @@ const ExtLink: FC<PropsType> = ({ href, typeLink, host, typeApp }) => {
         host === "Render.com" &&
         typeLink === "live" && (
           <span className="txt__xs font-normal text-neutral-400">
-            ⚠️ There may be a delay to load the page due to free tier col start
+            ⚠️ There may be a delay to load the page due to free tier cold start
           </span>
         )}
     </div>

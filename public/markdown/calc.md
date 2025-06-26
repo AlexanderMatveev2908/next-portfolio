@@ -1,22 +1,20 @@
-A full-featured calculator app inspired by the native iOS calculator.  
-Built with precision and robust edge-case handling in mind — no crashes, no chaos, just clean math.
+Simulates an iOS-style calculator with safe chained operations, division-by-zero prevention, and smart input validation to handle edge cases like repeated operators or extra decimal points.
+
+This project was implemented as part of a guided full-stack learning path on [BeCoder](https://becoder.dev/en/app), a platform for improving software development skills through hands-on projects. All code, logic, and architecture were developed independently based on the provided specifications.
 
 ## 🚀 Features
 
-- ➕ **Chained Operations Support**  
-  Handles sequences like `2 + 3 × 4` with correct operator precedence and fluid input chaining.
+- ➕ **Chained Operations**  
+  Supports expressions like `5 + 3 × 2` with correct operator flow and safe evaluation.
 
-- 🚫 **Division by Zero Protection**  
-  No infinite loops, no app crashes — just a friendly "can't divide by 0" instead.
+- 🚫 **Division by Zero Prevention**  
+  Invalid operations are gracefully rejected.
 
-- 🧠 **Smart Input Validation**
+- 🧠 **Smart Input Validation**  
+  Handles common edge cases:
 
-  - Prevents invalid sequences like `++`, `*/`, `..`
-  - Disallows multiple decimal points in a number (`12.3.4` is rejected)
-  - Auto-corrects common input slip-ups
+  - Prevents repeated operators (`++`, `--`, `*/`, etc.)
+  - Blocks multiple decimal points in a single number (`3.14.2` is rejected)
 
-- 💅 **Sleek iOS-Inspired UI**  
-  Clean interface modeled after the native iOS calculator for a familiar, buttery-smooth experience.
-
-- ⚡ **Responsive & Accessible**  
-  Built mobile-first with responsive design and keyboard accessibility in mind.
+- 💅 **iOS-Inspired UI**  
+  Minimalist design modeled after the native iOS calculator.

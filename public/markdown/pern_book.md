@@ -1,51 +1,31 @@
-A full-stack **e-commerce** application built with the **PERN** stack, designed to support multiple independent bookstores under a single unified system.
+A full-stack e-commerce application built with the **PERN** stack, designed to support multiple independent bookstores under a single unified system.
 
 ## 🚀 Features
 
-- 🔐 **Robust Role-Based Authentication**  
-  Store owners can assign roles like **Manager** and **Employee**, enabling fine-grained control over store operations.
+- 🔐 **Role-Based Authentication**  
+  Store owners can assign roles such as **Manager** and **Employee**, allowing fine-grained control over store operations.
 
 - 🏪 **Multi-Tenant Architecture**  
-  Each bookstore:
+  Each bookstore operates with its own isolated inventory. Customers can browse and purchase from multiple stores using a single, unified cart.
 
-  - Operates with its own isolated inventory
-  - Maintains its own staff and access control
-  - Integrates seamlessly with a global cart system
+- 🧾 **Stripe Checkout + Webhooks**  
+  Real-time payment confirmation and order updates using full webhook integration.
 
-- 🛒 **Unified Shopping Experience**  
-  Customers can:
-
-  - Browse books across all stores
-  - Add items from multiple vendors to one unified cart
-  - Checkout with a single Stripe payment
-
-- 💳 **Stripe Checkout + Webhooks**  
-  Handles:
-
-  - Secure payments
-  - Real-time order confirmations
-  - Automated status updates via webhooks
-
-- 🧑‍💼 **Comprehensive Account Management**  
+- ⚙️ **Advanced Account Management**  
   Includes:
 
   - Password reset
-  - Email changes
+  - Email change
   - Account recovery
   - Secure account deletion
 
-- 🛡️ **Advanced Security Architecture**  
-  Multi-layer token strategy:
+- 🛡️ **Layered Token Security**
 
-  - **Access Tokens**: JWTs (signed) for quick verification
-  - **Refresh Tokens**: Encrypted JWE (RSA-OAEP + AES-GCM) for confidentiality
-  - **One-Time Tokens**: HMAC-secured (CBC-SHA) for actions like password resets and email verification
+  - **Access Tokens**: Signed JWTs for fast, stateless authentication
+  - **Refresh Tokens**: Encrypted JWE (RSA-OAEP + AES-GCM) for confidentiality and integrity
+  - **One-Time Tokens**: Secured with HMAC (CBC-SHA) for verification tasks like password resets and email validation
 
 - 🐳 **Dockerized Deployment**  
-  Single container serves both **API** and **frontend** using **Express**.
+  A single container runs both the API and frontend via Express. Environment supports HTTPS during development using `mkcert`, `ngrok`, and an `NGINX` reverse proxy.
 
-- 🌐 **Secure Local Development**  
-  Supports HTTPS in dev using:
-  - [`mkcert`](https://github.com/FiloSottile/mkcert)
-  - [`ngrok`](https://ngrok.com/)
-  - `NGINX` reverse proxy
+This application was built entirely from scratch, including frontend architecture, backend logic, data modeling, and third-party integrations.

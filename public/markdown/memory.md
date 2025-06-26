@@ -1,18 +1,17 @@
-**Memory Game** is a responsive and customizable matching game built with [Next.js](https://nextjs.org/) and [TypeScript](https://www.typescriptlang.org/). Whether you're on desktop or mobile, challenge your memory with smooth and satisfying gameplay.
+Memory Game is a responsive matching game built with `Next.js`. It features customizable **4x4** and **6x6** grids, with options to play using either icons or numbers.
+
+This project was implemented as part of a guided full-stack learning path on [BeCoder](https://becoder.dev/en/app), a platform for improving software development skills through hands-on projects. All code, logic, and architecture were developed independently based on the provided specifications.
 
 ## 🚀 Features
 
-- 🎮 **Custom Grid Sizes**  
-  Choose between **4x4** or **6x6** layouts for different levels of difficulty.
+- 🔢 **Multiple Game Modes**  
+  Switch between numbered tiles or icon-based cards.
 
-- 🔢 **Icons or Numbers Mode**  
-  Play using classic numbered tiles or switch to icon mode for a visual twist.
+- 📐 **Grid Size Customization**  
+  Choose between 4x4 and 6x6 layouts to adjust difficulty.
 
 - 💾 **Session Persistence**  
-  Game state is synced to `sessionStorage` — refresh the page without losing your progress.
+  Game state is synced to `sessionStorage`, preserving progress across page refreshes.
 
-- ⚡ **Fast & Responsive UI**  
-  Built from scratch with performance in mind. Enjoy instant feedback and seamless transitions on any device.
-
-- 📱 **Mobile-Friendly**  
-  Fully responsive layout ensures smooth play on phones, tablets, and desktops.
+- ⚡ **Responsive UI**  
+  Fully responsive interface optimized for both desktop and mobile.

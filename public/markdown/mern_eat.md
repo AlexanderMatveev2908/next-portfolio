@@ -3,23 +3,21 @@ A full-featured **MERN stack** application built for both customers and restaura
 ## 🚀 Features
 
 - 🔐 **Secure Authentication**  
-  Role-based login system for customers and restaurant owners with protected routes.
+  Role-based login system with protected routes for customers and restaurant staff.
 
 - 🏪 **Dynamic Restaurant Listings**  
-  Real-time open/close status and detailed views for each restaurant, including image galleries and menus.
+  Real-time open/close status and full restaurant profiles with menus and image galleries.
 
-- 🍔 **Menu & Product Management**  
-  Each restaurant offers:
-
-  - Full product menus
-  - Photo galleries
-  - Live stock tracking to prevent out-of-stock orders
+- 🍔 **Menu & Stock Management**  
+  Each product tracks individual stock levels to prevent out-of-stock orders.
 
 - 💳 **Stripe Integration**  
-  Fast, secure, and reliable online payments.
+  Online payments are handled securely using Stripe’s API.
 
-- 💸 **Promo Code & Discount Engine**  
-  Supports coupons and promotional codes at checkout with automatic validation.
+- 💸 **Discount Engine**  
+  Supports promo codes and coupons at checkout with real-time validation.
 
-- 🛒 **Persistent Cart**  
-  Client-side cart with `localStorage` fallback keeps items saved even when users are not logged in.
+- 🛒 **Persistent Client-Side Cart**  
+  Cart state is maintained via `localStorage` to support non-authenticated users and refreshes.
+
+This application was built entirely from scratch, including frontend architecture, backend logic, data modeling, and third-party integrations.

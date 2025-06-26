@@ -2,24 +2,26 @@ A full-stack web application built with the **MERN** stack, designed to simulate
 
 ## 🚀 Features
 
-- 🔐 **Secure User Authentication**  
-  Built-in login and registration flow with protected routes and role-based access.
+- 🔐 **Secure Authentication**  
+  Full login and registration flow with protected routes for both users and hotel owners.
 
 - 🏨 **Dynamic Hotel Listings**  
-  Hotels are searchable and filterable with real-time availability based on check-in/check-out dates.
+  Searchable hotel data with dynamic availability based on check-in/check-out dates.
 
-- 📅 **Conflict-Aware Booking System**  
-  Prevents double-bookings by detecting date overlaps and availability conflicts.
+- 📅 **Custom Booking System**  
+  Handles date conflict detection to prevent double-bookings.
 
-- 👥 **Multi-Tenant Architecture**  
-  Hotel owners can manage their listings independently with isolated data and admin privileges.
+- 🧑‍💼 **Multi-Tenant Architecture**  
+  Hotel owners can manage their listings independently. Each hotel maintains isolated data, supporting multiple vendors on a single platform.
 
 - 🖼️ **Detailed Hotel Pages**  
-  Each listing includes:
+  Includes:
 
   - Image galleries
-  - Guest capacity details
+  - Guest capacity info
   - Dynamic availability filters
 
 - 💳 **Stripe Integration**  
-  Seamless and secure payment processing for booking confirmations.
+  Real-time payment processing with secure checkout flow.
+
+This application was built entirely from scratch, including frontend architecture, backend logic, data modeling, and third-party integrations.

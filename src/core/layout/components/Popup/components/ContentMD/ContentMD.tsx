@@ -4,7 +4,7 @@
 
 import { isStr } from "@/core/lib/dataStructure";
 import { PopStateType } from "@/features/Popup/slice";
-import { useEffect, useState, type FC } from "react";
+import { useEffect, useRef, useState, type FC } from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -17,6 +17,7 @@ type PropsType = {
 
 const ContentMD: FC<PropsType> = ({ popState }) => {
   const [contentMD, setContentMD] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleContent = async () => {
@@ -24,10 +25,15 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
       try {
         const res = await fetch(`/markdown/${popState.content?.fileMD}`);
         const data = await res.text();
-        console.log(data);
 
         if (isStr(data)) setContentMD(data);
         else throw new Error("no data");
+
+        if (!containerRef.current) return;
+        containerRef.current.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
       } catch (err: Error | any) {
         console.log(err);
       }
@@ -42,7 +48,10 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
               {popState.content?.txt}
             </span> */}
 
-      <div className="text-[var(--whitesmoke)] scroll_app overflow-x-auto px-3 pr-5 markdown-body">
+      <div
+        ref={containerRef}
+        className="text-[var(--whitesmoke)] scroll_app overflow-x-auto px-3 pr-5 markdown-body"
+      >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
