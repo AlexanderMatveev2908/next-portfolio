@@ -19,19 +19,10 @@ type PropsType = {
 const ProjectItem: FC<PropsType> = ({ el }) => {
   const contentRefImg = useRef<HTMLDivElement | null>(null);
   const [h, setHeight] = useState(0);
-  const contentRefTxt = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const resize = () =>
-      setHeight(
-        (contentRefImg.current?.scrollHeight ?? 0) +
-          (contentRefTxt.current?.scrollHeight ?? 0) +
-          62
-
-        // ? 15px py * 2
-        // ? gap-y-3 === 0.75rem === 12px
-        // ? p-5 === 1.25rem === 20px
-      );
+      setHeight((contentRefImg.current?.scrollHeight ?? 0) + 30);
 
     resize();
     window.addEventListener("resize", resize);
@@ -63,9 +54,9 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
           transformStyle: "preserve-3d",
         }}
       >
-        <div className="client rounded-xl">
+        <div className="client rounded-xl" ref={contentRefImg}>
           <div className="w-full h-full flex flex-col gap-3">
-            <div ref={contentRefTxt} className="w-full bg-black px-3 py-2">
+            <div className="w-full bg-black px-3 py-2">
               <Txt {...{ txt: el.title, size: "txt__lg" }} />
             </div>
 
@@ -75,7 +66,6 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
                 width: 100%;
                 aspect-ratio: 16/9;
               `}
-              ref={contentRefImg}
             >
               <ImgLoader
                 {...{
@@ -88,18 +78,24 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
         </div>
 
         <div className="server rounded-xl">
-          <div className="w-full grid grid-cols-1 gap-y-5 px-3 py-2">
-            {[el.repo, el.live].map((subEl, i) => (
-              <ExtLink
-                key={ids[0][i]}
-                {...{
-                  href: subEl,
-                  type: !i ? "git" : "live",
-                  host: el.host,
-                  typeApp: el.typeApp,
-                }}
-              />
-            ))}
+          <div className="w-full flex flex-col gap-4 sm:gap-6 max-h-full ">
+            <div className="w-full grid grid-cols-1 gap-y-5 px-3 py-2">
+              {[el.repo, el.live].map((subEl, i) => (
+                <ExtLink
+                  key={ids[0][i]}
+                  {...{
+                    href: subEl,
+                    typeLink: !i ? "git" : "live",
+                    host: el.host,
+                    typeApp: el.typeApp,
+                  }}
+                />
+              ))}
+            </div>
+
+            <div className="overflow-y-auto max-h-full scroll_app pr-2">
+              <span className="txt__sm">{el.description}</span>
+            </div>
           </div>
         </div>
       </motion.div>
