@@ -22,7 +22,7 @@ const ExtLink: FC<PropsType> = ({ href, typeLink, host, typeApp }) => {
   const label = typeLink === "git" ? "GitHub Repository" : `Live on ${host}`;
 
   return (
-    <div className="w-full grid grid-cols-1 gap-1">
+    <div className="w-full grid grid-cols-1 justify-items-center gap-4">
       <a
         href={href}
         target="_blank"

@@ -36,8 +36,8 @@ const Back: FC<PropsType> = ({ el }) => {
 
   return (
     <div className="server rounded-xl">
-      <div className="w-full flex flex-col gap-4 sm:gap-6 max-h-full overflow-y-auto scroll_app">
-        <div className="w-full grid grid-cols-1 gap-y-5 px-3 py-2">
+      <div className="w-full flex flex-col gap-4 h-full pb-4">
+        <div className="w-full grid grid-cols-1 gap-y-5 px-3 py-2 justify-items-center">
           {[el.repo, el.live].map((subEl, i) => (
             <ExtLink
               key={ids[0][i]}
@@ -55,14 +55,13 @@ const Back: FC<PropsType> = ({ el }) => {
               <span className="txt__sm">{el.description}</span>
             </div> */}
 
-        <div className="w-full flex flex-col items-center">
+        <div className="w-full flex flex-col items-center justify-center overflow-y-auto scroll_app h-full">
           <button
             onClick={handlePop}
             className="opener_pop btn_app border-[var(--whitesmoke)] border-2 rounded-xl py-2 px-10"
             css={css`
               &:hover {
                 background: var(--whitesmoke);
-                border-color: var(--neutral__950);
                 color: var(--neutral__950);
               }
             `}
