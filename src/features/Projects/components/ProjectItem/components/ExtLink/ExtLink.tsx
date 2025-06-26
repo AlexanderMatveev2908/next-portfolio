@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 "use client";
 
 import { useMemo, type FC } from "react";
@@ -27,7 +29,7 @@ const ExtLink: FC<PropsType> = ({ href, type, host, typeApp }) => {
         <span className="txt__md font-bold">{label}</span>
       </a>
       {typeApp === "Full-Stack" && host === "Render.com" && type === "live" && (
-        <span className="txt__xs font-normal">
+        <span className="txt__xs font-normal text-neutral-400">
           ⚠️ There may be a delay to load the page due to free tier col start
         </span>
       )}

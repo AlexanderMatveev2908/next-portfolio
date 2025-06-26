@@ -26,7 +26,11 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
       setHeight(
         (contentRefImg.current?.scrollHeight ?? 0) +
           (contentRefTxt.current?.scrollHeight ?? 0) +
-          50
+          62
+
+        // ? 15px py * 2
+        // ? gap-y-3 === 0.75rem === 12px
+        // ? p-5 === 1.25rem === 20px
       );
 
     resize();
@@ -64,13 +68,14 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
             <div ref={contentRefTxt} className="w-full bg-black px-3 py-2">
               <Txt {...{ txt: el.title, size: "txt__lg" }} />
             </div>
+
+            <hr className="min-h-[2px] bg-gray-300" />
             <div
               css={css`
                 width: 100%;
                 aspect-ratio: 16/9;
               `}
               ref={contentRefImg}
-              className="rounded-xl"
             >
               <ImgLoader
                 {...{
