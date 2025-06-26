@@ -83,5 +83,24 @@ html {
   --neutral__800: #262626;
   --neutral__700: #404040;
   --neutral__600: #525252;
-  --neutral__600: #525252;
+  --neutral__400: #a1a1a1;
+}
+
+.scroll_app::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll_app::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll_app::-webkit-scrollbar-thumb {
+  background: var(--whitesmoke);
+  border-radius: 10px;
+  box-shadow: 0 0 2.5px var(--whitesmoke), 0 0 5px var(--whitesmoke);
+}
+
+.scroll_app {
+  scrollbar-width: thin;
+  scrollbar-color: white transparent;
 }

@@ -26,6 +26,7 @@ export { default as Postman } from "./Postman";
 export { default as React } from "./React";
 export { default as ReactRouter } from "./ReactRouter";
 export { default as Redux } from "./Redux";
+export { default as Rocket } from "./Rocket";
 export { default as Sass } from "./Sass";
 export { default as Sequelize } from "./Sequelize";
 export { default as Stripe } from "./Stripe";
