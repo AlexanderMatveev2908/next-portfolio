@@ -12,6 +12,7 @@ import { delStorage } from "@/core/lib/storage";
 import { varPop } from "./uiFactory";
 import Txt from "@/shared/components/elements/Txt/Txt";
 import { clearTimerID } from "@/core/lib/etc";
+import ContentMD from "./components/ContentMD/ContentMD";
 
 const Popup: FC = () => {
   const popRef = useRef<HTMLDivElement>(null);
@@ -101,11 +102,7 @@ const Popup: FC = () => {
             <Txt {...{ txt: popState.content?.title ?? "" }} />
           </div>
 
-          <div className="w-full flex justify-center min-h-0 max-h-full overflow-y-auto scroll_app px-3 pr-5">
-            <span className="txt__md text-gray-300">
-              {popState.content?.txt}
-            </span>
-          </div>
+          <ContentMD {...{ popState }} />
         </div>
       </motion.div>
     </>
