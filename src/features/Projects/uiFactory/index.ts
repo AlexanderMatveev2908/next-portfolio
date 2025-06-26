@@ -2,13 +2,17 @@ import { v4 } from "uuid";
 
 const B_URL = "/imgs/";
 
+export type HostType = "Render.com" | "Vercel.com" | "Fly.io";
+export type TypeApp = "Full-Stack" | "Static";
+
 export type ProjectType = {
   id: string;
   title: string;
   imgs: string[];
   repo: string;
   live: string;
-  host: string;
+  host: HostType;
+  typeApp: TypeApp;
 };
 
 export const projects = [
@@ -18,6 +22,7 @@ export const projects = [
     repo: "https://github.com/AlexanderMatveev2908/pern__book",
     live: "https://pern-book.fly.dev/",
     host: "Fly.io",
+    typeApp: "Full-Stack",
   },
   {
     title: "Food Delivery App",
@@ -25,6 +30,7 @@ export const projects = [
     repo: "https://github.com/AlexanderMatveev2908/MERN__EAT",
     live: "https://food-app-aqkc.onrender.com/",
     host: "Render.com",
+    typeApp: "Full-Stack",
   },
   {
     title: "Hotels Booking App",
@@ -32,6 +38,7 @@ export const projects = [
     repo: "https://github.com/AlexanderMatveev2908/MERN__BOOKING",
     live: "https://mern-booking-app-0w8v.onrender.com/",
     host: "Render.com",
+    typeApp: "Full-Stack",
   },
   {
     title: "Memory Game",
@@ -61,4 +68,5 @@ export const projects = [
     B_URL + img + "?v=1",
   ]),
   id: v4(),
+  typeApp: el.typeApp ?? "Static",
 }));

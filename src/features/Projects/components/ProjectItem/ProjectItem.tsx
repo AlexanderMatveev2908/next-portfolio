@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import ImgLoader from "@/shared/components/HOC/ImgLoader/ImgLoader";
 import { css } from "@emotion/react";
 import Txt from "@/shared/components/elements/Txt/Txt";
+import ExtLink from "./components/ExtLink/ExtLink";
+import { useGenIDs } from "@/core/hooks/useGenIDs";
 
 type PropsType = {
   el: ProjectType;
@@ -24,13 +26,17 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
       setHeight(
         (contentRefImg.current?.scrollHeight ?? 0) +
           (contentRefTxt.current?.scrollHeight ?? 0) +
-          30
+          50
       );
 
     resize();
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
   }, []);
+
+  const { ids } = useGenIDs({
+    lengths: [2],
+  });
 
   return (
     <ProjectItemStyled
@@ -53,10 +59,10 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
           transformStyle: "preserve-3d",
         }}
       >
-        <div className="client">
+        <div className="client rounded-xl">
           <div className="w-full h-full flex flex-col gap-3">
             <div ref={contentRefTxt} className="w-full bg-black px-3 py-2">
-              <Txt {...{ txt: el.title, size: "txt__md" }} />
+              <Txt {...{ txt: el.title, size: "txt__lg" }} />
             </div>
             <div
               css={css`
@@ -64,6 +70,7 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
                 aspect-ratio: 16/9;
               `}
               ref={contentRefImg}
+              className="rounded-xl"
             >
               <ImgLoader
                 {...{
@@ -75,11 +82,20 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
           </div>
         </div>
 
-        <div className="server flex justify-center items-start">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non iure
-          voluptatem molestiae corrupti facere inventore esse, nostrum
-          blanditiis laboriosam quas minus molestias! Asperiores illum quam
-          expedita hic natus similique provident?
+        <div className="server rounded-xl">
+          <div className="w-full grid grid-cols-1 gap-y-5 px-3 py-2">
+            {[el.repo, el.live].map((subEl, i) => (
+              <ExtLink
+                key={ids[0][i]}
+                {...{
+                  href: subEl,
+                  type: !i ? "git" : "live",
+                  host: el.host,
+                  typeApp: el.typeApp,
+                }}
+              />
+            ))}
+          </div>
         </div>
       </motion.div>
     </ProjectItemStyled>

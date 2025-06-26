@@ -15,7 +15,7 @@ export const ProjectItemStyled = styled.div`
     position: relative;
     min-width: 100%;
     min-height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   .client,
@@ -24,14 +24,15 @@ export const ProjectItemStyled = styled.div`
     inset: 0;
   }
   .client {
-    z-index: 100;
     transform: rotateY(0deg);
     backface-visibility: hidden;
     background: var(--neutral__950);
+    /* z-index: 50; */
   }
   .server {
-    z-index: 50;
     transform: rotateY(180deg);
+    backface-visibility: hidden;
+    /* z-index: 100; */
     /* background: var(--whitesmoke); */
     background: var(--neutral__950);
     color: var(--gray__300);
