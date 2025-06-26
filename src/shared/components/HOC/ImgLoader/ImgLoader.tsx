@@ -16,7 +16,7 @@ const ImgLoader: FC<PropsType> = ({ src, alt }) => {
   const [loaded, setIsLoaded] = useState(false);
 
   return (
-    <div className="relative min-h-full min-w-full">
+    <div className="relative h-full min-w-full">
       {!loaded && (
         <motion.div
           className="absolute inset-0"

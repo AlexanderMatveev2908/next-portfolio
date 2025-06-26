@@ -30,8 +30,6 @@ const TechStack: FC = () => {
         className="flex overflow-hidden rounded-2xl p-5"
         css={css`
           border: 2px solid var(--whitesmoke);
-          box-shadow: 0 0 5px var(--whitesmoke), 0 0 10px var(--whitesmoke),
-            0 0 20px var(--whitesmoke);
         `}
       >
         <motion.div
@@ -39,7 +37,7 @@ const TechStack: FC = () => {
           className="w-full flex gap-10"
           animate={{ x: ["0%", -width] }}
           transition={{
-            duration: 20,
+            duration: 30,
             ease: "linear",
             repeat: Infinity,
           }}
@@ -48,7 +46,7 @@ const TechStack: FC = () => {
             stack.map((el) => (
               <div
                 key={el.id}
-                className="min-w-[35px] sm:min-w-[50px] min-h-[35px] sm:min-h-[50px] flex justify-center items-center "
+                className="min-w-[60px] sm:min-w-[80px] min-h-[60px] sm:min-h-[80px] flex justify-center items-center "
                 css={css`
                   color: ${el.clr ?? ""};
                 `}
