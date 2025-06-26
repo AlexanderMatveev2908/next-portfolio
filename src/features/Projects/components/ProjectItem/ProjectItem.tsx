@@ -6,11 +6,9 @@ import { useEffect, useRef, useState, type FC } from "react";
 import { ProjectItemStyled } from "./Styled";
 import { ProjectType } from "../../uiFactory";
 import { motion } from "framer-motion";
-import ImgLoader from "@/shared/components/HOC/ImgLoader/ImgLoader";
 import { css } from "@emotion/react";
-import Txt from "@/shared/components/elements/Txt/Txt";
-import ExtLink from "./components/ExtLink/ExtLink";
-import { useGenIDs } from "@/core/hooks/useGenIDs";
+import Front from "./components/Front/Front";
+import Back from "./components/Back/Back";
 
 type PropsType = {
   el: ProjectType;
@@ -21,6 +19,8 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
   const [h, setHeight] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const resize = () =>
       setHeight((contentRefImg.current?.scrollHeight ?? 0) + 30);
 
@@ -28,10 +28,6 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
     window.addEventListener("resize", resize);
     return () => window.removeEventListener("resize", resize);
   }, []);
-
-  const { ids } = useGenIDs({
-    lengths: [2],
-  });
 
   return (
     <ProjectItemStyled
@@ -54,50 +50,9 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
           transformStyle: "preserve-3d",
         }}
       >
-        <div className="client rounded-xl" ref={contentRefImg}>
-          <div className="w-full h-full flex flex-col gap-3">
-            <div className="w-full bg-black px-3 py-2">
-              <Txt {...{ txt: el.title, size: "txt__lg" }} />
-            </div>
+        <Front {...{ el }} ref={contentRefImg} />
 
-            <hr className="min-h-[2px] bg-gray-300" />
-            <div
-              css={css`
-                width: 100%;
-                aspect-ratio: 16/9;
-              `}
-            >
-              <ImgLoader
-                {...{
-                  src: el.imgs[0],
-                  alt: `Image of ${el.title} from ${el.host}`,
-                }}
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="server rounded-xl">
-          <div className="w-full flex flex-col gap-4 sm:gap-6 max-h-full ">
-            <div className="w-full grid grid-cols-1 gap-y-5 px-3 py-2">
-              {[el.repo, el.live].map((subEl, i) => (
-                <ExtLink
-                  key={ids[0][i]}
-                  {...{
-                    href: subEl,
-                    typeLink: !i ? "git" : "live",
-                    host: el.host,
-                    typeApp: el.typeApp,
-                  }}
-                />
-              ))}
-            </div>
-
-            <div className="overflow-y-auto max-h-full scroll_app pr-2">
-              <span className="txt__sm">{el.description}</span>
-            </div>
-          </div>
-        </div>
+        <Back {...{ el }} />
       </motion.div>
     </ProjectItemStyled>
   );

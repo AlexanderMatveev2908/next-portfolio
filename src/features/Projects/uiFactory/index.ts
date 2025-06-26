@@ -14,6 +14,7 @@ export type ProjectType = {
   host: HostType;
   typeApp: TypeApp;
   description: string;
+  fileMD: string;
 };
 
 export const projects: ProjectType[] = [
@@ -75,6 +76,7 @@ export const projects: ProjectType[] = [
     host: "Render.com",
     description:
       "Simulates an iOS-style calculator with safe chained operations, division-by-zero prevention, and smart input validation to handle edge cases like repeated operators or extra decimal points",
+    fileMD: "calc",
   },
 ].map((el) => ({
   ...el,

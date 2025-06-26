@@ -13,3 +13,16 @@
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
+.btn_app {
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    transform: scale(var(--scale_up));
+  }
+}
+
+.btn_app:active {
+  transition: 0.15s;
+  transform: scale(0.8);
+}
