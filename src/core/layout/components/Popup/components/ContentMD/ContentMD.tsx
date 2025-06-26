@@ -36,12 +36,12 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
   }, [popState.isPop, popState.content?.fileMD]);
 
   return (
-    <div className="w-full flex justify-center min-h-0 max-h-full overflow-y-auto scroll_app px-3 pr-5">
+    <div className="w-full flex justify-center min-h-0 max-h-full overflow-y-auto scroll_app">
       {/* <span className="txt__md text-gray-300">
               {popState.content?.txt}
             </span> */}
 
-      <div className="text-[var(--whitesmoke)]">
+      <div className="text-[var(--whitesmoke)] scroll_app overflow-x-auto px-3 pr-5 content_md">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -52,7 +52,7 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
                 <Prism
                   style={dracula}
                   language={match[1]}
-                  PreTag="div"
+                  PreTag="pre"
                   {...props}
                 >
                   {String(children).replace(/\n$/, "")}
