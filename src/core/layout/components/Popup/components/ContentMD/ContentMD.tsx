@@ -18,6 +18,7 @@ type PropsType = {
 const ContentMD: FC<PropsType> = ({ popState }) => {
   const [contentMD, setContentMD] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     const handleContent = async () => {
@@ -26,8 +27,12 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
         const res = await fetch(`/markdown/${popState.content?.fileMD}`);
         const data = await res.text();
 
-        if (isStr(data)) setContentMD(data);
-        else throw new Error("no data");
+        if (isStr(data) && !data.startsWith("<!DOCTYPE html>"))
+          setContentMD(data);
+        else
+          throw new Error(
+            "A wild slime appeared! Server take 50% off damage ⚔️"
+          );
 
         if (!containerRef.current) return;
         containerRef.current.scrollTo({
@@ -36,6 +41,7 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
         });
       } catch (err: Error | any) {
         console.log(err);
+        setErr(err?.message ?? "");
       }
     };
 
@@ -48,36 +54,42 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
               {popState.content?.txt}
             </span> */}
 
-      <div
-        ref={containerRef}
-        className="text-[var(--whitesmoke)] scroll_app overflow-x-auto px-3 pr-5 markdown-body"
-      >
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={{
-            code({ _, inline, className, children, ...props }: any) {
-              const match = /language-(\w+)/.exec(className || "");
-
-              return !inline && match ? (
-                <Prism
-                  style={dracula}
-                  language={match[1]}
-                  PreTag="pre"
-                  {...props}
-                >
-                  {String(children).replace(/\n$/, "")}
-                </Prism>
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            },
-          }}
+      {isStr(err) ? (
+        <div className="w-full flex justify-center px-5">
+          <span className="txt__md font-semibold  text-red-600">{err}</span>
+        </div>
+      ) : (
+        <div
+          ref={containerRef}
+          className="text-[var(--whitesmoke)] scroll_app overflow-x-auto px-3 pr-5 markdown-body"
         >
-          {contentMD}
-        </ReactMarkdown>
-      </div>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              code({ _, inline, className, children, ...props }: any) {
+                const match = /language-(\w+)/.exec(className || "");
+
+                return !inline && match ? (
+                  <Prism
+                    style={dracula}
+                    language={match[1]}
+                    PreTag="pre"
+                    {...props}
+                  >
+                    {String(children).replace(/\n$/, "")}
+                  </Prism>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
+          >
+            {contentMD}
+          </ReactMarkdown>
+        </div>
+      )}
     </div>
   );
 };
