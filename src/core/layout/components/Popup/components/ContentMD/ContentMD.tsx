@@ -9,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import { Prism } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import remarkGfm from "remark-gfm";
+import "github-markdown-css/github-markdown-dark.css";
 
 type PropsType = {
   popState: PopStateType;
@@ -41,7 +42,7 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
               {popState.content?.txt}
             </span> */}
 
-      <div className="text-[var(--whitesmoke)] scroll_app overflow-x-auto px-3 pr-5 content_md">
+      <div className="text-[var(--whitesmoke)] scroll_app overflow-x-auto px-3 pr-5 markdown-body">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
