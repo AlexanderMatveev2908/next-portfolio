@@ -2,7 +2,14 @@
 
 "use client";
 
-import { useEffect, useMemo, useState, type FC } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useState,
+  type FC,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectsState, projectsSlice } from "../../slice";
 import { projects } from "../../uiFactory";
@@ -12,16 +19,20 @@ import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import { css } from "@emotion/react";
 import RowPageBtns from "./components/RowPageBtns/RowPageBtns";
 
-const PageCounter: FC = () => {
+type PropsType = {
+  limit: number;
+  setLimit: Dispatch<SetStateAction<number>>;
+};
+
+const PageCounter: FC<PropsType> = ({ limit, setLimit }) => {
   const projState = useSelector(getProjectsState);
-  const [maxCards, setMaxCards] = useState(getNumCards());
   const [maxBlockBtns, setMaxBlockBtns] = useState(genNumBlockBtns());
 
   console.log(projState);
 
   useEffect(() => {
     const listen = () => {
-      setMaxCards(getNumCards());
+      setLimit(getNumCards());
       setMaxBlockBtns(genNumBlockBtns());
     };
 
@@ -29,12 +40,9 @@ const PageCounter: FC = () => {
     return () => {
       window.removeEventListener("resize", listen);
     };
-  }, []);
+  }, [setLimit]);
 
-  const totPages = useMemo(
-    () => Math.ceil(projects.length / maxCards),
-    [maxCards]
-  );
+  const totPages = useMemo(() => Math.ceil(projects.length / limit), [limit]);
   const totBlocks = useMemo(
     () => Math.ceil(totPages / maxBlockBtns),
     [totPages, maxBlockBtns]

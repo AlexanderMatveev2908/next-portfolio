@@ -4,11 +4,11 @@
 
 import WrapSection from "@/shared/components/HOC/WrapSection/WrapSection";
 import { Portfolio } from "@/shared/components/SVGs";
-import { useMemo, type FC } from "react";
+import { useMemo, useState, type FC } from "react";
 import { projects } from "./uiFactory";
 import ProjectItem from "./components/ProjectItem/ProjectItem";
 import { css } from "@emotion/react";
-import { resp } from "@/core/lib/style";
+import { getNumCards, resp } from "@/core/lib/style";
 import Filters from "./components/Filters/Filters";
 import { useSelector } from "react-redux";
 import { getProjectsState } from "./slice";
@@ -16,14 +16,21 @@ import PageCounter from "./components/PageCounter/PageCounter";
 
 const Projects: FC = () => {
   const projState = useSelector(getProjectsState);
+  const [limit, setLimit] = useState(getNumCards());
 
-  const filtered = useMemo(
-    () =>
+  const filtered = useMemo(() => {
+    const list =
       projState.currFilter === "All"
         ? projects
-        : projects.filter((el) => el.typeApp === projState.currFilter),
-    [projState.currFilter]
-  );
+        : projects.filter((el) => el.typeApp === projState.currFilter);
+
+    const paginated = list.slice(
+      projState.currPage * limit,
+      projState.currPage * limit + limit
+    );
+
+    return paginated;
+  }, [projState.currFilter, projState.currPage, limit]);
 
   return (
     <WrapSection
@@ -54,7 +61,12 @@ const Projects: FC = () => {
         ))}
       </div>
 
-      <PageCounter />
+      <PageCounter
+        {...{
+          limit,
+          setLimit,
+        }}
+      />
     </WrapSection>
   );
 };
