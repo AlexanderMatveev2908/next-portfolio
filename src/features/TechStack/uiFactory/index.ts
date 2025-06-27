@@ -58,12 +58,14 @@ export const stack = [
   },
   {
     svg: Github,
+    clr: "whitesmoke",
   },
   {
     svg: Node,
   },
   {
     svg: Npm,
+    clr: "#CB3837",
   },
   {
     svg: Yarn,
@@ -97,6 +99,7 @@ export const stack = [
   },
   {
     svg: Nextjs,
+    clr: "whitesmoke",
   },
   {
     svg: Zod,
@@ -139,6 +142,7 @@ export const stack = [
   },
   {
     svg: Ngrok,
+    clr: "whitesmoke",
   },
   {
     svg: Fly,
@@ -146,9 +150,4 @@ export const stack = [
 ].map((el) => ({
   ...el,
   id: v4(),
-  clr: ["svggithub", "svgngrok", "svgnpm", "svgnextjs"].includes(
-    el.svg.name.toLowerCase()
-  )
-    ? "whitesmoke"
-    : null,
 }));
