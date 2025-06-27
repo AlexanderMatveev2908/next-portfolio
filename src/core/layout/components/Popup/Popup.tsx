@@ -68,7 +68,7 @@ const Popup: FC = () => {
 
       <motion.div
         ref={popRef}
-        className="fixed inset-0 m-auto w-full max-w-[600px] h-full max-h-1/2 bg-neutral-950 p-5 rounded-2xl border-[whitesmoke] border-[2px]"
+        className="fixed inset-0 m-auto w-[80%] max-w-[600px] h-full max-h-[600px] bg-neutral-950 p-5 rounded-2xl border-[whitesmoke] border-[2px]"
         variants={varPop}
         initial={{
           scaleX: 0,

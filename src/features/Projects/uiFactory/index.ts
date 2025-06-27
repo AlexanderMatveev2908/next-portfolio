@@ -3,7 +3,7 @@ import { v4 } from "uuid";
 const B_URL = "/imgs/";
 
 export type HostType = "Render.com" | "Vercel.com" | "Fly.io";
-export type TypeApp = "Full-Stack" | "SPA";
+export type TypeApp = "Full-Stack" | "Frontend-Only";
 
 export type ProjectType = {
   id: string;
@@ -77,6 +77,6 @@ export const projects: ProjectType[] = [
   ]),
   id: v4(),
   fileMD: `${el.defName}.md`,
-  typeApp: (el.typeApp ?? "SPA") as TypeApp,
+  typeApp: (el.typeApp ?? "Frontend-Only") as TypeApp,
   host: el.host as HostType,
 }));

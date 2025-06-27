@@ -9,6 +9,7 @@ import { projects } from "./uiFactory";
 import ProjectItem from "./components/ProjectItem/ProjectItem";
 import { css } from "@emotion/react";
 import { resp } from "@/core/lib/style";
+import Filters from "./components/Filters/Filters";
 
 const Projects: FC = () => {
   return (
@@ -21,6 +22,8 @@ const Projects: FC = () => {
         id: "projects",
       }}
     >
+      <Filters />
+
       <div
         className="w-full gap-6"
         css={css`

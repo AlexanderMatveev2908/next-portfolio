@@ -27,12 +27,8 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
     const observer = new ResizeObserver(resize);
     observer.observe(el);
 
-    const imgs = el.querySelectorAll("img");
-    imgs.forEach((img) => img.addEventListener("load", resize));
-
     return () => {
       observer.disconnect();
-      imgs.forEach((img) => img.removeEventListener("load", resize));
     };
   }, []);
 
