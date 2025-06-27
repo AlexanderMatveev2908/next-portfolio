@@ -14,7 +14,7 @@ const Header: FC = ({}) => {
         />
       </div>
 
-      <div className="w-full flex gap-5 sm:gap-10 justify-end">
+      <div className="w-full flex gap-5 sm:gap-10 justify-end items-start">
         {headerLinks.map((el) => (
           <HeaderLink key={el.id} {...{ $clr: "whitesmoke", ...el }} />
         ))}
