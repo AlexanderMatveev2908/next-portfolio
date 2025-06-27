@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const ProjectItemStyled = styled.div`
   perspective: 9999px;
 
-  transition: 0.4s;
+  transition: 0.4s box-shadow;
   &:hover {
     box-shadow: 0 0 10px var(--whitesmoke), 0 0 20px var(--whitesmoke),
       0 0 30px var(--whitesmoke);
