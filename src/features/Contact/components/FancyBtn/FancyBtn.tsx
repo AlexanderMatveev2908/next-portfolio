@@ -65,15 +65,3 @@ const FancyBtn: FC<PropsType> = ({ href }) => {
 };
 
 export default FancyBtn;
-
-/*
-<a
-  href="/files/CV-AlexanderMatveev.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-blue-500 underline"
->
-  📄 View My CV
-</a>
-
-*/
