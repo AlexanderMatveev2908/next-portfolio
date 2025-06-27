@@ -16,9 +16,18 @@ const Contact: FC = () => {
         },
       }}
     >
-      <div className="w-full grid grid-cols-1 gap-10 sm:grid-cols-2">
-        <div className="w-[300px] h-[60px] flex justify-center items-center">
-          <FancyBtn />
+      <div className="w-full grid grid-cols-1 gap-10 lg:grid-cols-2">
+        <div className="w-full grid grid-cols-1 gap-5">
+          <div className="w-full flex max-w-[75%] justify-self-center">
+            <span className="txt__md font-semibold text-gray-300">
+              For additional information about my background, feel free to
+              checkout my CV below ✌🏼
+            </span>
+          </div>
+
+          <div className="flex justify-center items-center">
+            <FancyBtn {...{ href: "ALEXANDER_MTAVEEV_CV.pdf" }} />
+          </div>
         </div>
       </div>
     </WrapSection>

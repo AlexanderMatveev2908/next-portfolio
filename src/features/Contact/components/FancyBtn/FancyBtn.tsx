@@ -6,12 +6,16 @@ import { useState, type FC } from "react";
 import { css } from "@emotion/react";
 import InnerShadow from "./components/InnerShadow/InnerShadow";
 
-const FancyBtn: FC = () => {
+type PropsType = {
+  href: string;
+};
+
+const FancyBtn: FC<PropsType> = ({ href }) => {
   const [isHover, setIsHover] = useState(false);
 
   return (
     <a
-      href=""
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="w-full max-w-fit h-full max-h-fit relative"
