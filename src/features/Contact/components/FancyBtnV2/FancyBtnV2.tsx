@@ -18,7 +18,7 @@ const FancyBtnV2: FC<PropsType> = ({ href }) => {
   return (
     <Anchor {...{ href, setIsHover }}>
       <motion.div
-        className="w-full flex justify-center max-w-fit h-full max-h-fit relative "
+        className="w-full flex justify-center max-w-fit max-h-fit relative"
         css={css`
           border: 2px solid var(--whitesmoke);
           padding: 7.5px 50px;
