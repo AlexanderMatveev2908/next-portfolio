@@ -26,16 +26,9 @@ type PropsType = {
   paginated: ProjectType[];
 };
 
-const PageCounter: FC<PropsType> = ({
-  limit,
-  setLimit,
-  filtered,
-  
-}) => {
+const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
   const projState = useSelector(getProjectsState);
   const [maxBlockBtns, setMaxBlockBtns] = useState(genNumBlockBtns());
-
-  console.log(projState);
 
   useEffect(() => {
     const listen = () => {
@@ -68,6 +61,45 @@ const PageCounter: FC<PropsType> = ({
       })
     );
   };
+
+  useEffect(() => {
+    const resize = () => {
+      const numPages = Math.ceil(filtered.length / getNumCards());
+      const maxBlocks = Math.ceil(numPages / maxBlockBtns);
+
+      if (projState.currPage >= numPages || projState.currBlock >= maxBlocks) {
+        const newBlock = Math.max(0, maxBlocks - 1);
+
+        dispatch(
+          projectsSlice.actions.setPagination({
+            field: "currBlock",
+            val: newBlock,
+          })
+        );
+        dispatch(
+          projectsSlice.actions.setPagination({
+            field: "currPage",
+            val: 0,
+          })
+        );
+      }
+    };
+
+    resize();
+
+    window.addEventListener("resize", resize);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, [
+    filtered,
+    limit,
+    maxBlockBtns,
+    projState.currBlock,
+    projState.currPage,
+    dispatch,
+  ]);
 
   return (
     <div className="w-full grid grid-cols-[60px_1fr_60px] items-center gap-10">
