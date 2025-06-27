@@ -12,6 +12,7 @@ import { resp } from "@/core/lib/style";
 import Filters from "./components/Filters/Filters";
 import { useSelector } from "react-redux";
 import { getProjectsState } from "./slice";
+import PageCounter from "./components/PageCounter/PageCounter";
 
 const Projects: FC = () => {
   const projState = useSelector(getProjectsState);
@@ -52,6 +53,8 @@ const Projects: FC = () => {
           <ProjectItem key={el.id} {...{ el }} />
         ))}
       </div>
+
+      <PageCounter />
     </WrapSection>
   );
 };

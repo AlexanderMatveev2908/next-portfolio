@@ -7,10 +7,14 @@ export type FilterAppType = TypeApp | "All";
 
 export type ProjectsStateType = {
   currFilter: FilterAppType;
+  currSorter: string;
+  currPage: number;
 };
 
 const defState: ProjectsStateType = {
   currFilter: "All",
+  currSorter: "DESC",
+  currPage: 1,
 };
 
 const init: ProjectsStateType = getStorage("apps") ?? defState;
