@@ -5,6 +5,7 @@
 import { useState, type FC } from "react";
 import { css } from "@emotion/react";
 import InnerShadow from "./components/InnerShadow/InnerShadow";
+import Anchor from "../Anchor/Anchor";
 
 type PropsType = {
   href: string;
@@ -14,14 +15,7 @@ const FancyBtn: FC<PropsType> = ({ href }) => {
   const [isHover, setIsHover] = useState(false);
 
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="w-full max-w-fit h-full max-h-fit relative"
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-    >
+    <Anchor {...{ href, setIsHover }}>
       <div
         css={css`
           padding: 7.5px 50px;
@@ -60,7 +54,7 @@ const FancyBtn: FC<PropsType> = ({ href }) => {
           <el.svg />
         </div>
       ))} */}
-    </a>
+    </Anchor>
   );
 };
 

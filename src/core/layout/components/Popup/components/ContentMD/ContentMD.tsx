@@ -66,6 +66,9 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
+              a: (props) => (
+                <a {...props} target="_blank" rel="noopener noreferrer" />
+              ),
               code({ _, inline, className, children, ...props }: any) {
                 const match = /language-(\w+)/.exec(className || "");
 
