@@ -22,12 +22,20 @@ export const btnFancySVGs = [
   id: v4(),
 }));
 
-export const optFancyV2 = Array.from({ length: 6 }, (_, i) => ({
-  css: css`
-    top: ${i <= 2 ? genRandom(-50, 75) : undefined}%;
-    bottom: ${i > 2 ? genRandom(-50, 75) : undefined}%;
+export const optFancyV2 = Array.from({ length: 6 }, (_, i) => {
+  const arg: string[] = [];
 
-    left: ${i <= 2 ? genRandom(-50, 0) : undefined}%;
-    right: ${i > 2 ? genRandom(-50, 0) : undefined}%;
-  `,
-}));
+  if (i <= 2) {
+    arg.push(`top: ${genRandom(-50, 25)}%;`);
+    arg.push(`left: ${genRandom(-50, 25)}%;`);
+  } else {
+    arg.push(`bottom: ${genRandom(-50, 25)}%;`);
+    arg.push(`right: ${genRandom(-50, 25)}%;`);
+  }
+
+  return {
+    css: css`
+      ${arg.join("\n")}
+    `,
+  };
+});

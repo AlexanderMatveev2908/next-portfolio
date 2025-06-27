@@ -5,9 +5,8 @@
 import { useState, type FC } from "react";
 import Anchor from "../Anchor/Anchor";
 import { css } from "@emotion/react";
-import { btnFancySVGs } from "./uiFactory";
-import { genRandom } from "@/core/lib/etc";
 import { easeInOut, motion } from "framer-motion";
+import SvgParty from "./components/SvgParty/SvgParty";
 
 type PropsType = {
   href: string;
@@ -47,48 +46,31 @@ const FancyBtnV2: FC<PropsType> = ({ href }) => {
           }}
           animate={{
             transform: isHover
-              ? "translateY(0.75rem) translateX(-1rem)"
-              : "scale(1) rotate(0deg)",
+              ? "translateY(0.75rem) translateX(-0.75rem)"
+              : "translateY(0) translateX(0)",
           }}
         ></motion.div>
 
-        <div className="absolute inset-0 z-40 bg-neutral-950 rounded-[15px]"></div>
+        <div
+          className="absolute inset-0 z-40 rounded-[15px]
+        "
+          css={css`
+            transition: 0.3s;
+            background: var(--neutral__950);
+          `}
+        ></div>
 
-        <span className="txt__lg font-bold text-[whitesmoke] relative z-60">
+        <span
+          className="txt__lg font-bold relative z-60"
+          css={css`
+            color: var(--whitesmoke);
+          `}
+        >
           Contact
         </span>
       </motion.div>
 
-      {btnFancySVGs.map((el) => (
-        <motion.div
-          key={el.id}
-          css={css`
-            position: absolute;
-            pointer-events: none;
-            top: ${genRandom(25, 75)}%;
-            left: ${genRandom(25, 75)}%;
-          `}
-          transition={{
-            duration: 0.4,
-            ease: easeInOut,
-          }}
-          animate={{
-            y: isHover ? genRandom(-100, 100) : 0,
-            x: isHover ? genRandom(-100, 100) : 0,
-            scale: isHover ? genRandom(0.9, 1.05) : 0,
-            rotate: isHover ? genRandom(-10, 10) : 0,
-            opacity: isHover ? 1 : 0,
-          }}
-        >
-          <el.svg
-            css={css`
-              width: 35px;
-              height: 35px;
-              color: var(--gray__300);
-            `}
-          />
-        </motion.div>
-      ))}
+      <SvgParty {...{ isHover }} />
     </Anchor>
   );
 };
