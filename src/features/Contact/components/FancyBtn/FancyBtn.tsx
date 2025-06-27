@@ -7,6 +7,7 @@ import { css } from "@emotion/react";
 import { genSizeRandom } from "@/core/lib/etc";
 import { btnFancySVGs } from "./uiFactory";
 import { easeInOut, motion } from "framer-motion";
+import InnerShadow from "./components/InnerShadow/InnerShadow";
 
 const FancyBtn: FC = () => {
   const [isHover, setIsHover] = useState(false);
@@ -27,64 +28,22 @@ const FancyBtn: FC = () => {
           border-radius: 15px;
           transition: 0.4s;
           position: relative;
-          /* overflow: hidden; */
+          overflow: hidden;
           width: 100%;
           max-width: fit-content;
           max-height: 100%;
           pointer-events: none;
+
+          box-shadow: ${isHover
+            ? "0 0 10px var(--whitesmoke), 0 0 20px var(--whitesmoke), 0 0 30px var(--whitesmoke)"
+            : "none"};
         `}
       >
-        <span className="txt__lg font-bold text-[whitesmoke]">View CV</span>
+        <InnerShadow {...{ isHover }} />
 
-        <motion.div
-          css={css`
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            pointer-events: none;
-
-            .shadow_lucide_0,
-            .shadow_lucide_1 {
-              position: absolute;
-              width: 30px;
-              height: 100%;
-              top: 0;
-              transform: skew(25deg);
-
-              background: linear-gradient(
-                to right,
-                var(--neutral__800),
-                var(--neutral__700),
-                var(--neutral__800)
-              );
-            }
-
-            .shadow_lucide_0 {
-              left: 20%;
-            }
-            .shadow_lucide_1 {
-              left: 70%;
-            }
-
-            .shadow_lucide_2 {
-            }
-          `}
-          style={{
-            willChange: "transform",
-          }}
-          transition={{
-            duration: 0.3,
-            ease: easeInOut,
-          }}
-          animate={{
-            transform: isHover ? "translateX(120%)" : `translateX(-120%)`,
-          }}
-        >
-          <div className="shadow_lucide_0"></div>
-          <div className="shadow_lucide_1"></div>
-        </motion.div>
+        <span className="txt__lg font-bold text-[whitesmoke] relative z-60">
+          View CV
+        </span>
       </div>
 
       {/* {btnFancySVGs.map((el) => (
