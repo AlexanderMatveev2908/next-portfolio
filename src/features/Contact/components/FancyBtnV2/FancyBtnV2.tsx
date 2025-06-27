@@ -5,7 +5,7 @@
 import { useState, type FC } from "react";
 import Anchor from "../Anchor/Anchor";
 import { css } from "@emotion/react";
-import { btnFancySVGs } from "./uiFactory";
+import { btnFancySVGs, optFancyV2 } from "./uiFactory";
 import { genSizeRandom } from "@/core/lib/etc";
 import { easeInOut, motion } from "framer-motion";
 
@@ -19,7 +19,7 @@ const FancyBtnV2: FC<PropsType> = ({ href }) => {
   return (
     <Anchor {...{ href, setIsHover }}>
       <motion.div
-        className="w-full flex justify-center max-w-fit h-full max-h-fit relative"
+        className="w-full flex justify-center max-w-fit h-full max-h-fit relative "
         css={css`
           border: 2px solid var(--whitesmoke);
           padding: 7.5px 50px;
@@ -59,15 +59,22 @@ const FancyBtnV2: FC<PropsType> = ({ href }) => {
         </span>
       </motion.div>
 
-      {btnFancySVGs.map((el) => (
-        <el.svg
-          css={css`
-            ${genSizeRandom()}
-            color: var(--whitesmoke);
-          `}
+      {btnFancySVGs.map((el, i) => (
+        <motion.div
           key={el.id}
-          className="absolute"
-        />
+          css={css`
+            position: absolute;
+            ${optFancyV2[i].css}
+          `}
+        >
+          <el.svg
+            css={css`
+              width: 35px;
+              height: 35px;
+              color: var(--whitesmoke);
+            `}
+          />
+        </motion.div>
       ))}
     </Anchor>
   );
