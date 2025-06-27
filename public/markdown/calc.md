@@ -18,3 +18,107 @@ This project was implemented as part of a guided full-stack learning path on [Be
 
 - 💅 **iOS-Inspired UI**  
   Minimalist design modeled after the native iOS calculator.
+
+---
+
+# 🧠 Markdown Showcase: The Ultimate Test
+
+Welcome to **Markdown Hell**, where all syntax rules are tested and twisted like a regex gone rogue.
+
+---
+
+## 🔢 Headings
+
+### This is an H3
+
+#### H4
+
+##### H5
+
+###### H6
+
+---
+
+## 📋 Lists
+
+### Unordered List
+
+- Item A
+  - Nested A1
+  - Nested A2
+- Item B
+
+### Ordered List
+
+1. Step 1
+2. Step 2
+   1. Sub-step A
+   2. Sub-step B
+3. Step 3
+
+### Task Checklist
+
+- [x] Write Markdown
+- [ ] Make it readable
+- [x] Add more chaos
+- [ ] Profit?
+
+---
+
+## 🔤 Inline Formatting
+
+**Bold**  
+_Italic_  
+**_Bold & Italic_**  
+~~Strikethrough~~
+
+`Inline code`
+
+> 🧠 _Blockquote inception is real._
+
+---
+
+## 📊 Tables
+
+| Name  | Role     | Status     |
+| ----- | -------- | ---------- |
+| Alice | Dev      | ✅ Active  |
+| Bob   | PM       | ⚠️ Pending |
+| Carol | Designer | ❌ Removed |
+
+<details>
+<summary>HTML Table inside Markdown</summary>
+
+<table>
+  <thead><tr><th>Column 1</th><th>Column 2</th></tr></thead>
+  <tbody>
+    <tr><td>🔢 Numbers</td><td>123</td></tr>
+    <tr><td>💬 Text</td><td>Hello World</td></tr>
+  </tbody>
+</table>
+
+</details>
+
+---
+
+## 🖼️ Images
+
+![GitHub Logo](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
+![Cat Meme](https://cataas.com/cat/says/Hello%20Markdown)
+
+---
+
+## 🔗 Links
+
+- [OpenAI](https://openai.com)
+- [Markdown Guide](https://www.markdownguide.org)
+
+---
+
+## 🧮 Code Blocks
+
+```js
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
