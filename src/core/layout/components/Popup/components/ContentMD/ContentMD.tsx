@@ -10,6 +10,7 @@ import { Prism } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import remarkGfm from "remark-gfm";
 import "github-markdown-css/github-markdown-dark.css";
+import SpinnerBtn from "@/shared/components/Spinners/SpinnerBtn/SpinnerBtn";
 
 type PropsType = {
   popState: PopStateType;
@@ -19,11 +20,15 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
   const [contentMD, setContentMD] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [err, setErr] = useState(null);
+  const [isPending, setIsPending] = useState(false);
 
   useEffect(() => {
     const handleContent = async () => {
       if (!popState.isPop || !isStr(popState.content?.fileMD)) return;
+
       try {
+        setIsPending(true);
+
         const res = await fetch(`/markdown/${popState.content?.fileMD}`);
         const data = await res.text();
 
@@ -42,13 +47,19 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
       } catch (err: Error | any) {
         console.log(err);
         setErr(err?.message ?? "");
+      } finally {
+        setIsPending(false);
       }
     };
 
     handleContent();
   }, [popState.isPop, popState.content?.fileMD]);
 
-  return (
+  return isPending ? (
+    <div className="w-full flex justify-center items-center h-[20vh]">
+      <SpinnerBtn />
+    </div>
+  ) : (
     <div className="w-full flex justify-center min-h-0 max-h-full overflow-y-auto scroll_app">
       {/* <span className="txt__md text-gray-300">
               {popState.content?.txt}
