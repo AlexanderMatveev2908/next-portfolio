@@ -21,3 +21,16 @@ export const calcRatioH = (w: number, type: "16/9" | "9/16"): number =>
 
 export const getNumCards = () =>
   window.innerWidth > uiBreaks.lg ? 6 : window.innerWidth > uiBreaks.md ? 4 : 2;
+
+export const genNumBlockBtns = () =>
+  window.innerWidth > uiBreaks.xl
+    ? 10
+    : window.innerWidth > uiBreaks.lg
+    ? 8
+    : window.innerWidth > uiBreaks.md
+    ? 6
+    : window.innerWidth > uiBreaks.sm
+    ? 4
+    : window.innerWidth > 400
+    ? 2
+    : 1;
