@@ -1,5 +1,5 @@
 import { getStorage } from "@/core/lib/storage";
-import { RootState } from "@/core/store";
+import { RootStateType } from "@/core/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type PopContent = null | {
@@ -33,4 +33,4 @@ export const popSlice = createSlice({
   },
 });
 
-export const getPopState = (state: RootState) => state.popup;
+export const getPopState = (state: RootStateType) => state.popup;

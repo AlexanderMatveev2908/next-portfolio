@@ -1,1 +1,1 @@
-export type StorageKey = "popup" | "test";
+export type StorageKey = "popup" | "apps";
