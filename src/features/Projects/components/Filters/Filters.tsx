@@ -78,13 +78,13 @@ const Filters: FC = () => {
           css={css`
             transition: 0.3s;
             &:hover {
-              opacity: 0.8;
+              text-shadow: 0 0 5px var(--whitesmoke), 0 0 10px var(--whitesmoke);
             }
 
             border-color: ${isOpen ? "var(--whitesmoke)" : "transparent"};
           `}
         >
-          <span className="txt__lg font-bold">Filter</span>
+          <span className="txt__lg font-bold">Filter By</span>
           <ListFilter className="w-[35px] h-[35px] sm:h-[40px] sm:w-[40px]" />
         </div>
 

@@ -4,14 +4,26 @@
 
 import WrapSection from "@/shared/components/HOC/WrapSection/WrapSection";
 import { Portfolio } from "@/shared/components/SVGs";
-import type { FC } from "react";
+import { useMemo, type FC } from "react";
 import { projects } from "./uiFactory";
 import ProjectItem from "./components/ProjectItem/ProjectItem";
 import { css } from "@emotion/react";
 import { resp } from "@/core/lib/style";
 import Filters from "./components/Filters/Filters";
+import { useSelector } from "react-redux";
+import { getProjectsState } from "./slice";
 
 const Projects: FC = () => {
+  const projState = useSelector(getProjectsState);
+
+  const filtered = useMemo(
+    () =>
+      projState.currFilter === "All"
+        ? projects
+        : projects.filter((el) => el.typeApp === projState.currFilter),
+    [projState.currFilter]
+  );
+
   return (
     <WrapSection
       {...{
@@ -36,7 +48,7 @@ const Projects: FC = () => {
           }
         `}
       >
-        {projects.map((el) => (
+        {filtered.map((el) => (
           <ProjectItem key={el.id} {...{ el }} />
         ))}
       </div>

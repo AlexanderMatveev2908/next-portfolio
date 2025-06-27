@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useEffect, useRef, type FC } from "react";
+import { useCallback, useEffect, useRef, type FC } from "react";
 import { css } from "@emotion/react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
@@ -21,10 +21,10 @@ const Popup: FC = () => {
   const popState = useSelector(getPopState);
 
   const dispatch = useDispatch();
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     delStorage("popup");
     dispatch(popSlice.actions.closePop());
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     const listen = (e: MouseEvent) => {
@@ -47,13 +47,13 @@ const Popup: FC = () => {
       if (typeof popState.isPop !== "boolean" || popState.isPop) return;
 
       timerID.current = setTimeout(() => {
-        dispatch(popSlice.actions.resetPop());
+        handleClose();
         clearTimerID(timerID);
       }, 1000);
     };
 
     handleReset();
-  }, [dispatch, popState.isPop]);
+  }, [dispatch, popState.isPop, handleClose]);
 
   return (
     <>
