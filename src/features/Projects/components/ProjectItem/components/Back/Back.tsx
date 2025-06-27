@@ -55,7 +55,7 @@ const Back: FC<PropsType> = ({ el }) => {
               <span className="txt__sm">{el.description}</span>
             </div> */}
 
-        <div className="w-full flex flex-col items-center justify-center overflow-y-auto scroll_app h-full">
+        <div className="w-full flex flex-col items-center justify-center h-full">
           <button
             onClick={handlePop}
             className="opener_pop btn_app border-[var(--whitesmoke)] border-2 rounded-xl py-2 px-10"

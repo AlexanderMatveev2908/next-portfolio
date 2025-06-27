@@ -5,19 +5,17 @@
 import { useState, type FC } from "react";
 import { css } from "@emotion/react";
 import InnerShadow from "./components/InnerShadow/InnerShadow";
+import Anchor from "../Anchor/Anchor";
 
-const FancyBtn: FC = () => {
+type PropsType = {
+  href: string;
+};
+
+const FancyBtn: FC<PropsType> = ({ href }) => {
   const [isHover, setIsHover] = useState(false);
 
   return (
-    <a
-      href=""
-      target="_blank"
-      rel="noopener noreferrer"
-      className="w-full max-w-fit h-full max-h-fit relative"
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
-    >
+    <Anchor {...{ href, setIsHover }}>
       <div
         css={css`
           padding: 7.5px 50px;
@@ -56,20 +54,8 @@ const FancyBtn: FC = () => {
           <el.svg />
         </div>
       ))} */}
-    </a>
+    </Anchor>
   );
 };
 
 export default FancyBtn;
-
-/*
-<a
-  href="/files/CV-AlexanderMatveev.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-blue-500 underline"
->
-  📄 View My CV
-</a>
-
-*/
