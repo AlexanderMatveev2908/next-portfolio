@@ -24,13 +24,17 @@ const Projects: FC = () => {
         ? projects
         : projects.filter((el) => el.typeApp === projState.currFilter);
 
-    const paginated = list.slice(
+    return list;
+  }, [projState.currFilter]);
+
+  const paginated = useMemo(() => {
+    const paginated = filtered.slice(
       projState.currPage * limit,
       projState.currPage * limit + limit
     );
 
     return paginated;
-  }, [projState.currFilter, projState.currPage, limit]);
+  }, [limit, projState.currPage, filtered]);
 
   return (
     <WrapSection
@@ -52,11 +56,11 @@ const Projects: FC = () => {
           justify-content: center;
 
           ${resp(400)} {
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, 400px);
           }
         `}
       >
-        {filtered.map((el) => (
+        {paginated.map((el) => (
           <ProjectItem key={el.id} {...{ el }} />
         ))}
       </div>
@@ -65,6 +69,8 @@ const Projects: FC = () => {
         {...{
           limit,
           setLimit,
+          filtered,
+          paginated,
         }}
       />
     </WrapSection>

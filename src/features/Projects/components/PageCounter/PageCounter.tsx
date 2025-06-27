@@ -12,7 +12,7 @@ import {
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectsState, projectsSlice } from "../../slice";
-import { projects } from "../../uiFactory";
+import { ProjectType } from "../../uiFactory";
 import { genNumBlockBtns, getNumCards } from "@/core/lib/style";
 import BtnBase from "@/shared/components/elements/BtnBase/BtnBase";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
@@ -22,9 +22,16 @@ import RowPageBtns from "./components/RowPageBtns/RowPageBtns";
 type PropsType = {
   limit: number;
   setLimit: Dispatch<SetStateAction<number>>;
+  filtered: ProjectType[];
+  paginated: ProjectType[];
 };
 
-const PageCounter: FC<PropsType> = ({ limit, setLimit }) => {
+const PageCounter: FC<PropsType> = ({
+  limit,
+  setLimit,
+  filtered,
+  
+}) => {
   const projState = useSelector(getProjectsState);
   const [maxBlockBtns, setMaxBlockBtns] = useState(genNumBlockBtns());
 
@@ -42,10 +49,13 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit }) => {
     };
   }, [setLimit]);
 
-  const totPages = useMemo(() => Math.ceil(projects.length / limit), [limit]);
+  const totPages = useMemo(
+    () => Math.ceil(filtered.length / limit),
+    [filtered, limit]
+  );
   const totBlocks = useMemo(
-    () => Math.ceil(totPages / maxBlockBtns),
-    [totPages, maxBlockBtns]
+    () => Math.ceil(filtered.length / maxBlockBtns),
+    [filtered, maxBlockBtns]
   );
 
   const dispatch = useDispatch();
