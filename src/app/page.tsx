@@ -1,3 +1,4 @@
+import Contact from "@/features/Contact/Contact";
 import Hero from "@/features/Hero/Hero";
 import Projects from "@/features/Projects/Projects";
 import TechStack from "@/features/TechStack/TechStack";
@@ -11,6 +12,8 @@ const Home: FC = () => {
       <TechStack />
 
       <Projects />
+
+      <Contact />
     </div>
   );
 };

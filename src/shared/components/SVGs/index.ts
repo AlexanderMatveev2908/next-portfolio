@@ -1,5 +1,14 @@
 export { default as Bootstrap } from "./Bootstrap";
+export { default as BtnApi } from "./BtnApi";
+export { default as BtnBrackets } from "./BtnBrackets";
+export { default as BtnDb } from "./BtnDb";
+export { default as BtnGit } from "./BtnGit";
+export { default as BtnHtml } from "./BtnHtml";
+export { default as BtnKey } from "./BtnKey";
+export { default as BtnServer } from "./BtnServer";
+export { default as BtnTag } from "./BtnTag";
 export { default as Cloudinary } from "./Cloudinary";
+export { default as ContactPhone } from "./ContactPhone";
 export { default as Css } from "./Css";
 export { default as Docker } from "./Docker";
 export { default as Express } from "./Express";
