@@ -4,9 +4,6 @@
 
 import { useState, type FC } from "react";
 import { css } from "@emotion/react";
-import { genSizeRandom } from "@/core/lib/etc";
-import { btnFancySVGs } from "./uiFactory";
-import { easeInOut, motion } from "framer-motion";
 import InnerShadow from "./components/InnerShadow/InnerShadow";
 
 const FancyBtn: FC = () => {

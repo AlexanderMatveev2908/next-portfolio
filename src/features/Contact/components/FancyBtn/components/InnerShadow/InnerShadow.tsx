@@ -38,6 +38,7 @@ const InnerShadow: FC<PropsType> = ({ isHover }) => {
             transparent 100%
           );
           filter: blur(2.5px);
+          mix-blend-mode: overlay;
         }
         .shadow_lucide_0,
         .shadow_lucide_1 {
