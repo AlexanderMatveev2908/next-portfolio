@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import { css } from "@emotion/react";
 import Front from "./components/Front/Front";
 import Back from "./components/Back/Back";
+import { useSelector } from "react-redux";
+import { getProjectsState } from "../../slice";
 
 type PropsType = {
   el: ProjectType;
@@ -17,6 +19,7 @@ type PropsType = {
 const ProjectItem: FC<PropsType> = ({ el }) => {
   const contentRefImg = useRef<HTMLDivElement | null>(null);
   const [h, setHeight] = useState(0);
+  const filter = useSelector(getProjectsState).currFilter;
 
   useEffect(() => {
     const el = contentRefImg.current;
@@ -24,13 +27,22 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
 
     const resize = () => setHeight((el.scrollHeight ?? 0) + 30);
 
-    const observer = new ResizeObserver(resize);
-    observer.observe(el);
+    resize();
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(el);
+
+    const mutationObserver = new MutationObserver(resize);
+    mutationObserver.observe(el, {
+      childList: true,
+      subtree: true,
+    });
 
     return () => {
-      observer.disconnect();
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
     };
-  }, []);
+  }, [filter]);
 
   return (
     <ProjectItemStyled
