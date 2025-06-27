@@ -1,3 +1,4 @@
+import { genRandom } from "@/core/lib/etc";
 import {
   BtnApi,
   BtnBrackets,
@@ -21,41 +22,12 @@ export const btnFancySVGs = [
   id: v4(),
 }));
 
-export const optFancyV2 = [
-  {
-    css: css`
-      top: -25%;
-      left: -25%;
-    `,
-  },
-  {
-    css: css`
-      top: -25%;
-      right: -25%;
-    `,
-  },
-  {
-    css: css`
-      bottom: -25%;
-      left: -25%;
-    `,
-  },
-  {
-    css: css`
-      bottom: -25%;
-      right: -25%;
-    `,
-  },
-  {
-    css: css`
-      bottom: -75%;
-      right: 25%;
-    `,
-  },
-  {
-    css: css`
-      top: -75%;
-      left: 25%;
-    `,
-  },
-];
+export const optFancyV2 = Array.from({ length: 6 }, (_, i) => ({
+  css: css`
+    top: ${i <= 2 ? genRandom(-50, 75) : undefined}%;
+    bottom: ${i > 2 ? genRandom(-50, 75) : undefined}%;
+
+    left: ${i <= 2 ? genRandom(-50, 0) : undefined}%;
+    right: ${i > 2 ? genRandom(-50, 0) : undefined}%;
+  `,
+}));

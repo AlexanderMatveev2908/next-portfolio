@@ -5,8 +5,8 @@
 import { useState, type FC } from "react";
 import Anchor from "../Anchor/Anchor";
 import { css } from "@emotion/react";
-import { btnFancySVGs, optFancyV2 } from "./uiFactory";
-import { genSizeRandom } from "@/core/lib/etc";
+import { btnFancySVGs } from "./uiFactory";
+import { genRandom } from "@/core/lib/etc";
 import { easeInOut, motion } from "framer-motion";
 
 type PropsType = {
@@ -59,19 +59,32 @@ const FancyBtnV2: FC<PropsType> = ({ href }) => {
         </span>
       </motion.div>
 
-      {btnFancySVGs.map((el, i) => (
+      {btnFancySVGs.map((el) => (
         <motion.div
           key={el.id}
           css={css`
             position: absolute;
-            ${optFancyV2[i].css}
+            pointer-events: none;
+            top: ${genRandom(25, 75)}%;
+            left: ${genRandom(25, 75)}%;
           `}
+          transition={{
+            duration: 0.4,
+            ease: easeInOut,
+          }}
+          animate={{
+            y: isHover ? genRandom(-100, 100) : 0,
+            x: isHover ? genRandom(-100, 100) : 0,
+            scale: isHover ? genRandom(0.9, 1.05) : 0,
+            rotate: isHover ? genRandom(-10, 10) : 0,
+            opacity: isHover ? 1 : 0,
+          }}
         >
           <el.svg
             css={css`
               width: 35px;
               height: 35px;
-              color: var(--whitesmoke);
+              color: var(--gray__300);
             `}
           />
         </motion.div>

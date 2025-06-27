@@ -23,7 +23,7 @@ const ClientShell: FC<PropsType> = ({ children }) => {
         <Popup />
 
         <div
-          className="w-full h-full min-h-screen flex flex-col pad_app pb-[75px] sm:pb-[150px]"
+          className="w-full h-full min-h-screen flex flex-col pad_app pb-[75px] sm:pb-[200px]"
           css={css`
             background: var(--neutral__950);
           `}
