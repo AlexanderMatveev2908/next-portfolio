@@ -9,8 +9,8 @@ import { projects } from "../../uiFactory";
 import { genNumBlockBtns, getNumCards } from "@/core/lib/style";
 import BtnBase from "@/shared/components/elements/BtnBase/BtnBase";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
-import { useGenIDs } from "@/core/hooks/useGenIDs";
 import { css } from "@emotion/react";
+import RowPageBtns from "./components/RowPageBtns/RowPageBtns";
 
 const PageCounter: FC = () => {
   const projState = useSelector(getProjectsState);
@@ -40,18 +40,16 @@ const PageCounter: FC = () => {
     [totPages, maxBlockBtns]
   );
 
-  const { ids } = useGenIDs({
-    lengths: [maxBlockBtns],
-  });
-
-  const currPages = useMemo(() => {
-    const start = projState.currBlock * maxBlockBtns;
-    const end = Math.min(start + maxBlockBtns, totPages);
-
-    return Array.from({ length: end - start }, (_, i) => start + i);
-  }, [projState.currBlock, maxBlockBtns, totPages]);
-
   const dispatch = useDispatch();
+
+  const handleBlockClick = (type: "inc" | "dec") => {
+    dispatch(
+      projectsSlice.actions.setPagination({
+        field: "currBlock",
+        val: projState.currBlock + (type === "inc" ? 1 : -1),
+      })
+    );
+  };
 
   return (
     <div className="w-full grid grid-cols-[60px_1fr_60px] items-center gap-10">
@@ -61,39 +59,17 @@ const PageCounter: FC = () => {
             svg: ArrowBigLeft,
           },
           disabled: !projState.currBlock,
-          handleClick: () => {
-            dispatch(
-              projectsSlice.actions.setPagination({
-                field: "currBlock",
-                val: projState.currBlock - 1,
-              })
-            );
+          handleClick: handleBlockClick.bind(null, "dec"),
+          $scaleUp: 1.25,
+          $custom: {
+            css: css`
+              color: var(--whitesmoke);
+            `,
           },
         }}
       />
 
-      <div
-        className="w-full items-center flex gap-5"
-        css={css`
-          justify-content: ${currPages.length === 1 ? "center" : "flex-start"};
-        `}
-      >
-        {currPages.map((val, i) => (
-          <div key={ids[0][i]} className="w-[60px]">
-            <BtnBase
-              {...{
-                el: { txt: `${val + 1}` },
-                $custom: {
-                  css: css`
-                    border: 2px solid var(--whitesmoke);
-                    border-radius: 15px;
-                  `,
-                },
-              }}
-            />
-          </div>
-        ))}
-      </div>
+      <RowPageBtns {...{ maxBlockBtns, totPages, projState }} />
 
       <BtnBase
         {...{
@@ -101,13 +77,12 @@ const PageCounter: FC = () => {
             svg: ArrowBigRight,
           },
           disabled: projState.currBlock === totBlocks - 1,
-          handleClick: () => {
-            dispatch(
-              projectsSlice.actions.setPagination({
-                field: "currBlock",
-                val: projState.currBlock + 1,
-              })
-            );
+          handleClick: handleBlockClick.bind(null, "inc"),
+          $scaleUp: 1.25,
+          $custom: {
+            css: css`
+              color: var(--whitesmoke);
+            `,
           },
         }}
       />
