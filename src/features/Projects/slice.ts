@@ -7,11 +7,19 @@ export type FilterAppType = TypeApp | "All";
 
 export type ProjectsStateType = {
   currFilter: FilterAppType;
+  currSorter: string;
+  currPage: number;
+  currBlock: number;
 };
 
 const defState: ProjectsStateType = {
   currFilter: "All",
+  currSorter: "DESC",
+  currPage: 0,
+  currBlock: 0,
 };
+
+export type PaginationFieldType = "currPage" | "currBlock";
 
 const init: ProjectsStateType = getStorage("apps") ?? defState;
 
@@ -21,6 +29,12 @@ export const projectsSlice = createSlice({
   reducers: {
     setFilter: (state, action: PayloadAction<FilterAppType>) => {
       state.currFilter = action.payload;
+    },
+    setPagination: (
+      state,
+      action: PayloadAction<{ field: PaginationFieldType; val: number }>
+    ) => {
+      state[action.payload.field] = action.payload.val;
     },
   },
 });

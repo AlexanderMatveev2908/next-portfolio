@@ -52,7 +52,7 @@ const Filters: FC = () => {
 
   const dispatch = useDispatch();
   const handleClick = (label: FilterAppType) => {
-    saveStorage("apps", { currFilter: label });
+    saveStorage("apps", { ...projectsState, currFilter: label });
     dispatch(projectsSlice.actions.setFilter(label));
     setIsOpen(false);
   };

@@ -16,15 +16,15 @@
   color: transparent;
 }
 
-.btn_app {
+.btn_app:enabled {
   cursor: pointer;
   transition: 0.3s;
 }
-.btn_app:hover {
+.btn_app:enabled:hover {
   transform: scale(var(--scale_up));
 }
 
-.btn_app:active {
+.btn_app:enabled:active {
   transition: 0.15s;
   transform: scale(0.8);
 }
