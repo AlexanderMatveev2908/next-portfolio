@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 .tb {
   @apply border-2 border-white;
 }
