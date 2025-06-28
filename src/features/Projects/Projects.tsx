@@ -30,15 +30,27 @@ const Projects: FC = () => {
     return list;
   }, [projState.currFilter]);
 
-  const paginated = useMemo(
-    () =>
-      filtered.slice(
-        projState.currPage * limit,
-        projState.currPage * limit + limit
-      ),
+  const { currPage, currSorter } = projState;
+  const paginated = useMemo(() => {
+    const sorted = [...filtered].sort((a, b) => {
+      const aOrder = a.order;
+      const bOrder = b.order;
 
-    [limit, projState.currPage, filtered]
-  );
+      switch (currSorter) {
+        case "INC":
+          return aOrder - bOrder;
+        case "DEC":
+          return bOrder - aOrder;
+        default:
+          return 0;
+      }
+    });
+
+    const start = currPage * limit;
+    const end = start + limit;
+
+    return sorted.slice(start, end);
+  }, [limit, currPage, currSorter, filtered]);
 
   return (
     <WrapSection

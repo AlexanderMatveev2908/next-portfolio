@@ -16,6 +16,7 @@ export type ProjectType = {
   typeApp: TypeApp;
   defName: string;
   fileMD: string;
+  order: number;
 };
 
 export const projects: ProjectType[] = [
