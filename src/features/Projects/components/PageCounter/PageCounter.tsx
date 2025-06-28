@@ -126,7 +126,7 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
           el: {
             svg: ArrowBigRight,
           },
-          disabled: projState.currBlock === totBlocks - 1,
+          disabled: projState.currBlock >= totBlocks - 1,
           handleClick: handleBlockClick.bind(null, "inc"),
           $scaleUp: 1.25,
           $custom: {

@@ -46,7 +46,7 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
 
   return (
     <ProjectItemStyled
-      className="min-w-full border-2 border-[var(--neutral__700)] rounded-2xl p-[15px]"
+      className="w-full border-2 border-[var(--neutral__700)] rounded-2xl p-[15px] justify-self-center"
       css={css`
         height: ${h}px;
         max-height: ${h}px;

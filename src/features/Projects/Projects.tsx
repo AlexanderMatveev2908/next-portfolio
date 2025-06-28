@@ -29,14 +29,15 @@ const Projects: FC = () => {
     return list;
   }, [projState.currFilter]);
 
-  const paginated = useMemo(() => {
-    const paginated = filtered.slice(
-      projState.currPage * limit,
-      projState.currPage * limit + limit
-    );
+  const paginated = useMemo(
+    () =>
+      filtered.slice(
+        projState.currPage * limit,
+        projState.currPage * limit + limit
+      ),
 
-    return paginated;
-  }, [limit, projState.currPage, filtered]);
+    [limit, projState.currPage, filtered]
+  );
 
   return (
     <WrapSection
@@ -51,11 +52,12 @@ const Projects: FC = () => {
       <Filters />
 
       <div
-        className="w-full gap-6"
+        className="w-full gap-x-20 gap-y-10"
         css={css`
           display: grid;
           grid-template-columns: 1fr;
-          justify-content: center;
+          place-content: center;
+          place-items: center;
 
           ${resp(400)} {
             grid-template-columns: repeat(auto-fit, 400px);
