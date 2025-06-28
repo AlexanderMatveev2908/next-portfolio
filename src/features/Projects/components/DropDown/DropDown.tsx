@@ -28,6 +28,8 @@ type PropsType = {
   };
 
   children: React.ReactNode;
+
+  zIndex: number;
 };
 
 const DropDown: FC<PropsType> = ({
@@ -37,6 +39,7 @@ const DropDown: FC<PropsType> = ({
   refs,
   minH,
   children,
+  zIndex,
 }) => {
   return (
     <div
@@ -48,7 +51,7 @@ const DropDown: FC<PropsType> = ({
       <motion.div
         className="flex flex-col border-2 border-[var(--whitesmoke)] rounded-xl overflow-hidden absolute"
         css={css`
-          z-index: 100;
+          z-index: ${zIndex};
         `}
         ref={refs.filterRef}
       >
@@ -68,8 +71,18 @@ const DropDown: FC<PropsType> = ({
           <span className="txt__lg font-bold">{el.label}</span>
           <el.svg className="w-[35px] h-[35px] sm:h-[40px] sm:w-[40px]" />
         </div>
-
-        {children}
+        <ul
+          className="w-full flex flex-col justify-start overflow-hidden"
+          css={css`
+            z-index: 100;
+            transition: 0.4s;
+            max-height: ${isOpen ? `500px` : "0"};
+            pointer-events: ${isOpen ? "all" : "none"};
+            background-color: var(--neutral__950);
+          `}
+        >
+          {children}
+        </ul>
       </motion.div>
     </div>
   );

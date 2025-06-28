@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import { v4 } from "uuid";
 
 const B_URL = "/imgs/";
@@ -86,3 +87,8 @@ export const projects: ProjectType[] = [
   typeApp: (el.typeApp ?? "Frontend-Only") as TypeApp,
   host: el.host as HostType,
 }));
+
+export const optHoverDrop = css`
+  background-color: var(--whitesmoke);
+  color: var(--neutral__950);
+`;
