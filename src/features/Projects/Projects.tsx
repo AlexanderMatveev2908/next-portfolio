@@ -13,6 +13,7 @@ import Filters from "./components/Filters/Filters";
 import { useSelector } from "react-redux";
 import { getProjectsState } from "./slice";
 import PageCounter from "./components/PageCounter/PageCounter";
+import Sorter from "./components/Sorter/Sorter";
 
 const Projects: FC = () => {
   const projState = useSelector(getProjectsState);
@@ -49,7 +50,19 @@ const Projects: FC = () => {
         id: "projects",
       }}
     >
-      <Filters />
+      <div
+        className="w-full justify-center gap-x-12 gap-y-8 grid"
+        css={css`
+          grid-template-columns: 1fr;
+
+          ${resp(750)} {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        `}
+      >
+        <Sorter />
+        <Filters />
+      </div>
 
       <div
         className="w-full gap-x-20 gap-y-10"

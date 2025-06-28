@@ -26,6 +26,7 @@ export const projects: ProjectType[] = [
     host: "Fly.io",
     typeApp: "Full-Stack",
     defName: "pern_book",
+    order: 4,
   },
   {
     title: "Food Delivery App",
@@ -35,6 +36,7 @@ export const projects: ProjectType[] = [
     host: "Render.com",
     typeApp: "Full-Stack",
     defName: "mern_eat",
+    order: 3,
   },
   {
     title: "Hotel Booking App",
@@ -44,6 +46,7 @@ export const projects: ProjectType[] = [
     host: "Render.com",
     typeApp: "Full-Stack",
     defName: "mern_book",
+    order: 0,
   },
   {
     title: "Memory Game",
@@ -52,6 +55,7 @@ export const projects: ProjectType[] = [
     live: "https://next-memory-game-ten.vercel.app/",
     host: "Vercel.com",
     defName: "memory",
+    order: 5,
   },
   {
     title: "Tic Tac Toe",
@@ -60,6 +64,7 @@ export const projects: ProjectType[] = [
     live: "https://react-x0.onrender.com/",
     host: "Render.com",
     defName: "x_o",
+    order: 2,
   },
   {
     title: "Calculator IOS",
@@ -68,6 +73,7 @@ export const projects: ProjectType[] = [
     live: "https://react-calculator-imc7.onrender.com/",
     host: "Render.com",
     defName: "calc",
+    order: 1,
   },
 ].map((el) => ({
   ...el,
