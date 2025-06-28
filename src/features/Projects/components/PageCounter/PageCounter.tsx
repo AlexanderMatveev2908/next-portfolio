@@ -2,26 +2,40 @@
 
 "use client";
 
-import { useEffect, useMemo, useState, type FC } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useState,
+  type FC,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectsState, projectsSlice } from "../../slice";
-import { projects } from "../../uiFactory";
+import { ProjectType } from "../../uiFactory";
 import { genNumBlockBtns, getNumCards } from "@/core/lib/style";
 import BtnBase from "@/shared/components/elements/BtnBase/BtnBase";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
-import { useGenIDs } from "@/core/hooks/useGenIDs";
 import { css } from "@emotion/react";
+import RowPageBtns from "./components/RowPageBtns/RowPageBtns";
+import { saveStorage } from "@/core/lib/storage";
 
-const PageCounter: FC = () => {
+type PropsType = {
+  limit: number;
+  setLimit: Dispatch<SetStateAction<number>>;
+  filtered: ProjectType[];
+  paginated: ProjectType[];
+};
+
+const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
   const projState = useSelector(getProjectsState);
-  const [maxCards, setMaxCards] = useState(getNumCards());
   const [maxBlockBtns, setMaxBlockBtns] = useState(genNumBlockBtns());
 
-  console.log(projState);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const listen = () => {
-      setMaxCards(getNumCards());
+      setLimit(getNumCards());
       setMaxBlockBtns(genNumBlockBtns());
     };
 
@@ -29,29 +43,82 @@ const PageCounter: FC = () => {
     return () => {
       window.removeEventListener("resize", listen);
     };
-  }, []);
+  }, [setLimit]);
 
   const totPages = useMemo(
-    () => Math.ceil(projects.length / maxCards),
-    [maxCards]
+    () => Math.ceil(filtered.length / limit),
+    [filtered, limit]
   );
   const totBlocks = useMemo(
-    () => Math.ceil(totPages / maxBlockBtns),
-    [totPages, maxBlockBtns]
+    () => Math.ceil(filtered.length / maxBlockBtns),
+    [filtered, maxBlockBtns]
   );
 
-  const { ids } = useGenIDs({
-    lengths: [maxBlockBtns],
-  });
+  useEffect(() => {
+    const resize = () => {
+      const lastBlockI = Math.max(0, totBlocks - 1);
+      const lastPageI = Math.max(0, totPages - 1);
 
-  const currPages = useMemo(() => {
-    const start = projState.currBlock * maxBlockBtns;
-    const end = Math.min(start + maxBlockBtns, totPages);
+      const shouldFixPage = projState.currPage > lastPageI;
+      const shouldFixBlock = projState.currBlock > lastBlockI;
 
-    return Array.from({ length: end - start }, (_, i) => start + i);
-  }, [projState.currBlock, maxBlockBtns, totPages]);
+      if (shouldFixBlock || shouldFixPage) {
+        if (shouldFixBlock) {
+          saveStorage("apps", {
+            ...projState,
+            currBlock: lastBlockI,
+          });
 
-  const dispatch = useDispatch();
+          dispatch(
+            projectsSlice.actions.setPagination({
+              field: "currBlock",
+              val: lastBlockI,
+            })
+          );
+        }
+        if (shouldFixPage) {
+          saveStorage("apps", {
+            ...projState,
+            currPage: lastPageI,
+          });
+
+          dispatch(
+            projectsSlice.actions.setPagination({
+              field: "currPage",
+              val: lastPageI,
+            })
+          );
+        }
+      }
+    };
+
+    resize();
+
+    window.addEventListener("resize", resize);
+
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, [
+    filtered,
+    limit,
+    maxBlockBtns,
+    projState.currBlock,
+    projState.currPage,
+    dispatch,
+    totBlocks,
+    totPages,
+    projState,
+  ]);
+
+  const handleBlockClick = (type: "inc" | "dec") => {
+    dispatch(
+      projectsSlice.actions.setPagination({
+        field: "currBlock",
+        val: projState.currBlock + (type === "inc" ? 1 : -1),
+      })
+    );
+  };
 
   return (
     <div className="w-full grid grid-cols-[60px_1fr_60px] items-center gap-10">
@@ -61,53 +128,30 @@ const PageCounter: FC = () => {
             svg: ArrowBigLeft,
           },
           disabled: !projState.currBlock,
-          handleClick: () => {
-            dispatch(
-              projectsSlice.actions.setPagination({
-                field: "currBlock",
-                val: projState.currBlock - 1,
-              })
-            );
+          handleClick: handleBlockClick.bind(null, "dec"),
+          $scaleUp: 1.25,
+          $custom: {
+            css: css`
+              color: var(--whitesmoke);
+            `,
           },
         }}
       />
 
-      <div
-        className="w-full items-center flex gap-5"
-        css={css`
-          justify-content: ${currPages.length === 1 ? "center" : "flex-start"};
-        `}
-      >
-        {currPages.map((val, i) => (
-          <div key={ids[0][i]} className="w-[60px]">
-            <BtnBase
-              {...{
-                el: { txt: `${val + 1}` },
-                $custom: {
-                  css: css`
-                    border: 2px solid var(--whitesmoke);
-                    border-radius: 15px;
-                  `,
-                },
-              }}
-            />
-          </div>
-        ))}
-      </div>
+      <RowPageBtns {...{ maxBlockBtns, totPages, projState }} />
 
       <BtnBase
         {...{
           el: {
             svg: ArrowBigRight,
           },
-          disabled: projState.currBlock === totBlocks - 1,
-          handleClick: () => {
-            dispatch(
-              projectsSlice.actions.setPagination({
-                field: "currBlock",
-                val: projState.currBlock + 1,
-              })
-            );
+          disabled: projState.currBlock >= totBlocks - 1,
+          handleClick: handleBlockClick.bind(null, "inc"),
+          $scaleUp: 1.25,
+          $custom: {
+            css: css`
+              color: var(--whitesmoke);
+            `,
           },
         }}
       />

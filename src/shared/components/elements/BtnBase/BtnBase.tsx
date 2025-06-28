@@ -25,20 +25,27 @@ type PropsType = {
   $custom?: {
     css: SerializedStyles;
   };
+  $scaleUp: number;
 
   handleClick?: () => void;
   disabled?: boolean;
 };
 
-const BtnBase: FC<PropsType> = ({ el, $custom, handleClick, disabled }) => {
+const BtnBase: FC<PropsType> = ({
+  el,
+  $custom,
+  handleClick,
+  $scaleUp,
+  disabled,
+}) => {
   return (
     <button
-      className="btn_app py-2 px-4 w-full h-full flex items-center gap-6  text-gray-300 appearance-none justify-center disabled:opacity-50"
+      className="btn_app py-2 px-4 w-full h-full flex items-center gap-6 appearance-none justify-center disabled:opacity-50"
       onClick={handleClick}
       disabled={disabled}
       style={
         {
-          "--scale_up": "1.25",
+          "--scale_up": $scaleUp,
         } as React.CSSProperties
       }
       css={css`

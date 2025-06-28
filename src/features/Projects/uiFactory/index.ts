@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import { v4 } from "uuid";
 
 const B_URL = "/imgs/";
@@ -15,6 +16,7 @@ export type ProjectType = {
   typeApp: TypeApp;
   defName: string;
   fileMD: string;
+  order: number;
 };
 
 export const projects: ProjectType[] = [
@@ -26,6 +28,7 @@ export const projects: ProjectType[] = [
     host: "Fly.io",
     typeApp: "Full-Stack",
     defName: "pern_book",
+    order: 4,
   },
   {
     title: "Food Delivery App",
@@ -35,6 +38,7 @@ export const projects: ProjectType[] = [
     host: "Render.com",
     typeApp: "Full-Stack",
     defName: "mern_eat",
+    order: 3,
   },
   {
     title: "Hotel Booking App",
@@ -44,6 +48,7 @@ export const projects: ProjectType[] = [
     host: "Render.com",
     typeApp: "Full-Stack",
     defName: "mern_book",
+    order: 0,
   },
   {
     title: "Memory Game",
@@ -52,6 +57,7 @@ export const projects: ProjectType[] = [
     live: "https://next-memory-game-ten.vercel.app/",
     host: "Vercel.com",
     defName: "memory",
+    order: 5,
   },
   {
     title: "Tic Tac Toe",
@@ -60,6 +66,7 @@ export const projects: ProjectType[] = [
     live: "https://react-x0.onrender.com/",
     host: "Render.com",
     defName: "x_o",
+    order: 2,
   },
   {
     title: "Calculator IOS",
@@ -68,6 +75,7 @@ export const projects: ProjectType[] = [
     live: "https://react-calculator-imc7.onrender.com/",
     host: "Render.com",
     defName: "calc",
+    order: 1,
   },
 ].map((el) => ({
   ...el,
@@ -80,3 +88,8 @@ export const projects: ProjectType[] = [
   typeApp: (el.typeApp ?? "Frontend-Only") as TypeApp,
   host: el.host as HostType,
 }));
+
+export const optHoverDrop = css`
+  background-color: var(--whitesmoke);
+  color: var(--neutral__950);
+`;
