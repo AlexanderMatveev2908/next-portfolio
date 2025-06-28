@@ -58,7 +58,7 @@ const DropDown: FC<PropsType> = ({
         <div
           ref={refs.labelRef}
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center gap-6 cursor-pointer py-2 px-4 min-w-[300px] border-b-2"
+          className="w-full flex items-center gap-6 cursor-pointer py-2 px-10 max-w-[300px] border-b-2"
           css={css`
             transition: 0.3s;
             &:hover {
