@@ -64,13 +64,8 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
 
   useEffect(() => {
     const resize = () => {
-      const limit = getNumCards();
-
-      const numPages = Math.ceil(filtered.length / limit);
-      const maxBlocks = Math.ceil(numPages / maxBlockBtns);
-
-      const lastBlockI = Math.max(0, maxBlocks - 1);
-      const lastPageI = Math.max(0, numPages - 1);
+      const lastBlockI = Math.max(0, totBlocks - 1);
+      const lastPageI = Math.max(0, totPages - 1);
 
       const shouldFixPage = projState.currPage > lastPageI;
       const shouldFixBlock = projState.currBlock > lastBlockI;
@@ -107,6 +102,8 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
     projState.currBlock,
     projState.currPage,
     dispatch,
+    totBlocks,
+    totPages,
   ]);
 
   return (
