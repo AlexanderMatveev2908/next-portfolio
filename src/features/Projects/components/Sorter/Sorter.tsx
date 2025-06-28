@@ -71,13 +71,13 @@ const Sorter: FC = () => {
           `}
         >
           {projState.currSorter === el.val && (
-            <CircleCheckBig className="w-[25px] h-[25px] text-neutral-950" />
+            <CircleCheckBig className="min-w-[25px] min-h-[25px] text-neutral-950" />
           )}
 
           <div className="w-full flex items-center gap-6">
             <span className="text-start txt__md font-semibold">{el.label}</span>
 
-            <el.svg className="w-[25px] h-[25px]" />
+            <el.svg className="min-w-[25px] min-h-[25px]" />
           </div>
         </button>
       ))}
