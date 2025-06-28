@@ -19,7 +19,7 @@ const ExtLink: FC<PropsType> = ({ href, typeLink, host, typeApp }) => {
     () => (typeLink === "git" ? Github : Rocket),
     [typeLink]
   );
-  const label = typeLink === "git" ? "GitHub Repository" : `Live on ${host}`;
+  const label = typeLink === "git" ? "GitHub Repo" : `Live on ${host}`;
 
   return (
     <div className="w-full grid grid-cols-1 justify-items-center gap-4">
