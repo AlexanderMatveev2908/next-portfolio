@@ -3,6 +3,7 @@
 "use client";
 
 import { useGenIDs } from "@/core/hooks/useGenIDs";
+import { saveStorage } from "@/core/lib/storage";
 import { projectsSlice, ProjectsStateType } from "@/features/Projects/slice";
 import BtnBase from "@/shared/components/elements/BtnBase/BtnBase";
 import { css } from "@emotion/react";
@@ -18,6 +19,11 @@ type PropsType = {
 const RowPageBtns: FC<PropsType> = ({ maxBlockBtns, totPages, projState }) => {
   const dispatch = useDispatch();
   const handlePageClick = (page: number) => {
+    saveStorage("apps", {
+      ...projState,
+      currPage: page,
+    });
+
     dispatch(
       projectsSlice.actions.setPagination({
         field: "currPage",

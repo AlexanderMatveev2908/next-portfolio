@@ -18,6 +18,7 @@ import BtnBase from "@/shared/components/elements/BtnBase/BtnBase";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import { css } from "@emotion/react";
 import RowPageBtns from "./components/RowPageBtns/RowPageBtns";
+import { saveStorage } from "@/core/lib/storage";
 
 type PropsType = {
   limit: number;
@@ -29,6 +30,8 @@ type PropsType = {
 const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
   const projState = useSelector(getProjectsState);
   const [maxBlockBtns, setMaxBlockBtns] = useState(genNumBlockBtns());
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const listen = () => {
@@ -51,17 +54,6 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
     [filtered, maxBlockBtns]
   );
 
-  const dispatch = useDispatch();
-
-  const handleBlockClick = (type: "inc" | "dec") => {
-    dispatch(
-      projectsSlice.actions.setPagination({
-        field: "currBlock",
-        val: projState.currBlock + (type === "inc" ? 1 : -1),
-      })
-    );
-  };
-
   useEffect(() => {
     const resize = () => {
       const lastBlockI = Math.max(0, totBlocks - 1);
@@ -71,20 +63,32 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
       const shouldFixBlock = projState.currBlock > lastBlockI;
 
       if (shouldFixBlock || shouldFixPage) {
-        if (shouldFixBlock)
+        if (shouldFixBlock) {
+          saveStorage("apps", {
+            ...projState,
+            currBlock: lastBlockI,
+          });
+
           dispatch(
             projectsSlice.actions.setPagination({
               field: "currBlock",
               val: lastBlockI,
             })
           );
-        if (shouldFixPage)
+        }
+        if (shouldFixPage) {
+          saveStorage("apps", {
+            ...projState,
+            currPage: lastPageI,
+          });
+
           dispatch(
             projectsSlice.actions.setPagination({
               field: "currPage",
               val: lastPageI,
             })
           );
+        }
       }
     };
 
@@ -104,7 +108,17 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
     dispatch,
     totBlocks,
     totPages,
+    projState,
   ]);
+
+  const handleBlockClick = (type: "inc" | "dec") => {
+    dispatch(
+      projectsSlice.actions.setPagination({
+        field: "currBlock",
+        val: projState.currBlock + (type === "inc" ? 1 : -1),
+      })
+    );
+  };
 
   return (
     <div className="w-full grid grid-cols-[60px_1fr_60px] items-center gap-10">
