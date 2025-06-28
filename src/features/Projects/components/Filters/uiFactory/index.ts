@@ -1,5 +1,4 @@
 import { FilterAppType } from "@/features/Projects/slice";
-import { css } from "@emotion/react";
 import { v4 } from "uuid";
 
 export const btnFilters = ["All", "Full-Stack", "Frontend-Only"].map((el) => ({

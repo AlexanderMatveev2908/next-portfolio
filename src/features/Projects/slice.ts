@@ -14,7 +14,7 @@ export type ProjectsStateType = {
 
 const defState: ProjectsStateType = {
   currFilter: "All",
-  currSorter: "DESC",
+  currSorter: "",
   currPage: 0,
   currBlock: 0,
 };
@@ -29,6 +29,9 @@ export const projectsSlice = createSlice({
   reducers: {
     setFilter: (state, action: PayloadAction<FilterAppType>) => {
       state.currFilter = action.payload;
+    },
+    setSorter: (state, action: PayloadAction<string>) => {
+      state.currSorter = action.payload;
     },
     setPagination: (
       state,
