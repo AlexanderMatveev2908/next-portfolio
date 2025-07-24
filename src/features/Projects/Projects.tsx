@@ -83,6 +83,7 @@ const Projects: FC = () => {
           grid-template-columns: 1fr;
           place-content: center;
           place-items: center;
+          min-height: 400px;
 
           ${resp(400)} {
             grid-template-columns: repeat(auto-fit, 400px);

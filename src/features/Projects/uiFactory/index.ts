@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { v4 } from "uuid";
 
-const B_URL = "/imgs/";
+// const B_URL = "/imgs/";
 
 export type HostType = "Render.com" | "Vercel.com" | "Fly.io";
 export type TypeApp = "Full-Stack" | "Frontend-Only";
@@ -22,7 +22,6 @@ export type ProjectType = {
 export const projects: ProjectType[] = [
   {
     title: "Bookstore App",
-    imgs: ["pern_book.png"],
     repo: "https://github.com/AlexanderMatveev2908/pern__book",
     live: "https://pern-book.fly.dev/",
     host: "Fly.io",
@@ -32,7 +31,6 @@ export const projects: ProjectType[] = [
   },
   {
     title: "Food Delivery App",
-    imgs: ["mern_eat.png"],
     repo: "https://github.com/AlexanderMatveev2908/MERN__EAT",
     live: "https://food-app-aqkc.onrender.com/",
     host: "Render.com",
@@ -42,7 +40,6 @@ export const projects: ProjectType[] = [
   },
   {
     title: "Hotel Booking App",
-    imgs: ["mern_book.png"],
     repo: "https://github.com/AlexanderMatveev2908/MERN__BOOKING",
     live: "https://mern-booking-app-0w8v.onrender.com/",
     host: "Render.com",
@@ -51,8 +48,25 @@ export const projects: ProjectType[] = [
     order: 0,
   },
   {
+    title: "Courses App",
+    repo: "https://github.com/AlexanderMatveev2908/next-pern-courses",
+    live: "https://next-pern-courses-client.fly.dev/",
+    host: "Fly.io",
+    typeApp: "Full-Stack",
+    defName: "courses",
+    order: 6,
+  },
+  {
+    title: "Qr-Code generator",
+    repo: "https://github.com/AlexanderMatveev2908/next-qr-code-generator",
+    live: "https://next-qr-code-generator-client.fly.dev/",
+    host: "Fly.io",
+    typeApp: "Full-Stack",
+    defName: "qr_code",
+    order: 7,
+  },
+  {
     title: "Memory Game",
-    imgs: ["memory.png"],
     repo: "https://github.com/AlexanderMatveev2908/next-memory-game",
     live: "https://next-memory-game-ten.vercel.app/",
     host: "Vercel.com",
@@ -61,7 +75,6 @@ export const projects: ProjectType[] = [
   },
   {
     title: "Tic Tac Toe",
-    imgs: ["x_o.png"],
     repo: "https://github.com/AlexanderMatveev2908/REACT__X0",
     live: "https://react-x0.onrender.com/",
     host: "Render.com",
@@ -70,24 +83,26 @@ export const projects: ProjectType[] = [
   },
   {
     title: "Calculator IOS",
-    imgs: ["calc.png"],
     repo: "https://github.com/AlexanderMatveev2908/REACT_CALCULATOR",
     live: "https://react-calculator-imc7.onrender.com/",
     host: "Render.com",
     defName: "calc",
     order: 1,
   },
-].map((el) => ({
-  ...el,
-  imgs: el.imgs.flatMap((img) => [
-    // B_URL + img.split(".")[0] + "_sm." + img.split(".")[1],
-    B_URL + img + "?v=1",
-  ]),
-  id: v4(),
-  fileMD: `${el.defName}.md`,
-  typeApp: (el.typeApp ?? "Frontend-Only") as TypeApp,
-  host: el.host as HostType,
-}));
+].map(
+  (el): ProjectType => ({
+    ...el,
+    // imgs: el.imgs.flatMap((img) => [
+    //   // B_URL + img.split(".")[0] + "_sm." + img.split(".")[1],
+    //   B_URL + img + "?v=1",
+    // ]),
+    imgs: [`/imgs/${el.defName}.png`],
+    id: v4(),
+    fileMD: `${el.defName}.md`,
+    typeApp: (el.typeApp ?? "Frontend-Only") as TypeApp,
+    host: el.host as HostType,
+  })
+);
 
 export const optHoverDrop = css`
   background-color: var(--whitesmoke);

@@ -86,7 +86,7 @@ const Popup: FC = () => {
         `}
       >
         <div className="flex flex-col relative gap-10 min-h-0 max-h-full pb-5">
-          <div
+          <button
             onClick={handleClose}
             className="btn_app absolute -top-3 -right-1"
             style={
@@ -96,7 +96,7 @@ const Popup: FC = () => {
             }
           >
             <X className="text-red-600 h-[50px] w-[50px]" />
-          </div>
+          </button>
 
           <div className="w-full flex justify-center mt-10">
             <Txt {...{ txt: popState.content?.title ?? "" }} />
