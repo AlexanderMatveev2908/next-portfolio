@@ -19,8 +19,6 @@ const Projects: FC = () => {
   const projState = useSelector(getProjectsState);
   const [limit, setLimit] = useState(getNumCards());
 
-  console.log(projState);
-
   const filtered = useMemo(() => {
     const list =
       projState.currFilter === "All"

@@ -19,6 +19,7 @@ import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 import { css } from "@emotion/react";
 import RowPageBtns from "./components/RowPageBtns/RowPageBtns";
 import { saveStorage } from "@/core/lib/storage";
+import { useHydrations } from "@/core/hooks/useHydrations";
 
 type PropsType = {
   limit: number;
@@ -32,18 +33,61 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
   const [maxBlockBtns, setMaxBlockBtns] = useState(genNumBlockBtns());
 
   const dispatch = useDispatch();
+  const { isHydrated } = useHydrations();
 
   useEffect(() => {
-    const listen = () => {
-      setLimit(getNumCards());
-      setMaxBlockBtns(genNumBlockBtns());
+    const resize = () => {
+      const newLimit = getNumCards();
+      const newMaxBlockBtns = genNumBlockBtns();
+
+      setLimit(newLimit);
+      setMaxBlockBtns(newMaxBlockBtns);
+
+      const newTotPages = Math.ceil(filtered.length / newLimit);
+      const newTotBlocks = Math.ceil(newTotPages / newMaxBlockBtns);
+
+      const lastBlockI = Math.max(0, newTotBlocks - 1);
+      const lastPageI = Math.max(0, newTotPages - 1);
+
+      const shouldFixPage = projState.currPage > lastPageI;
+      const shouldFixBlock = projState.currBlock > lastBlockI;
+
+      if (shouldFixBlock) {
+        saveStorage("apps", {
+          ...projState,
+          currBlock: lastBlockI,
+        });
+
+        dispatch(
+          projectsSlice.actions.setPagination({
+            field: "currBlock",
+            val: lastBlockI,
+          })
+        );
+      }
+
+      if (shouldFixPage) {
+        saveStorage("apps", {
+          ...projState,
+          currPage: lastPageI,
+        });
+
+        dispatch(
+          projectsSlice.actions.setPagination({
+            field: "currPage",
+            val: lastPageI,
+          })
+        );
+      }
     };
 
-    window.addEventListener("resize", listen);
+    resize();
+
+    window.addEventListener("resize", resize);
     return () => {
-      window.removeEventListener("resize", listen);
+      window.removeEventListener("resize", resize);
     };
-  }, [setLimit]);
+  }, [filtered.length, isHydrated, setLimit, dispatch, projState]);
 
   const totPages = useMemo(
     () => Math.ceil(filtered.length / limit),
@@ -53,63 +97,6 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
     () => Math.ceil(filtered.length / maxBlockBtns),
     [filtered, maxBlockBtns]
   );
-
-  useEffect(() => {
-    const resize = () => {
-      const lastBlockI = Math.max(0, totBlocks - 1);
-      const lastPageI = Math.max(0, totPages - 1);
-
-      const shouldFixPage = projState.currPage > lastPageI;
-      const shouldFixBlock = projState.currBlock > lastBlockI;
-
-      if (shouldFixBlock || shouldFixPage) {
-        if (shouldFixBlock) {
-          saveStorage("apps", {
-            ...projState,
-            currBlock: lastBlockI,
-          });
-
-          dispatch(
-            projectsSlice.actions.setPagination({
-              field: "currBlock",
-              val: lastBlockI,
-            })
-          );
-        }
-        if (shouldFixPage) {
-          saveStorage("apps", {
-            ...projState,
-            currPage: lastPageI,
-          });
-
-          dispatch(
-            projectsSlice.actions.setPagination({
-              field: "currPage",
-              val: lastPageI,
-            })
-          );
-        }
-      }
-    };
-
-    resize();
-
-    window.addEventListener("resize", resize);
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, [
-    filtered,
-    limit,
-    maxBlockBtns,
-    projState.currBlock,
-    projState.currPage,
-    dispatch,
-    totBlocks,
-    totPages,
-    projState,
-  ]);
 
   const handleBlockClick = (type: "inc" | "dec") => {
     dispatch(
@@ -145,7 +132,7 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
           el: {
             svg: ArrowBigRight,
           },
-          disabled: projState.currBlock >= totBlocks - 1,
+          disabled: projState.currBlock >= totBlocks - 2,
           handleClick: handleBlockClick.bind(null, "inc"),
           $scaleUp: 1.25,
           $custom: {
