@@ -45,8 +45,8 @@ const About: FC = () => {
           I&apos;m always exploring new tools and frameworks and applying them
           in&nbsp;
           <strong>real-world projects.</strong> I care about building&nbsp;
-          <strong>scalable, maintainable apps</strong>
-          with clean code and&nbsp;
+          <strong>scalable, maintainable apps</strong>&nbsp;with clean code
+          and&nbsp;
           <strong>solid architecture.</strong>
         </span>
       </div>
