@@ -30,7 +30,7 @@ const Contact: FC = () => {
           }}
         >
           <div className="flex justify-center items-center">
-            <FancyBtn {...{ href: "ALEXANDER_MTAVEEV_CV.pdf" }} />
+            <FancyBtn {...{ href: "ALEXANDER_MATVEEV_CV.pdf" }} />
           </div>
         </WrapSectionContact>
 
