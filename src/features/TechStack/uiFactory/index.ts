@@ -11,10 +11,12 @@ import SvgFly from "@/shared/components/SVGs/Fly";
 import SvgFramer from "@/shared/components/SVGs/Framer";
 import SvgGit from "@/shared/components/SVGs/Git";
 import SvgGithub from "@/shared/components/SVGs/Github";
+import SvgGunicorn from "@/shared/components/SVGs/Gunicorn";
 import SvgHtml from "@/shared/components/SVGs/Html";
 import SvgJavascript from "@/shared/components/SVGs/Javascript";
 import SvgJest from "@/shared/components/SVGs/Jest";
 import SvgJwt from "@/shared/components/SVGs/Jwt";
+import SvgLinux from "@/shared/components/SVGs/Linux";
 import SvgMongodb from "@/shared/components/SVGs/Mongodb";
 import SvgNextjs from "@/shared/components/SVGs/Nextjs";
 import SvgNginx from "@/shared/components/SVGs/Nginx";
@@ -22,6 +24,7 @@ import SvgNgrok from "@/shared/components/SVGs/Ngrok";
 import SvgNode from "@/shared/components/SVGs/Node";
 import SvgNpm from "@/shared/components/SVGs/Npm";
 import SvgPlaywright from "@/shared/components/SVGs/Playwright";
+import SvgPoetry from "@/shared/components/SVGs/Poetry";
 import SvgPostgres from "@/shared/components/SVGs/Postgres";
 import SvgPostman from "@/shared/components/SVGs/Postman";
 import SvgPrisma from "@/shared/components/SVGs/Prisma";
@@ -64,6 +67,9 @@ export const stack = [
     svg: SvgPython,
   },
   {
+    svg: SvgLinux,
+  },
+  {
     svg: SvgGit,
   },
   {
@@ -83,6 +89,12 @@ export const stack = [
   },
   {
     svg: SvgYarn,
+  },
+  {
+    svg: SvgPoetry,
+  },
+  {
+    svg: SvgGunicorn,
   },
   {
     svg: SvgFigma,
