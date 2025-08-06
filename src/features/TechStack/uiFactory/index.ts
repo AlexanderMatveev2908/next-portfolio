@@ -1,7 +1,10 @@
+import { SqlAlchemy } from "@/shared/components/SVGs";
+import SvgAws from "@/shared/components/SVGs/Aws";
 import SvgBootstrap from "@/shared/components/SVGs/Bootstrap";
 import SvgCloudinary from "@/shared/components/SVGs/Cloudinary";
 import SvgCss from "@/shared/components/SVGs/Css";
 import SvgDocker from "@/shared/components/SVGs/Docker";
+import SvgFastApi from "@/shared/components/SVGs/FastApi";
 import SvgFastify from "@/shared/components/SVGs/Fastify";
 import SvgFigma from "@/shared/components/SVGs/Figma";
 import SvgFly from "@/shared/components/SVGs/Fly";
@@ -22,6 +25,8 @@ import SvgPlaywright from "@/shared/components/SVGs/Playwright";
 import SvgPostgres from "@/shared/components/SVGs/Postgres";
 import SvgPostman from "@/shared/components/SVGs/Postman";
 import SvgPrisma from "@/shared/components/SVGs/Prisma";
+import SvgPydantic from "@/shared/components/SVGs/Pydantic";
+import SvgPython from "@/shared/components/SVGs/Python";
 import SvgReact from "@/shared/components/SVGs/React";
 import SvgReactRouter from "@/shared/components/SVGs/ReactRouter";
 import SvgRedux from "@/shared/components/SVGs/Redux";
@@ -32,9 +37,11 @@ import SvgTailwind from "@/shared/components/SVGs/Tailwind";
 import SvgTypescript from "@/shared/components/SVGs/Typescript";
 import SvgUseQuery from "@/shared/components/SVGs/UseQuery";
 import SvgVite from "@/shared/components/SVGs/Vite";
+import SvgVitest from "@/shared/components/SVGs/Vitest";
 import SvgVsc from "@/shared/components/SVGs/Vsc";
 import SvgYarn from "@/shared/components/SVGs/Yarn";
 import SvgZod from "@/shared/components/SVGs/Zod";
+import SvgZsh from "@/shared/components/SVGs/Zsh";
 import { v4 } from "uuid";
 
 export const stack = [
@@ -54,10 +61,17 @@ export const stack = [
     svg: SvgTypescript,
   },
   {
+    svg: SvgPython,
+  },
+  {
     svg: SvgGit,
   },
   {
     svg: SvgGithub,
+    clr: "whitesmoke",
+  },
+  {
+    svg: SvgZsh,
     clr: "whitesmoke",
   },
   {
@@ -90,6 +104,7 @@ export const stack = [
   },
   {
     svg: SvgReactRouter,
+    clr: "whitesmoke",
   },
   {
     svg: SvgUseQuery,
@@ -105,14 +120,25 @@ export const stack = [
     svg: SvgZod,
   },
   {
+    svg: SvgPydantic,
+    clr: "whitesmoke",
+  },
+  {
     svg: SvgFastify,
     clr: "whitesmoke",
+  },
+  {
+    svg: SvgFastApi,
   },
   {
     svg: SvgMongodb,
   },
   {
     svg: SvgPostgres,
+  },
+  {
+    svg: SqlAlchemy,
+    clr: "whitesmoke",
   },
   {
     svg: SvgSequelize,
@@ -123,6 +149,10 @@ export const stack = [
   },
   {
     svg: SvgCloudinary,
+  },
+  {
+    svg: SvgAws,
+    clr: "whitesmoke",
   },
   {
     svg: SvgStripe,
@@ -141,6 +171,9 @@ export const stack = [
   },
   {
     svg: SvgPlaywright,
+  },
+  {
+    svg: SvgVitest,
   },
   {
     svg: SvgDocker,
