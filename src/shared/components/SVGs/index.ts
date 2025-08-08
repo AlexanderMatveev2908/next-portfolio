@@ -1,4 +1,5 @@
 export { default as Aws } from "./Aws";
+export { default as Axios } from "./Axios";
 export { default as Bootstrap } from "./Bootstrap";
 export { default as BtnApi } from "./BtnApi";
 export { default as BtnBrackets } from "./BtnBrackets";
@@ -26,6 +27,7 @@ export { default as Javascript } from "./Javascript";
 export { default as Jest } from "./Jest";
 export { default as Jwt } from "./Jwt";
 export { default as Linux } from "./Linux";
+export { default as Markdown } from "./Markdown";
 export { default as Mgrok } from "./Mgrok";
 export { default as Mongodb } from "./Mongodb";
 export { default as Nextjs } from "./Nextjs";

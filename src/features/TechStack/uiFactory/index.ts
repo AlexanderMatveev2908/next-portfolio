@@ -1,5 +1,6 @@
 import { SqlAlchemy } from "@/shared/components/SVGs";
 import SvgAws from "@/shared/components/SVGs/Aws";
+import SvgAxios from "@/shared/components/SVGs/Axios";
 import SvgBootstrap from "@/shared/components/SVGs/Bootstrap";
 import SvgCloudinary from "@/shared/components/SVGs/Cloudinary";
 import SvgCss from "@/shared/components/SVGs/Css";
@@ -17,6 +18,7 @@ import SvgJavascript from "@/shared/components/SVGs/Javascript";
 import SvgJest from "@/shared/components/SVGs/Jest";
 import SvgJwt from "@/shared/components/SVGs/Jwt";
 import SvgLinux from "@/shared/components/SVGs/Linux";
+import SvgMarkdown from "@/shared/components/SVGs/Markdown";
 import SvgMongodb from "@/shared/components/SVGs/Mongodb";
 import SvgNextjs from "@/shared/components/SVGs/Nextjs";
 import SvgNginx from "@/shared/components/SVGs/Nginx";
@@ -73,6 +75,10 @@ export const stack = [
   },
   {
     svg: SvgZsh,
+    clr: "whitesmoke",
+  },
+  {
+    svg: SvgMarkdown,
     clr: "whitesmoke",
   },
 
@@ -173,6 +179,10 @@ export const stack = [
   },
   {
     svg: SvgAws,
+    clr: "whitesmoke",
+  },
+  {
+    svg: SvgAxios,
     clr: "whitesmoke",
   },
   {
