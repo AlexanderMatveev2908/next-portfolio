@@ -29,6 +29,7 @@ import SvgPostgres from "@/shared/components/SVGs/Postgres";
 import SvgPostman from "@/shared/components/SVGs/Postman";
 import SvgPrisma from "@/shared/components/SVGs/Prisma";
 import SvgPydantic from "@/shared/components/SVGs/Pydantic";
+import SvgPytest from "@/shared/components/SVGs/Pytest";
 import SvgPython from "@/shared/components/SVGs/Python";
 import SvgReact from "@/shared/components/SVGs/React";
 import SvgReactRouter from "@/shared/components/SVGs/ReactRouter";
@@ -48,6 +49,7 @@ import SvgZsh from "@/shared/components/SVGs/Zsh";
 import { v4 } from "uuid";
 
 export const stack = [
+  // __ CORE
   {
     svg: SvgHtml,
   },
@@ -70,14 +72,16 @@ export const stack = [
     svg: SvgLinux,
   },
   {
+    svg: SvgZsh,
+    clr: "whitesmoke",
+  },
+
+  // __ VERSION CONTROL & PACKAGE MANAGERS
+  {
     svg: SvgGit,
   },
   {
     svg: SvgGithub,
-    clr: "whitesmoke",
-  },
-  {
-    svg: SvgZsh,
     clr: "whitesmoke",
   },
   {
@@ -93,47 +97,10 @@ export const stack = [
   {
     svg: SvgPoetry,
   },
+
+  // __ SERVER
   {
     svg: SvgGunicorn,
-  },
-  {
-    svg: SvgFigma,
-  },
-  {
-    svg: SvgBootstrap,
-  },
-  {
-    svg: SvgTailwind,
-  },
-  {
-    svg: SvgFramer,
-  },
-  {
-    svg: SvgVite,
-  },
-  {
-    svg: SvgReact,
-  },
-  {
-    svg: SvgReactRouter,
-    clr: "whitesmoke",
-  },
-  {
-    svg: SvgUseQuery,
-  },
-  {
-    svg: SvgRedux,
-  },
-  {
-    svg: SvgNextjs,
-    clr: "whitesmoke",
-  },
-  {
-    svg: SvgZod,
-  },
-  {
-    svg: SvgPydantic,
-    clr: "whitesmoke",
   },
   {
     svg: SvgFastify,
@@ -142,6 +109,8 @@ export const stack = [
   {
     svg: SvgFastApi,
   },
+
+  // __ DATABASES
   {
     svg: SvgMongodb,
   },
@@ -159,6 +128,46 @@ export const stack = [
     svg: SvgPrisma,
     clr: "#0C344B",
   },
+
+  // __ CLIENT
+
+  {
+    svg: SvgReact,
+  },
+  {
+    svg: SvgNextjs,
+    clr: "whitesmoke",
+  },
+  {
+    svg: SvgVite,
+  },
+  {
+    svg: SvgReactRouter,
+    clr: "whitesmoke",
+  },
+  {
+    svg: SvgBootstrap,
+  },
+  {
+    svg: SvgTailwind,
+  },
+  {
+    svg: SvgFramer,
+  },
+
+  // __ STATE && VALIDATION
+  {
+    svg: SvgRedux,
+  },
+  {
+    svg: SvgZod,
+  },
+  {
+    svg: SvgPydantic,
+    clr: "whitesmoke",
+  },
+
+  // __ STORAGE && API
   {
     svg: SvgCloudinary,
   },
@@ -167,25 +176,21 @@ export const stack = [
     clr: "whitesmoke",
   },
   {
-    svg: SvgStripe,
+    svg: SvgUseQuery,
   },
   {
     svg: SvgJwt,
   },
   {
+    svg: SvgStripe,
+  },
+
+  // __ TOOLS
+  {
     svg: SvgVsc,
   },
   {
     svg: SvgPostman,
-  },
-  {
-    svg: SvgJest,
-  },
-  {
-    svg: SvgPlaywright,
-  },
-  {
-    svg: SvgVitest,
   },
   {
     svg: SvgDocker,
@@ -199,6 +204,23 @@ export const stack = [
   },
   {
     svg: SvgFly,
+  },
+  {
+    svg: SvgFigma,
+  },
+
+  // __ TEST
+  {
+    svg: SvgJest,
+  },
+  {
+    svg: SvgVitest,
+  },
+  {
+    svg: SvgPlaywright,
+  },
+  {
+    svg: SvgPytest,
   },
 ].map((el) => ({
   ...el,

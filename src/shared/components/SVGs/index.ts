@@ -40,6 +40,7 @@ export { default as Postgres } from "./Postgres";
 export { default as Postman } from "./Postman";
 export { default as Prisma } from "./Prisma";
 export { default as Pydantic } from "./Pydantic";
+export { default as Pytest } from "./Pytest";
 export { default as Python } from "./Python";
 export { default as React } from "./React";
 export { default as ReactRouter } from "./ReactRouter";
