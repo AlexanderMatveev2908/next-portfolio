@@ -37,7 +37,7 @@ const TechStack: FC = () => {
           className="w-full flex gap-10"
           animate={{ x: ["0%", -width] }}
           transition={{
-            duration: 40,
+            duration: 60,
             ease: "linear",
             repeat: Infinity,
           }}

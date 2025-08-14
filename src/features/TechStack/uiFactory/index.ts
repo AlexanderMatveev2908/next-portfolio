@@ -35,13 +35,16 @@ import SvgPytest from "@/shared/components/SVGs/Pytest";
 import SvgPython from "@/shared/components/SVGs/Python";
 import SvgReact from "@/shared/components/SVGs/React";
 import SvgReactRouter from "@/shared/components/SVGs/ReactRouter";
+import SvgRedis from "@/shared/components/SVGs/Redis";
 import SvgRedux from "@/shared/components/SVGs/Redux";
 import SvgSass from "@/shared/components/SVGs/Sass";
 import SvgSequelize from "@/shared/components/SVGs/Sequelize";
 import SvgStripe from "@/shared/components/SVGs/Stripe";
 import SvgTailwind from "@/shared/components/SVGs/Tailwind";
 import SvgTypescript from "@/shared/components/SVGs/Typescript";
+import SvgUpstash from "@/shared/components/SVGs/Upstash";
 import SvgUseQuery from "@/shared/components/SVGs/UseQuery";
+import SvgVercel from "@/shared/components/SVGs/Vercel";
 import SvgVite from "@/shared/components/SVGs/Vite";
 import SvgVitest from "@/shared/components/SVGs/Vitest";
 import SvgVsc from "@/shared/components/SVGs/Vsc";
@@ -117,6 +120,9 @@ export const stack = [
   },
 
   // __ DATABASES
+  {
+    svg: SvgRedis,
+  },
   {
     svg: SvgMongodb,
   },
@@ -214,6 +220,13 @@ export const stack = [
   },
   {
     svg: SvgFly,
+  },
+  {
+    svg: SvgVercel,
+    clr: "whitesmoke",
+  },
+  {
+    svg: SvgUpstash,
   },
   {
     svg: SvgFigma,
