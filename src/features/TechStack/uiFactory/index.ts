@@ -2,6 +2,8 @@ import { SqlAlchemy } from "@/shared/components/SVGs";
 import SvgAws from "@/shared/components/SVGs/Aws";
 import SvgAxios from "@/shared/components/SVGs/Axios";
 import SvgBootstrap from "@/shared/components/SVGs/Bootstrap";
+import SvgBrevo from "@/shared/components/SVGs/Brevo";
+import SvgCanva from "@/shared/components/SVGs/Canva";
 import SvgCloudinary from "@/shared/components/SVGs/Cloudinary";
 import SvgCss from "@/shared/components/SVGs/Css";
 import SvgDocker from "@/shared/components/SVGs/Docker";
@@ -20,6 +22,7 @@ import SvgJwt from "@/shared/components/SVGs/Jwt";
 import SvgLinux from "@/shared/components/SVGs/Linux";
 import SvgMarkdown from "@/shared/components/SVGs/Markdown";
 import SvgMongodb from "@/shared/components/SVGs/Mongodb";
+import SvgNameCheap from "@/shared/components/SVGs/NameCheap";
 import SvgNextjs from "@/shared/components/SVGs/Nextjs";
 import SvgNginx from "@/shared/components/SVGs/Nginx";
 import SvgNgrok from "@/shared/components/SVGs/Ngrok";
@@ -40,6 +43,7 @@ import SvgRedux from "@/shared/components/SVGs/Redux";
 import SvgSass from "@/shared/components/SVGs/Sass";
 import SvgSequelize from "@/shared/components/SVGs/Sequelize";
 import SvgStripe from "@/shared/components/SVGs/Stripe";
+import SvgSupabase from "@/shared/components/SVGs/Supabase";
 import SvgTailwind from "@/shared/components/SVGs/Tailwind";
 import SvgTypescript from "@/shared/components/SVGs/Typescript";
 import SvgUpstash from "@/shared/components/SVGs/Upstash";
@@ -229,7 +233,20 @@ export const stack = [
     svg: SvgUpstash,
   },
   {
+    svg: SvgSupabase,
+  },
+  {
+    svg: SvgBrevo,
+    clr: "whitesmoke",
+  },
+  {
+    svg: SvgNameCheap,
+  },
+  {
     svg: SvgFigma,
+  },
+  {
+    svg: SvgCanva,
   },
 
   // __ TEST
@@ -245,7 +262,9 @@ export const stack = [
   {
     svg: SvgPytest,
   },
-].map((el) => ({
-  ...el,
-  id: v4(),
-}));
+]
+  .map((el) => ({
+    ...el,
+    id: v4(),
+  }))
+  .reverse();
