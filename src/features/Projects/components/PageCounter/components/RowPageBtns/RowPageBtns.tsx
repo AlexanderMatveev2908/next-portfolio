@@ -40,10 +40,10 @@ const RowPageBtns: FC<PropsType> = ({ maxBlockBtns, totPages, projState }) => {
   }, [projState.currBlock, maxBlockBtns, totPages]);
 
   const { ids } = useGenIDs({
-    lengths: [maxBlockBtns],
+    lengths: [currPages.length],
   });
 
-  return (
+  return ids[0].length !== currPages.length ? null : (
     <div
       className="w-full items-center flex gap-5"
       css={css`
