@@ -81,7 +81,9 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
       }
     };
 
-    if (isHydrated) resize();
+    if (!isHydrated) return;
+
+    resize();
 
     window.addEventListener("resize", resize);
     return () => {
@@ -94,8 +96,8 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
     [filtered, limit]
   );
   const totBlocks = useMemo(
-    () => Math.ceil(filtered.length / maxBlockBtns),
-    [filtered, maxBlockBtns]
+    () => Math.ceil(totPages / maxBlockBtns),
+    [totPages, maxBlockBtns]
   );
 
   const handleBlockClick = (type: "inc" | "dec") => {
