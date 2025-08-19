@@ -71,7 +71,7 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
       ) : (
         <div
           ref={containerRef}
-          className="text-[whitesmoke] scroll_app overflow-x-auto px-3 pr-5 prose prose-neutral dark:prose-invert"
+          className="text-[whitesmoke] scroll_app overflow-x-auto px-3 pr-5 prose prose-invert"
         >
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
