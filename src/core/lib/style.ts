@@ -20,18 +20,19 @@ export const resp = (str: keyof typeof uiBreaks | number) =>
 export const calcRatioH = (w: number, type: "16/9" | "9/16"): number =>
   w * (type === "16/9" ? 9 / 16 : 16 / 9);
 
-export const getNumCards = () =>
-  window.innerWidth > uiBreaks._2xl
-    ? 3
-    : window.innerWidth > uiBreaks.sm
-    ? 2
-    : 1;
+export const getW = () => window.visualViewport?.width ?? window.innerWidth;
+
+export const getNumCards = () => {
+  const w = getW();
+
+  return w > uiBreaks._2xl ? 3 : w > uiBreaks.sm ? 2 : 1;
+};
 // window.innerWidth > uiBreaks.lg ? 6 : window.innerWidth > uiBreaks.md ? 4 : 2;
 
 export const genNumBlockBtns = () => {
   if (!isWindow()) return 1;
 
-  const w = window.visualViewport?.width ?? window.innerWidth;
+  const w = getW();
 
   return w > uiBreaks.xl
     ? 10

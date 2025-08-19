@@ -86,6 +86,7 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
     resize();
 
     window.addEventListener("resize", resize);
+
     return () => {
       window.removeEventListener("resize", resize);
     };
