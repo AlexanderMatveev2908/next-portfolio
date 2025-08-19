@@ -18,3 +18,5 @@ export const genSizeRandom = () => {
     height: ${size}px;
   `;
 };
+
+export const isWindow = () => typeof window !== "undefined";

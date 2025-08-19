@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import { uiBreaks } from "../constants/uiBreaks";
+import { isWindow } from "./etc";
 
 export const getCountSpinner = () => {
   const w = window.innerWidth;
@@ -24,7 +25,9 @@ export const getNumCards = () =>
 // window.innerWidth > uiBreaks.lg ? 6 : window.innerWidth > uiBreaks.md ? 4 : 2;
 
 export const genNumBlockBtns = () =>
-  window.innerWidth > uiBreaks.xl
+  !isWindow()
+    ? 1
+    : window.innerWidth > uiBreaks.xl
     ? 10
     : window.innerWidth > uiBreaks.lg
     ? 8
