@@ -64,7 +64,6 @@ const Projects: FC = () => {
         className="w-full justify-center gap-x-12 gap-y-8 grid"
         css={css`
           grid-template-columns: 1fr;
-
           ${resp(750)} {
             grid-template-columns: repeat(2, 1fr);
           }
@@ -81,7 +80,7 @@ const Projects: FC = () => {
           grid-template-columns: 1fr;
           place-content: center;
           place-items: center;
-          min-height: 400px;
+          height: 100%;
 
           ${resp(400)} {
             grid-template-columns: repeat(auto-fit, 400px);

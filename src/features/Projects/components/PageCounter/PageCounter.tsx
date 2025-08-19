@@ -30,12 +30,14 @@ type PropsType = {
 
 const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
   const projState = useSelector(getProjectsState);
-  const [maxBlockBtns, setMaxBlockBtns] = useState(genNumBlockBtns());
+  const [maxBlockBtns, setMaxBlockBtns] = useState(1);
 
   const dispatch = useDispatch();
   const { isHydrated } = useHydrations();
 
   useEffect(() => {
+    if (!isHydrated) return;
+
     const resize = () => {
       const newLimit = getNumCards();
       const newMaxBlockBtns = genNumBlockBtns();
@@ -81,8 +83,6 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
       }
     };
 
-    if (!isHydrated) return;
-
     resize();
 
     window.addEventListener("resize", resize);
@@ -109,7 +109,7 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
     );
   };
 
-  return (
+  return !isHydrated ? null : (
     <div className="w-full grid grid-cols-[60px_1fr_60px] items-center gap-10">
       <BtnBase
         {...{
@@ -134,7 +134,7 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
           el: {
             svg: ArrowBigRight,
           },
-          disabled: projState.currBlock >= totBlocks - 2,
+          disabled: projState.currBlock >= totBlocks - 1,
           handleClick: handleBlockClick.bind(null, "inc"),
           $scaleUp: 1.25,
           $custom: {
