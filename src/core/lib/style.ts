@@ -21,20 +21,27 @@ export const calcRatioH = (w: number, type: "16/9" | "9/16"): number =>
   w * (type === "16/9" ? 9 / 16 : 16 / 9);
 
 export const getNumCards = () =>
-  window.innerWidth > uiBreaks.xl ? 3 : window.innerWidth > uiBreaks.sm ? 2 : 1;
-// window.innerWidth > uiBreaks.lg ? 6 : window.innerWidth > uiBreaks.md ? 4 : 2;
-
-export const genNumBlockBtns = () =>
-  !isWindow()
-    ? 1
-    : window.innerWidth > uiBreaks.xl
-    ? 10
-    : window.innerWidth > uiBreaks.lg
-    ? 8
-    : window.innerWidth > uiBreaks.md
-    ? 6
+  window.innerWidth > uiBreaks._2xl
+    ? 3
     : window.innerWidth > uiBreaks.sm
-    ? 4
-    : window.innerWidth > 400
     ? 2
     : 1;
+// window.innerWidth > uiBreaks.lg ? 6 : window.innerWidth > uiBreaks.md ? 4 : 2;
+
+export const genNumBlockBtns = () => {
+  if (!isWindow()) return 1;
+
+  const w = window.visualViewport?.width ?? window.innerWidth;
+
+  return w > uiBreaks.xl
+    ? 10
+    : w > uiBreaks.lg
+    ? 8
+    : w > uiBreaks.md
+    ? 6
+    : w > uiBreaks.sm
+    ? 4
+    : w > 400
+    ? 2
+    : 1;
+};
