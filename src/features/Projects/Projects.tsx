@@ -4,16 +4,18 @@
 
 import WrapSection from "@/shared/components/HOC/WrapSection/WrapSection";
 import { Portfolio } from "@/shared/components/SVGs";
-import { useMemo, useState, type FC } from "react";
+import { useEffect, useMemo, useState, type FC } from "react";
 import { projects } from "./uiFactory";
 import ProjectItem from "./components/ProjectItem/ProjectItem";
 import { css } from "@emotion/react";
 import { getNumCards, resp } from "@/core/lib/style";
 import Filters from "./components/Filters/Filters";
-import { useSelector } from "react-redux";
-import { getProjectsState } from "./slice";
+import { useDispatch, useSelector } from "react-redux";
+import { defStateProj, getProjectsState, projectsSlice } from "./slice";
 import PageCounter from "./components/PageCounter/PageCounter";
 import Sorter from "./components/Sorter/Sorter";
+import { getStorage } from "@/core/lib/storage";
+import { useHydrations } from "@/core/hooks/useHydrations";
 
 const Projects: FC = () => {
   const projState = useSelector(getProjectsState);
@@ -49,6 +51,15 @@ const Projects: FC = () => {
 
     return sorted.slice(start, end);
   }, [limit, currPage, currSorter, filtered]);
+
+  const { isHydrated } = useHydrations();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isHydrated) return;
+
+    dispatch(projectsSlice.actions.setAll(getStorage("apps") ?? defStateProj));
+  }, [dispatch, isHydrated]);
 
   return (
     <WrapSection

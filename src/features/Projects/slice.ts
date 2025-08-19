@@ -1,4 +1,3 @@
-import { getStorage } from "@/core/lib/storage";
 import { TypeApp } from "./uiFactory";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootStateType } from "@/core/store";
@@ -12,7 +11,7 @@ export type ProjectsStateType = {
   currBlock: number;
 };
 
-const defState: ProjectsStateType = {
+export const defStateProj: ProjectsStateType = {
   currFilter: "All",
   currSorter: "",
   currPage: 0,
@@ -21,12 +20,13 @@ const defState: ProjectsStateType = {
 
 export type PaginationFieldType = "currPage" | "currBlock";
 
-const init: ProjectsStateType = getStorage("apps") ?? defState;
+const init: ProjectsStateType = defStateProj;
 
 export const projectsSlice = createSlice({
   name: "projects",
   initialState: init,
   reducers: {
+    setAll: (state, action: PayloadAction<ProjectsStateType>) => action.payload,
     setFilter: (state, action: PayloadAction<FilterAppType>) => {
       state.currFilter = action.payload;
     },
