@@ -36,7 +36,7 @@ const Back: FC<PropsType> = ({ el }) => {
 
   return (
     <div className="server rounded-xl">
-      <div className="w-full flex flex-col gap-4 h-full pb-4">
+      <div className="w-full flex flex-col gap-4 max-h-full overflow-y-auto pt-2 pb-8">
         <div className="w-full grid grid-cols-1 gap-y-5 px-3 py-2 justify-items-center">
           {[el.repo, el.live].map((subEl, i) => (
             <ExtLink
