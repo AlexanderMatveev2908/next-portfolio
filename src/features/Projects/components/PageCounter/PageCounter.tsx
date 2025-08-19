@@ -81,7 +81,7 @@ const PageCounter: FC<PropsType> = ({ limit, setLimit, filtered }) => {
       }
     };
 
-    resize();
+    if (isHydrated) resize();
 
     window.addEventListener("resize", resize);
     return () => {

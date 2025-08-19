@@ -7,10 +7,9 @@ import { PopStateType } from "@/features/Popup/slice";
 import { useEffect, useRef, useState, type FC } from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import remarkGfm from "remark-gfm";
-import "github-markdown-css/github-markdown-dark.css";
 import SpinnerBtn from "@/shared/components/Spinners/SpinnerBtn/SpinnerBtn";
+import rehypeHighlight from "rehype-highlight";
 
 type PropsType = {
   popState: PopStateType;
@@ -72,10 +71,11 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
       ) : (
         <div
           ref={containerRef}
-          className="text-[whitesmoke] scroll_app overflow-x-auto px-3 pr-5 prose dark:prose-invert"
+          className="text-[whitesmoke] scroll_app overflow-x-auto px-3 pr-5 prose prose-neutral dark:prose-invert"
         >
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeHighlight]}
             components={{
               a: (props) => (
                 <a {...props} target="_blank" rel="noopener noreferrer" />
@@ -84,12 +84,7 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
                 const match = /language-(\w+)/.exec(className || "");
 
                 return !inline && match ? (
-                  <Prism
-                    style={dracula}
-                    language={match[1]}
-                    PreTag="pre"
-                    {...props}
-                  >
+                  <Prism language={match[1]} PreTag="pre" {...props}>
                     {String(children).replace(/\n$/, "")}
                   </Prism>
                 ) : (
