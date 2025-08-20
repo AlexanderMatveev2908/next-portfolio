@@ -262,9 +262,7 @@ export const stack = [
   {
     svg: SvgPytest,
   },
-]
-  .map((el) => ({
-    ...el,
-    id: v4(),
-  }))
-  .reverse();
+].map((el) => ({
+  ...el,
+  id: v4(),
+}));
