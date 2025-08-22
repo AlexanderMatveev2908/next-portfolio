@@ -19,6 +19,7 @@ import SvgHtml from "@/shared/components/SVGs/Html";
 import SvgJavascript from "@/shared/components/SVGs/Javascript";
 import SvgJest from "@/shared/components/SVGs/Jest";
 import SvgJwt from "@/shared/components/SVGs/Jwt";
+import SvgKubernetes from "@/shared/components/SVGs/Kubernetes";
 import SvgLinux from "@/shared/components/SVGs/Linux";
 import SvgMarkdown from "@/shared/components/SVGs/Markdown";
 import SvgMongodb from "@/shared/components/SVGs/Mongodb";
@@ -214,6 +215,9 @@ export const stack = [
   },
   {
     svg: SvgDocker,
+  },
+  {
+    svg: SvgKubernetes,
   },
   {
     svg: SvgNginx,

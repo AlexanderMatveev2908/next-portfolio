@@ -28,6 +28,7 @@ export { default as Html } from "./Html";
 export { default as Javascript } from "./Javascript";
 export { default as Jest } from "./Jest";
 export { default as Jwt } from "./Jwt";
+export { default as Kubernetes } from "./Kubernetes";
 export { default as Linux } from "./Linux";
 export { default as Markdown } from "./Markdown";
 export { default as Mgrok } from "./Mgrok";
