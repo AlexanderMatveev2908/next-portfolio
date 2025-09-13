@@ -21,6 +21,15 @@ export type ProjectType = {
 
 export const projects: ProjectType[] = [
   {
+    title: "Job Application Tracker",
+    repo: "https://github.com/AlexanderMatveev2908/PFN-job-application-tracker",
+    live: "https://pfn-job-application-tracker-client.fly.dev/",
+    host: "Fly.io",
+    typeApp: "Full-Stack",
+    defName: "jobs",
+    order: 8,
+  },
+  {
     title: "Bookstore App",
     repo: "https://github.com/AlexanderMatveev2908/pern__book",
     live: "https://pern-book.fly.dev/",
@@ -39,15 +48,6 @@ export const projects: ProjectType[] = [
     order: 3,
   },
   {
-    title: "Hotel Booking App",
-    repo: "https://github.com/AlexanderMatveev2908/MERN__BOOKING",
-    live: "https://mern-booking-app-0w8v.onrender.com/",
-    host: "Render.com",
-    typeApp: "Full-Stack",
-    defName: "mern_book",
-    order: 0,
-  },
-  {
     title: "Courses App",
     repo: "https://github.com/AlexanderMatveev2908/next-pern-courses",
     live: "https://next-pern-courses-client.fly.dev/",
@@ -55,6 +55,15 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "courses",
     order: 6,
+  },
+  {
+    title: "Hotel Booking App",
+    repo: "https://github.com/AlexanderMatveev2908/MERN__BOOKING",
+    live: "https://mern-booking-app-0w8v.onrender.com/",
+    host: "Render.com",
+    typeApp: "Full-Stack",
+    defName: "mern_book",
+    order: 1,
   },
   {
     title: "Qr-Code generator",
@@ -87,7 +96,7 @@ export const projects: ProjectType[] = [
     live: "https://react-calculator-imc7.onrender.com/",
     host: "Render.com",
     defName: "calc",
-    order: 1,
+    order: 0,
   },
 ].map(
   (el): ProjectType => ({

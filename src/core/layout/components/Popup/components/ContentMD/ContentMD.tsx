@@ -9,7 +9,8 @@ import ReactMarkdown from "react-markdown";
 import { Prism } from "react-syntax-highlighter";
 import remarkGfm from "remark-gfm";
 import SpinnerBtn from "@/shared/components/Spinners/SpinnerBtn/SpinnerBtn";
-import rehypeHighlight from "rehype-highlight";
+import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+// import rehypeHighlight from "rehype-highlight";
 
 type PropsType = {
   popState: PopStateType;
@@ -75,7 +76,7 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
         >
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeHighlight]}
+            // rehypePlugins={[rehypeHighlight]}
             components={{
               a: (props) => (
                 <a {...props} target="_blank" rel="noopener noreferrer" />
@@ -84,7 +85,12 @@ const ContentMD: FC<PropsType> = ({ popState }) => {
                 const match = /language-(\w+)/.exec(className || "");
 
                 return !inline && match ? (
-                  <Prism language={match[1]} PreTag="pre" {...props}>
+                  <Prism
+                    language={match[1]}
+                    style={oneDark}
+                    PreTag="pre"
+                    {...props}
+                  >
                     {String(children).replace(/\n$/, "")}
                   </Prism>
                 ) : (
