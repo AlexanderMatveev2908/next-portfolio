@@ -17,17 +17,28 @@ export type ProjectType = {
   defName: string;
   fileMD: string;
   order: number;
+  down: boolean;
 };
 
 export const projects: ProjectType[] = [
   {
-    title: "Job Application Tracker",
+    title: "Job Application Tracker Java",
+    repo: "https://github.com/AlexanderMatveev2908/psn-job-application-tracker",
+    live: "https://psn-job-application-tracker-client.fly.dev/",
+    host: "Fly.io",
+    typeApp: "Full-Stack",
+    defName: "jobs_java",
+    order: 9,
+  },
+  {
+    title: "Job Application Tracker Python",
     repo: "https://github.com/AlexanderMatveev2908/PFN-job-application-tracker",
     live: "https://pfn-job-application-tracker-client.fly.dev/",
     host: "Fly.io",
     typeApp: "Full-Stack",
     defName: "jobs",
     order: 8,
+    down: true,
   },
   {
     title: "Bookstore App",
@@ -55,6 +66,7 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "courses",
     order: 6,
+    down: true,
   },
   {
     title: "Hotel Booking App",
@@ -110,6 +122,7 @@ export const projects: ProjectType[] = [
     fileMD: `${el.defName}.md`,
     typeApp: (el.typeApp ?? "Frontend-Only") as TypeApp,
     host: el.host as HostType,
+    down: el.down ?? false,
   })
 );
 

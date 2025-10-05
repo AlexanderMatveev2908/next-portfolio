@@ -46,6 +46,7 @@ const Back: FC<PropsType> = ({ el }) => {
                 typeLink: !i ? "git" : "live",
                 host: el.host,
                 typeApp: el.typeApp,
+                isDown: el.down,
               }}
             />
           ))}
