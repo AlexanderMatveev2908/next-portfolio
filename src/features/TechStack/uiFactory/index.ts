@@ -14,9 +14,12 @@ import SvgFly from "@/shared/components/SVGs/Fly";
 import SvgFramer from "@/shared/components/SVGs/Framer";
 import SvgGit from "@/shared/components/SVGs/Git";
 import SvgGithub from "@/shared/components/SVGs/Github";
+import SvgGradle from "@/shared/components/SVGs/Gradle";
 import SvgGunicorn from "@/shared/components/SVGs/Gunicorn";
 import SvgHtml from "@/shared/components/SVGs/Html";
+import SvgJava from "@/shared/components/SVGs/Java";
 import SvgJavascript from "@/shared/components/SVGs/Javascript";
+import SvgJayunit from "@/shared/components/SVGs/Jayunit";
 import SvgJest from "@/shared/components/SVGs/Jest";
 import SvgJwt from "@/shared/components/SVGs/Jwt";
 import SvgKubernetes from "@/shared/components/SVGs/Kubernetes";
@@ -43,6 +46,7 @@ import SvgRedis from "@/shared/components/SVGs/Redis";
 import SvgRedux from "@/shared/components/SVGs/Redux";
 import SvgSass from "@/shared/components/SVGs/Sass";
 import SvgSequelize from "@/shared/components/SVGs/Sequelize";
+import SvgSpring from "@/shared/components/SVGs/Spring";
 import SvgStripe from "@/shared/components/SVGs/Stripe";
 import SvgSupabase from "@/shared/components/SVGs/Supabase";
 import SvgTailwind from "@/shared/components/SVGs/Tailwind";
@@ -79,6 +83,9 @@ export const stack = [
     svg: SvgPython,
   },
   {
+    svg: SvgJava,
+  },
+  {
     svg: SvgLinux,
   },
   {
@@ -111,6 +118,10 @@ export const stack = [
   {
     svg: SvgPoetry,
   },
+  {
+    svg: SvgGradle,
+    clr: "whitesmoke",
+  },
 
   // __ SERVER
   {
@@ -122,6 +133,9 @@ export const stack = [
   },
   {
     svg: SvgFastApi,
+  },
+  {
+    svg: SvgSpring,
   },
 
   // __ DATABASES
@@ -265,6 +279,9 @@ export const stack = [
   },
   {
     svg: SvgPytest,
+  },
+  {
+    svg: SvgJayunit,
   },
 ].map((el) => ({
   ...el,
