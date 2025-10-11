@@ -22,16 +22,26 @@ export type ProjectType = {
 
 export const projects: ProjectType[] = [
   {
-    title: "Job Application Tracker Java",
+    title: "ASP Job Application Tracker",
+    repo: "https://github.com/AlexanderMatveev2908/asp-job-application-tracker",
+    live: "https://asp-job-application-tracker-client.fly.dev/",
+    host: "Fly.io",
+    typeApp: "Full-Stack",
+    defName: "jobs_ng_java",
+    order: 10,
+  },
+  {
+    title: "PSN Job Application Tracker",
     repo: "https://github.com/AlexanderMatveev2908/psn-job-application-tracker",
     live: "https://psn-job-application-tracker-client.fly.dev/",
     host: "Fly.io",
     typeApp: "Full-Stack",
     defName: "jobs_java",
     order: 9,
+    down: true,
   },
   {
-    title: "Job Application Tracker Python",
+    title: "PFN Job Application Tracker",
     repo: "https://github.com/AlexanderMatveev2908/PFN-job-application-tracker",
     live: "https://pfn-job-application-tracker-client.fly.dev/",
     host: "Fly.io",
