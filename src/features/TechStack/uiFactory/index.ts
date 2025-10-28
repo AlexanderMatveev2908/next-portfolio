@@ -1,4 +1,5 @@
 import { SqlAlchemy } from "@/shared/components/SVGs";
+import SvgAngular from "@/shared/components/SVGs/Angular";
 import SvgAws from "@/shared/components/SVGs/Aws";
 import SvgAxios from "@/shared/components/SVGs/Axios";
 import SvgBootstrap from "@/shared/components/SVGs/Bootstrap";
@@ -168,6 +169,9 @@ export const stack = [
   {
     svg: SvgNextjs,
     clr: "whitesmoke",
+  },
+  {
+    svg: SvgAngular,
   },
   {
     svg: SvgVite,

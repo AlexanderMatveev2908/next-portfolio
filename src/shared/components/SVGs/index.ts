@@ -1,3 +1,4 @@
+export { default as Angular } from "./Angular";
 export { default as Aws } from "./Aws";
 export { default as Axios } from "./Axios";
 export { default as Bootstrap } from "./Bootstrap";
