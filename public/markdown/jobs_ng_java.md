@@ -31,7 +31,8 @@ Together they form a clean, modern **full-stack architecture** 🚀
 - **Angular Forms + Zod** — Reactive form handling with schema-based, type-safe validation
 - **Angular HTTPClient** — Built-in HTTP module with interceptors for secure API integration
 - **Tailwind CSS** + **Sass** — Utility-first CSS with extended support for custom and complex designs
-- **Custom Python CLI Tool** — Custom CLI tool that parses SVG files into Angular components with dynamic color and size bindings
+- **Motionone** — Modern animation library for the DOM with concise syntax similar to **Framer Motion** (React)
+- **svg_ng_cli** — Custom **Python** CLI tool that parses SVG files into Angular components with dynamic color and size bindings
 
 ---
 
@@ -45,7 +46,7 @@ Together they form a clean, modern **full-stack architecture** 🚀
 - **Redis (Lettuce)** — Async/reactive Redis client for caching and real-time data
 - **Cloudinary (Reactive WebClient)** — Manually integrated using Spring’s WebClient, enabling fully non-blocking image and video uploads
 - **JavaMailSender (MimeMessage)**— For sending HTML email content, including transactional emails built with custom, hand-crafted templates for full control over design and layout
-- **Custom Python CLI Tool** — Built a Python CLI utility to automatically add dependencies to both the **TOML catalog** and **Gradle build file**, eliminating repetitive hardcoding and improving consistency in dependency management
+- **java_pkg_cli** — Custom **Python** CLI utility to automatically add dependencies to both the **TOML catalog** and **Gradle build file**, eliminating repetitive hardcoding and improving consistency in dependency management
 
 ---
 
@@ -54,7 +55,7 @@ Together they form a clean, modern **full-stack architecture** 🚀
 - **Playwright** — End-to-end testing for UI flows
 - **Vitest** — Unit testing for the client
 - **JUnit Jupiter** — Unit and integration testing for the backend
-- **Postman** — Manual and automated API testing
+- **Postman** — API testing
 - **Checkstyle, SpotBugs, PMD** — Static analysis and code quality enforcement for Java
 
 ---
@@ -73,6 +74,7 @@ Together they form a clean, modern **full-stack architecture** 🚀
 - **Zoho Mail** — Inbound email hosting for custom domain addresses
 - **Namecheap** — Domain provider, configured with DNS records (SPF, DKIM, DMARC) to support both Brevo + Zoho
 - **Zsh** — Custom shell scripts for scaffolding and developer productivity
+- **sync_env_cli** — Custom **Python** CLI tool that synchronizes environment variables across the client and server directories, updates **Kubernetes** secrets, and patches environment variables in the Git-based **CI/CD pipeline** for deployment.
 
 ---
 
@@ -123,19 +125,6 @@ This file not only configures the server but also declares the environment varia
 
 To streamline development, I created a set of helper scripts located in the [**scripts**](scripts) folder.  
 They are written in **Zsh**, so you can either copy them into your **.zshrc** file or place them wherever you normally keep custom scripts.
-
-Available scripts:
-
-- [`gwd`](scripts/files.zsh) — Get the monorepo’s root directory name in lowercase
-- [`acw`](scripts/files.zsh) — Append `client` or `server` to the monorepo name
-- [`dbc`](scripts/docker.zsh) — Build the Docker image for the client, passing build variables
-- [`dbs`](scripts/docker.zsh) — Build the Docker image for the server
-- [`dsi`](scripts/docker.zsh) — Start a Docker container
-- [`calc_path_k`](scripts/kind.zsh) — Calculate the path of a Kind manifest dynamically, accepting the config file name and a target (`server` or `client`)
-- [`kacw`](scripts/kind.zsh) — Use `calc_path_k` to apply all manifests for either the client or the server.
-- [`kac`](scripts/kind.zsh) — Apply manifests to both `client` and `server`, inject `secrets` into the cluster, and start the `nginx reverse proxy`.
-- [`kcc`](scripts/kind.zsh) — Create a Kind `cluster` and apply all manifest files using `kaf`
-- [`ngx`](scripts/nginx.zsh) — Manage Nginx config switching via `symlink`
 
 ---
 
@@ -288,7 +277,7 @@ To start a local **Kubernetes Cluster** run
 kcc
 ```
 
-The script present in **scripts/kind.zsh** will
+The script present in [scripts/kind.zsh](scripts/kind.zsh) will
 
 - **Create the cluster** using **Kind** passing the config file at repo root
 - **Apply secrets** defined in **kind-secrets.yml**
@@ -305,8 +294,6 @@ The script present in **scripts/kind.zsh** will
 - **Server** => available at **[http://localhost:30080](http://localhost:30080)**
 
 If you’ve set up the **Nginx reverse proxy** (see section above), it will automatically route these internal ports behind a single HTTPS entrypoint (port 443).
-
-This way, your local Kubernetes environment behaves just like your development setup — URLs stay consistent and you don’t need a separate `ENV_MODE=kind`.
 
 ---
 
@@ -340,7 +327,7 @@ To improve stability and speed, the recommended workflow is:
 1. **Build** the app
 
    ```bash
-   yarn build
+   yarn build:test
    ```
 
 2. **Start** both client & server
@@ -363,15 +350,7 @@ A ready-to-use **Postman setup** is available at the root of the repo in the **p
 
 - [TEST_API.postman_collection.json](/postman/TEST_API.postman_collection.json) — Contains all API request
 - [ENV_VAR.postman_environment.json](postman/ENV_VAR.postman_environment.json) — Contains the required environment variables
-- [scripts](/postman/scripts/) — Contains reusable scripts used during testing to improve **efficiency**:
-  - [get_tokens](/postman/scripts/get_tokens.js) — Extracts **accessToken** and **cbcHmacToken** from a response and sets them as **environment variables**.
-  - [refresh_token](postman/scripts/refresh_token.js) — If a response returns status **401**, attempts to obtain a **new accessToken** by calling the **refresh endpoint**.
-
----
-
-**📑 Notes**:
-
-- Variables like **email** and **pwd** are only **placeholders**. You need to configure them with your **own test credentials**.
+- [scripts](/postman/scripts/) — Contains reusable scripts used during testing to improve **efficiency**
 
 ---
 
@@ -490,24 +469,6 @@ This way it:
 
 ---
 
-### 🔒 Secrets Deploy
-
-To allow GitHub Actions to deploy the app, you’ll need to configure deployment tokens and environment variables for both the **client** and **server**.
-
-#### 🐈 GitHub Secrets
-
-- GitHub requires the same environment variables you used in development (with adjustments for production, e.g. `NEXT_PUBLIC_ENV`, or API URLs).
-- You can manage them in your repo under **Settings => Secrets and variables => Actions**.
-- Alternatively, you can use the **GitHub CLI** to upload local environment variables automatically — reducing the risk of forgetting or mistyping values.
-
-#### 🎈 Fly.io Secrets
-
-- Fly.io also requires environment variables for deployment.
-- You can set them manually in your Fly.io dashboard **(App => Settings => Secrets)**.
-- Or use the **Fly CLI (`flyctl secrets set`)**, which is faster and less error-prone than updating them one by one in the dashboard.
-
----
-
 ## ⚙️ Python CLI Tools
 
 ### 📂 Working Directory
@@ -516,25 +477,27 @@ Each CLI tool can be executed directly from its relative project directory:
 
 - **Java package manager CLI:** [`apps/server/java_pkg_cli`](apps/server/java_pkg_cli)
 - **SVG parser CLI:** [`apps/client/svg_ng_cli`](apps/client/svg_ng_cli)
+- **Env sync CLI:** [`sync_env_cli`](sync_env_cli)
 
 Alternatively, you can use helper shell scripts to run the tools from anywhere without changing directories:
 
 - 📦 **ja** => located at [`scripts/java.zsh`](scripts/java.zsh)
 - 🎨 **ngcv** => located at [`scripts/svg.zsh`](scripts/svg.zsh)
+- 🔐 **ue** => located at [`scripts/env.zsh`](scripts/env.zsh)
 
-> Both scripts execute in a **subshell**, so your current terminal directory remains unchanged after they finish.
+> All scripts execute in a **subshell**, so your current terminal directory remains unchanged after they finish.
 
 ---
 
 ### 🔋 Installation
 
-To install project dependencies (using [Poetry](https://python-poetry.org/)), run:
+To install project dependencies run:
 
 ```bash
 poetry install
 ```
 
-This will automatically create a virtual environment (if not already present) and install all dependencies defined in `pyproject.toml`.
+This will automatically create a virtual environment and install all dependencies defined in `pyproject.toml`.
 
 ---
 
@@ -564,6 +527,32 @@ poetry run pip install dist/java_pkg_cli-1.0.0-py3-none-any.whl
 ---
 
 ### 🚀 Running the CLIs
+
+#### 🔐 sync_env_cli
+
+Run the Env Sync CLI to update all .env files(root, client, server), patch GitHub Actions workflows, and sync Kubernetes secrets:
+
+```bash
+poetry run python -m sync_env_cli env_mode
+```
+
+Example:
+
+```bash
+poetry run python -m sync_env_cli d
+```
+
+- **💡 Note**:
+  For every patched file, a backup is created with a `.bkp` suffix.
+  Example: `check_deploy.yml` => `check_deploy.yml.bkp`
+
+##### 🔧 Parameters
+
+| Parameter    | Description                                                  | Example                                                    |
+| ------------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
+| **env mode** | Required — determines which environment configuration to use | `d` => development<br>`p` => production<br>`t` => test<br> |
+
+---
 
 #### 🧰 java_pkg_cli
 
@@ -614,10 +603,11 @@ poetry run python -m svg_ng_cli path_to_svg_file output_folder_path [svg_type]
 
 ### 🧠 Summary
 
-| CLI              | Purpose                              | Location                                             | Shortcut |
-| ---------------- | ------------------------------------ | ---------------------------------------------------- | -------- |
-| **java_pkg_cli** | Generate Gradle dependency snippets  | [apps/server/java_pkg_cli](apps/server/java_pkg_cli) | `ja`     |
-| **svg_ng_cli**   | Convert SVGs into Angular components | [apps/client/svg_ng_cli](apps/client/svg_ng_cli)     | `ngcv`   |
+| CLI              | Purpose                                 | Location                                             | Shortcut |
+| ---------------- | --------------------------------------- | ---------------------------------------------------- | -------- |
+| **java_pkg_cli** | Generate Gradle dependency snippets     | [apps/server/java_pkg_cli](apps/server/java_pkg_cli) | `ja`     |
+| **svg_ng_cli**   | Convert SVGs into Angular components    | [apps/client/svg_ng_cli](apps/client/svg_ng_cli)     | `ngcv`   |
+| **sync_env_cli** | Update .env files, Git and Kind secrets | [sync_env_cli](sync_env_cli)                         | `ue`     |
 
 ---
 
