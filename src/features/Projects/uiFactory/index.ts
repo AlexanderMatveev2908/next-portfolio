@@ -22,6 +22,15 @@ export type ProjectType = {
 
 export const projects: ProjectType[] = [
   {
+    title: "ASP Weather App",
+    repo: "https://github.com/AlexanderMatveev2908/asp-weather-app",
+    live: "https://asp-weather-app-client.fly.dev/",
+    host: "Fly.io",
+    typeApp: "Full-Stack",
+    defName: "weather",
+    order: 11,
+  },
+  {
     title: "ASP Job Application Tracker",
     repo: "https://github.com/AlexanderMatveev2908/asp-job-application-tracker",
     live: "https://asp-job-application-tracker-client.fly.dev/",
