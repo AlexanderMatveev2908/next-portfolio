@@ -99,7 +99,7 @@ const Projects: FC = () => {
         `}
       >
         {paginated.map((el, i) => (
-          <ProjectItem key={i} {...{ el }} />
+          <ProjectItem key={i} {...{ el, paginated }} />
         ))}
       </div>
 

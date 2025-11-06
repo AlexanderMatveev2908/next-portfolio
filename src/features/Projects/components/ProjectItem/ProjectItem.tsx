@@ -15,9 +15,10 @@ import { uiBreaks } from "@/core/constants/uiBreaks";
 
 type PropsType = {
   el: ProjectType;
+  paginated: ProjectType[];
 };
 
-const ProjectItem: FC<PropsType> = ({ el }) => {
+const ProjectItem: FC<PropsType> = ({ el, paginated }) => {
   const contentRefImg = useRef<HTMLDivElement | null>(null);
   const [h, setHeight] = useState(0);
   const filter = useSelector(getProjectsState).currFilter;
@@ -44,7 +45,7 @@ const ProjectItem: FC<PropsType> = ({ el }) => {
       resizeObserver.disconnect();
       mutationObserver.disconnect();
     };
-  }, [filter]);
+  }, [filter, paginated]);
 
   return (
     <ProjectItemStyled
