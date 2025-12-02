@@ -47,6 +47,7 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "jobs_ng_java",
     order: 10,
+    down: true,
   },
   {
     title: "PSN Job Application Tracker",
