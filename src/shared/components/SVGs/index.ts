@@ -1,4 +1,5 @@
 export { default as Angular } from "./Angular";
+export { default as Aspnet } from "./Aspnet";
 export { default as Aws } from "./Aws";
 export { default as Axios } from "./Axios";
 export { default as Bootstrap } from "./Bootstrap";
@@ -14,6 +15,7 @@ export { default as BtnTag } from "./BtnTag";
 export { default as Canva } from "./Canva";
 export { default as Cloudinary } from "./Cloudinary";
 export { default as ContactPhone } from "./ContactPhone";
+export { default as Csharp } from "./Csharp";
 export { default as Css } from "./Css";
 export { default as Docker } from "./Docker";
 export { default as Express } from "./Express";

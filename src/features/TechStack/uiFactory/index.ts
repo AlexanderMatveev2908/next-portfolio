@@ -1,11 +1,13 @@
 import { SqlAlchemy } from "@/shared/components/SVGs";
 import SvgAngular from "@/shared/components/SVGs/Angular";
+import SvgAspnet from "@/shared/components/SVGs/Aspnet";
 import SvgAws from "@/shared/components/SVGs/Aws";
 import SvgAxios from "@/shared/components/SVGs/Axios";
 import SvgBootstrap from "@/shared/components/SVGs/Bootstrap";
 import SvgBrevo from "@/shared/components/SVGs/Brevo";
 import SvgCanva from "@/shared/components/SVGs/Canva";
 import SvgCloudinary from "@/shared/components/SVGs/Cloudinary";
+import SvgCsharp from "@/shared/components/SVGs/Csharp";
 import SvgCss from "@/shared/components/SVGs/Css";
 import SvgDocker from "@/shared/components/SVGs/Docker";
 import SvgFastApi from "@/shared/components/SVGs/FastApi";
@@ -87,6 +89,9 @@ export const stack = [
     svg: SvgJava,
   },
   {
+    svg: SvgCsharp,
+  },
+  {
     svg: SvgLinux,
   },
   {
@@ -137,6 +142,10 @@ export const stack = [
   },
   {
     svg: SvgSpring,
+  },
+  {
+    svg: SvgAspnet,
+    clr: "whitesmoke",
   },
 
   // __ DATABASES

@@ -29,6 +29,7 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "feedbacks",
     order: 12,
+    down: true,
   },
   {
     title: "ASP Weather App",
@@ -38,6 +39,7 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "weather",
     order: 11,
+    down: true,
   },
   {
     title: "ASP Job Application Tracker",
@@ -77,6 +79,7 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "pern_book",
     order: 4,
+    down: true,
   },
   {
     title: "Food Delivery App",
@@ -86,6 +89,7 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "mern_eat",
     order: 3,
+    down: true,
   },
   {
     title: "Courses App",
@@ -105,6 +109,7 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "mern_book",
     order: 1,
+    down: true,
   },
   {
     title: "Qr-Code generator",
@@ -114,6 +119,7 @@ export const projects: ProjectType[] = [
     typeApp: "Full-Stack",
     defName: "qr_code",
     order: 7,
+    down: true,
   },
   {
     title: "Memory Game",
@@ -152,7 +158,7 @@ export const projects: ProjectType[] = [
     typeApp: (el.typeApp ?? "Frontend-Only") as TypeApp,
     host: el.host as HostType,
     down: el.down ?? false,
-  })
+  }),
 );
 
 export const optHoverDrop = css`
