@@ -20,7 +20,19 @@ export type ProjectType = {
   down: boolean;
 };
 
+// 13 projects
+
 export const projects: ProjectType[] = [
+  {
+    title: "Invoices App",
+    repo: "https://github.com/AlexanderMatveev2908/InvoicesApp",
+    live: "https://invoices-app-client.fly.dev/",
+    host: "Fly.io",
+    typeApp: "Full-Stack",
+    defName: "invoices",
+    order: 13,
+    down: true,
+  },
   {
     title: "Product Feedbacks",
     repo: "https://github.com/AlexanderMatveev2908/asp-product-feedback",
